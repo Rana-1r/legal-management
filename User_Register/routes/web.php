@@ -2,9 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
-// 2. مسار عرض الصفحة (عندما يكتب المستخدم /register في المتصفح)
+Route::get('/test', function () {
+    return  view('test');
+});
 Route::get('/', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
-// 3. مسار استقبال البيانات (عندما يضغط المستخدم على زر "إنشاء الحساب")
 Route::post('/', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::post('/login', [LoginController::class, 'login']);
+

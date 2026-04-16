@@ -43,6 +43,6 @@ class RegisterController extends Controller
         // لن نرسل role_id ولا department، سيبقون Null في قاعدة البيانات تلقائياً
     ]);
 
-    return redirect('/')->with('success', 'تم إنشاء حسابك بنجاح!');
+    return redirect()->route('login')->with('success', 'تم إنشاء حسابك بنجاح، سجل الدخول الآن');
 }
 }
