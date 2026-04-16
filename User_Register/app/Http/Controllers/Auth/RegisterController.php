@@ -7,6 +7,7 @@ use App\Models\User_wm;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -20,15 +21,25 @@ class RegisterController extends Controller
         $request->validate([
 
             'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users_wm,email',
-            'password' => 'required|min:8|confirmed', // confirmed تتطلب حقل password_confirmation
+            'email' => [
+                'required',
+                'email',
+                'unique:users_wm,email',
+                'regex:/^[a-zA-Z0-9._%+-]+@wadimakkah\.sa$/',
+        ],
+            
+            'password' => 'required|min:8|confirmed',
+        ], [
+            'email.endswith' => 'الإيميل يجب أن ينتهي ب@wadimakkah.sa',
+            'email.unique' => 'هذا الإيميل مستخدم مسبقاً',
+            'password.confirmed' => 'تأكيد كلمة المرور غير مطابق',
         ]);
 
         \App\Models\User_wm::create([
 
            'full_name' => $request->full_name,
            'email' => $request->email,
-           'password_hash' => \Illuminate\Support\Facades\Hash::make($request->password), 
+           'password_hash' => Hash::make($request->password), 
         // لن نرسل role_id ولا department، سيبقون Null في قاعدة البيانات تلقائياً
     ]);
 
