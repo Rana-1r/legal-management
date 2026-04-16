@@ -30,9 +30,9 @@ class RegisterController extends Controller
             
             'password' => 'required|min:8|confirmed',
         ], [
-            'email.endswith' => 'الإيميل يجب أن ينتهي ب@wadimakkah.sa',
+            'email.regex' => 'الإيميل يجب أن ينتهي ب@wadimakkah.sa',
             'email.unique' => 'هذا الإيميل مستخدم مسبقاً',
-            'password.confirmed' => 'تأكيد كلمة المرور غير مطابق',
+            'password.confirmed' => 'كلمة المرور غير مطابقة',
         ]);
 
         \App\Models\User_wm::create([

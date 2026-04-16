@@ -20,7 +20,11 @@
                 </div>
                 <div class="input-group">
                     <label>البريد الإلكتروني</label>
-                    <input type="email" name="email" placeholder="example123@wadimakkah.sa">
+                    <input type="email" name="email" placeholder="example123@wadimakkah.sa" class="border p-2 w-full @error('email') border-red-500 @enderror">
+                    @error('email')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+
                 </div>
                 <div class="input-group">
                     <label>كلمة المرور</label>
@@ -29,6 +33,9 @@
                 <div class="input-group">
                     <label>تأكيد كلمة المرور</label>
                     <input type="password" name="password_confirmation" placeholder="············">
+                    @error('password')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn-register">إنشاء الحساب</button>
             </form>
