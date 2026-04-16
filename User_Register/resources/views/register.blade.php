@@ -2,49 +2,144 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل جديد</title>
-    @vite(['resources/css/style.css'])
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل جديد - منصة الإدارة القانونية</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- خط -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .custom-bg {
+            background: linear-gradient(180deg, #f4fbff 0%, #d9f1ff 50%, #9ed9f3 100%);
+        }
+    </style>
 </head>
-<body>
 
-    <div class="right-section">
-        <div class="register-card">
-            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="small-logo">
-            <h2>منصة الإدارة القانونية</h2>
-            
-            <form action="{{ url('/') }}" method="POST">
+<body class="min-h-screen flex items-center justify-center p-8 custom-bg">
+
+    <div class="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl gap-10 md:gap-20">
+
+        <!-- كارد التسجيل -->
+        <div class="bg-white/90 backdrop-blur-sm p-12 rounded-[50px] shadow-2xl w-full max-w-[500px] order-2 md:order-1">
+
+            <!-- اللوقو -->
+            <img src="{{ asset('images/Wadi Makkah Logo.png') }}"
+                 class="w-40 mx-auto block mb-6"
+                 alt="Logo">
+
+            <h2 class="text-xl font-bold text-[#5c5c5c] text-center mb-6">
+                منصة الإدارة القانونية
+            </h2>
+
+            <form action="{{ url('/') }}" method="POST" class="space-y-5 text-right">
                 @csrf
-                <div class="input-group">
-                    <label>الإسم الكامل</label>
-                    <input type="text" name="full_name" placeholder="الإسم الكامل">
-                </div>
-                <div class="input-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" name="email" placeholder="example123@wadimakkah.sa" class="border p-2 w-full @error('email') border-red-500 @enderror">
-                    @error('email')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
 
-                </div>
-                <div class="input-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" name="password" placeholder="············">
-                </div>
-                <div class="input-group">
-                    <label>تأكيد كلمة المرور</label>
-                    <input type="password" name="password_confirmation" placeholder="············">
-                    @error('password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                <!-- الاسم الكامل -->
+                <div>
+                    <label class="text-[#8e8e8e] text-xs mb-1 block mr-2">الاسم الكامل</label>
+                    <input
+                        type="text"
+                        name="full_name"
+                        placeholder="الاسم الكامل"
+                        required
+                        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition @error('full_name') border-2 border-red-500 @enderror"
+                    >
+                    @error('full_name')
+                        <span class="text-red-500 text-xs mr-2">{{ $message }}</span>
                     @enderror
                 </div>
-                <button type="submit" class="btn-register">إنشاء الحساب</button>
+
+                <!-- البريد الإلكتروني -->
+                <div>
+                    <label class="text-[#8e8e8e] text-xs mb-1 block mr-2">البريد الإلكتروني</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example123@wadimakkah.sa"
+                        required
+                        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition @error('email') border-2 border-red-500 @enderror"
+                    >
+                    @error('email')
+                        <span class="text-red-500 text-xs mr-2">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- كلمة المرور -->
+                <div>
+                    <label class="text-[#8e8e8e] text-xs mb-1 block mr-2">كلمة المرور</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="********"
+                        required
+                        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition @error('password') border-2 border-red-500 @enderror"
+                    >
+                    @error('password')
+                        <span class="text-red-500 text-xs mr-2">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- تأكيد كلمة المرور -->
+                <div>
+                    <label class="text-[#8e8e8e] text-xs mb-1 block mr-2">تأكيد كلمة المرور</label>
+                    <input
+                        type="password"
+                        name="password_confirmation"
+                        placeholder="********"
+                        required
+                        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition"
+                    >
+                </div>
+
+                <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">الدور الوظيفي</label>
+                <select name="role_id" class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none bg-white">
+                    <option value="1">موظف قانوني</option>
+                    <option value="2">مدير نظام</option>
+                    <option value="3">مدير الإدارة القانونية</option>
+                    <option value="4">موظف إدارات داخلية</option>
+                    <option value="5">الإدارة العليا</option>
+                </select>
+            </div>
+
+                <!-- زر إنشاء الحساب -->
+                <div class="pt-4">
+                    <button
+                        type="submit"
+                        class="w-full bg-[#4c5df4] hover:bg-[#3c4dd4] text-white font-bold py-4 rounded-xl text-md transition-all shadow-lg active:scale-95"
+                    >
+                        إنشاء الحساب
+                    </button>
+                </div>
             </form>
         </div>
-    </div>
 
-    <div class="left-section">
-        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="large-logo">
-        <h1 class="big-text">منصة الإدارة القانونية</h1>
+        <!-- القسم الجانبي -->
+        <div class="flex flex-col items-center justify-center text-center flex-1 order-1 md:order-2 mr-20">
+
+    <!-- اللوقو -->
+    <img src="{{ asset('images/Wadi Makkah Logo.png') }}"
+         class="w-[320px] md:w-[380px] mb-16 -mt-32"
+         alt="Logo">
+
+    <!-- العنوان -->
+    <h1 class="text-4xl md:text-4xl lg:text-4xl font-extrabold text-[#1a1a1a] whitespace-nowrap">
+    منصة الإدارة القانونية
+    </h1>
+       
+    <!-- الوصف -->
+    <p class="text-gray-600 mt-4 text-xl">
+        يرجى إنشاء حساب جديد للوصول إلى المنصة
+    </p>
+
+      </div>
     </div>
 
 </body>
