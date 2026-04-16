@@ -106,6 +106,7 @@
                     <option value="3">مدير الإدارة القانونية</option>
                     <option value="4">موظف إدارات داخلية</option>
                     <option value="5">الإدارة العليا</option>
+                    <option value="5">الإدارة العليا</option>
                 </select>
             </div>
 
