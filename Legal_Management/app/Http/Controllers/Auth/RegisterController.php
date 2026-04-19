@@ -17,7 +17,7 @@ class RegisterController extends Controller
 
     public function register(Request $request) {
 
-        // 1. التحقق من صحة المدخلات
+        
         $request->validate([
 
             'full_name' => 'required|string|max:255',
@@ -40,7 +40,7 @@ class RegisterController extends Controller
            'full_name' => $request->full_name,
            'email' => $request->email,
            'password_hash' => Hash::make($request->password), 
-        // لن نرسل role_id ولا department، سيبقون Null في قاعدة البيانات تلقائياً
+        
     ]);
 
     return redirect()->route('login')->with('success', 'تم إنشاء حسابك بنجاح، سجل الدخول الآن');
