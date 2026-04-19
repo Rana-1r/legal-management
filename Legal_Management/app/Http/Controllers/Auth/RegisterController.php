@@ -43,6 +43,6 @@ class RegisterController extends Controller
         
     ]);
 
-    return redirect()->route('login')->with('success', 'تم إنشاء حسابك بنجاح، سجل الدخول الآن');
+    return redirect()->route('login');
 }
 }

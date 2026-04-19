@@ -38,7 +38,7 @@
                 منصة الإدارة القانونية
             </h2>
 
-            <form action="{{ url('/') }}" method="POST" class="space-y-3 text-right">
+            <form action="{{ url('/register') }}" method="POST" class="space-y-3 text-right">
                 @csrf
 
                 <!-- الاسم الكامل -->

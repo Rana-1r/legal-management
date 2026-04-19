@@ -37,7 +37,7 @@
         </h2>
 
         <!-- الفورم -->
-        <form action="/login" method="POST" class="space-y-5 text-right">
+        <form action="{{ url('/') }}" method="POST" class="space-y-5 text-right">
             
             @csrf
 
