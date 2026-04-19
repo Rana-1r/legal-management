@@ -11,3 +11,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::post('/', [LoginController::class, 'login']);
+
+Route::get('/user-interface', function () {
+    return view('Interfaces.user-interface');
+})->middleware('auth:web')->name('interface');
