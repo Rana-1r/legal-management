@@ -12,7 +12,7 @@ use Illuminate\Validation\Rule;
 class RegisterController extends Controller
 {
     public function showRegistrationForm() {
-        return view('register');
+        return view('Auth.register');
     }
 
     public function register(Request $request) {

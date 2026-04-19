@@ -27,18 +27,18 @@
     <div class="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl gap-10 md:gap-20">
 
         <!-- كارد التسجيل -->
-        <div class="bg-white/90 backdrop-blur-sm p-12 rounded-[50px] shadow-2xl w-full max-w-[500px] order-2 md:order-1">
+        <div class="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-[40px] shadow-2xl w-full max-w-[380px] md:max-w-[500px]">
 
             <!-- اللوقو -->
             <img src="{{ asset('images/Wadi Makkah Logo.png') }}"
                  class="w-40 mx-auto block mb-6"
                  alt="Logo">
 
-            <h2 class="text-xl font-bold text-[#5c5c5c] text-center mb-6">
+            <h2 class="text-xl font-bold text-[#1a1a1a] text-center mb-6">
                 منصة الإدارة القانونية
             </h2>
 
-            <form action="{{ url('/') }}" method="POST" class="space-y-5 text-right">
+            <form action="{{ url('/') }}" method="POST" class="space-y-3 text-right">
                 @csrf
 
                 <!-- الاسم الكامل -->
@@ -49,7 +49,7 @@
                         name="full_name"
                         placeholder="الاسم الكامل"
                         required
-                        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition @error('full_name') border-2 border-red-500 @enderror"
+                        class="w-full bg-[#eeeeee] rounded-xl py-2 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-400 transition @error('full_name') border-2 border-red-500 @enderror"
                     >
                     @error('full_name')
                         <span class="text-red-500 text-xs mr-2">{{ $message }}</span>
@@ -99,15 +99,32 @@
                 </div>
 
                 <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">الدور الوظيفي</label>
-                <select name="role_id" class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none bg-white">
-                    <option value="1">موظف قانوني</option>
-                    <option value="2">مدير نظام</option>
-                    <option value="3">مدير الإدارة القانونية</option>
-                    <option value="4">موظف إدارات داخلية</option>
-                    <option value="5">الإدارة العليا</option>
-                </select>
-            </div>
+    <!-- اللابل -->
+    <label class="text-[#8e8e8e] text-xs mb-1 block mr-2">
+        الدور الوظيفي
+    </label>
+
+    <!-- الدروب داون -->
+    <div class="relative">
+        <select name="role_id"
+        class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none appearance-none focus:ring-2 focus:ring-blue-400 transition">
+
+            <option value="1">موظف قانوني</option>
+            <option value="2">مدير نظام</option>
+            <option value="3">مدير الإدارة القانونية</option>
+            <option value="4">موظف إدارات داخلية</option>
+            <option value="5">الإدارة العليا</option>
+
+        </select>
+
+        <!-- السهم -->
+        <div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"/>
+            </svg>
+        </div>
+    </div>
+</div>
 
                 <!-- زر إنشاء الحساب -->
                 <div class="pt-4">

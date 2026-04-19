@@ -32,7 +32,7 @@
              class="w-40 mx-auto block mb-6" 
              alt="Logo">
 
-        <h2 class="text-xl font-bold text-[#5c5c5c] text-center mb-6">
+        <h2 class="text-xl font-bold text-[#1a1a1a] text-center mb-6">
             منصة الإدارة القانونية
         </h2>
 
