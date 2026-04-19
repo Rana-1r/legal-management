@@ -4,9 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/test', function () {
-    return  view('test');
-});
 Route::get('/', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::post('/', [RegisterController::class, 'register']);
