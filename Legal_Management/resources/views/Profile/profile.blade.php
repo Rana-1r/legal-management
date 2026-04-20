@@ -35,6 +35,7 @@
 </head>
 <body class="bg-wadimakkah-bg antialiased">
 
+    <!--header-->
     <header class="bg-[#2D3E8D] text-white shadow-lg"> 
 
     <div class="bg-[#344C93] text-white px-16 py-6 flex items-center justify-between">
@@ -139,6 +140,7 @@
 
     </main>
 
+    <!--footer-->
     <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
         <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
             
@@ -169,11 +171,13 @@
                 </div>
             </div>
 
-            <div class="text-left">
-                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 ml-auto mb-3 opacity-80">
+            <div class="flex flex-col items-center text-center px-6 -mt-4">
+                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+    
                 <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
                 <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
             </div>
+
         </div>
     </footer>
 
