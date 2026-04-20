@@ -29,6 +29,7 @@ class RegisterController extends Controller
         ],
             
             'password' => 'required|min:8|confirmed',
+            'role_id' => 'required|exists:roles,role_id',
         ], [
             'email.regex' => 'الإيميل يجب أن ينتهي ب@wadimakkah.sa',
             'email.unique' => 'هذا الإيميل مستخدم مسبقاً',
@@ -40,6 +41,7 @@ class RegisterController extends Controller
            'full_name' => $request->full_name,
            'email' => $request->email,
            'password_hash' => Hash::make($request->password), 
+           'role_id' => $request->role_id,
         
     ]);
 

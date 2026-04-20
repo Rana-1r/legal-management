@@ -32,4 +32,9 @@ class User_wm extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'role_id', 'role_id');
     }
+
+    public function getAuthPassword()
+{
+    return $this->password_hash;
+}
 }

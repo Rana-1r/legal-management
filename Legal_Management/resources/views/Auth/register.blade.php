@@ -109,11 +109,10 @@
         <select name="role_id"
         class="w-full bg-[#eeeeee] rounded-xl py-3 px-4 text-sm outline-none appearance-none focus:ring-2 focus:ring-blue-400 transition">
 
-            <option value="1">موظف قانوني</option>
-            <option value="2">مدير نظام</option>
-            <option value="3">مدير الإدارة القانونية</option>
-            <option value="4">موظف إدارات داخلية</option>
-            <option value="5">الإدارة العليا</option>
+            <option value="" disabled selected>اختر الدور الوظيفي</option>
+            @foreach(App\Models\Role::all() as $role)
+            <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+            @endforeach
 
         </select>
 

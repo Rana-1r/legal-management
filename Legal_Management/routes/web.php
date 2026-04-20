@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
@@ -15,3 +16,9 @@ Route::post('/', [LoginController::class, 'login']);
 Route::get('/user-interface', function () {
     return view('Interfaces.user-interface');
 })->middleware('auth:web')->name('interface');
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
+
+Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
