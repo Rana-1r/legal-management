@@ -35,27 +35,29 @@
 </head>
 <body class="bg-wadimakkah-bg antialiased">
 
-    <header class="bg-[#2D3E8D] text-white shadow-lg"> <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+    <header class="bg-[#2D3E8D] text-white shadow-lg"> 
 
-    <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-12 ml-4">
+    <div class="bg-[#344C93] text-white px-16 py-6 flex items-center justify-between">
 
-        <div class="flex items-center gap-8">
-            <nav class="flex items-center gap-6 text-sm font-medium">
-                <a href="#" class="hover:text-blue-300 transition">الرئيسية</a>
-                <a href="#" class="hover:text-blue-300 transition">القضايا</a>
-                 <a href="#" class="hover:text-blue-300 transition">العقود</a>
-                <a href="#" class="hover:text-blue-300 transition">الاستشارات</a>
-                <a href="#" class="hover:text-blue-300 transition">المستندات والتقارير</a>
-                <a href="#" class="hover:text-blue-300 transition">اللغة العربية <i class="fas fa-globe ml-1"></i></a>
-            </nav>
-            
-            
-        </div>
+    <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 
-        <div class="flex items-center gap-6">
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+    <!--  هنا كان فيه خطأ وتم تصحيحه -->
+    <div class="flex gap-8 text-sm font-medium">
+        <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">
+                    اللغة العربية
+                    <i class="fas fa-globe text-wadimakkah-light"></i>
+                </a>
+    </div>
+    
+        <div class="flex items-center gap-6"> 
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a> 
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a> 
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a> 
         </div>
     </div>
 </header>
@@ -122,7 +124,7 @@
                                 <button type="submit" id="save-btn" class="hidden bg-green-600 text-white px-8 py-2.5 rounded-lg shadow-sm hover:bg-green-700 transition text-sm font-semibold">حفظ التغييرات</button>
                                 <button type="button" id="cancel-btn" onclick="toggleEditMode()" class="hidden bg-gray-200 text-gray-700 px-8 py-2.5 rounded-lg shadow-sm hover:bg-gray-300 transition text-sm font-semibold">إلغاء</button>
                             </div>
-                       </form>
+</form>
                     </div>
                 </div>
             </div>
