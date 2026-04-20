@@ -26,7 +26,21 @@ class ProfileController extends Controller
     public function updateInfo(Request $request)
     {
         $user = Auth::user();
-        $user->update($request->only(['full_name', 'department', 'phone', 'job_title']));
+        
+        $request->validate([
+        'full_name' => 'required|string|max:255',
+        'department' => 'nullable|string|max:255',
+        'job_title' => 'nullable|string|max:255',
+        'phone' => 'nullable|string|max:20',
+    ]);
+
+    // تنفيذ التحديث في الداتابيس
+    $user->update([
+        'full_name'  => $request->full_name,
+        'department' => $request->department,
+        'job_title'  => $request->job_title,
+        'phone'      => $request->phone,
+    ]);
 
         return back()->with('success', 'تم تحديث البيانات بنجاح');
     }

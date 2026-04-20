@@ -20,6 +20,8 @@ class User_wm extends Authenticatable
         'full_name',
         'email',
         'password_hash',
+        'job_title',
+        'phone',
         'role_id',
         'department',
         'is_active'
