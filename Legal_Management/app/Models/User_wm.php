@@ -19,6 +19,7 @@ class User_wm extends Authenticatable
     protected $fillable = [
         'full_name',
         'email',
+        'photo',
         'password_hash',
         'job_title',
         'phone',
