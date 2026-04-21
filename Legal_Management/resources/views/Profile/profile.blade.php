@@ -121,9 +121,27 @@
                                 </div>
 
                                 <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">البريد الإلكتروني</label>
+                                    <p id="view-email" class="text-gray-800 p-2 border-b-2 border-transparent">{{ $user->email }}</p>
+                                    <input type="email" name="email" value="{{ $user->email }}" class="edit-input hidden w-full p-2 rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
+                                </div>
+
+                                <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">القسم</label>
-                                    <p id="view-department" class="text-blue-800 p-2 border-b-2 border-transparent">{{ $user->department ?? 'غير محدد' }}</p>
-                                    <input type="text" name="department" value="{{ $user->department }}" class="edit-input hidden w-full p-2 rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
+    
+                                    <p id="view-department" class="text-blue-800 p-2 border-b-2 border-transparent">
+                                    {{ $user->department ?? 'غير محدد' }}
+                                    </p>
+    
+                                    <select name="department" class="edit-input hidden w-full p-2 rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
+                                        <option value="" disabled {{ !$user->department ? 'selected' : '' }}>اختر القسم...</option>
+                                        <option value="تقنية المعلومات" {{ $user->department == 'تقنية المعلومات' ? 'selected' : '' }}>تقنية المعلومات</option>
+                                        <option value="الإدارة القانونية" {{ $user->department == 'الإدارة القانونية' ? 'selected' : '' }}>الإدارة القانونية</option>
+                                        <option value="التسويق" {{ $user->department == 'التسويق' ? 'selected' : '' }}>التسويق</option>
+                                        <option value="المالية" {{ $user->department == 'المالية' ? 'selected' : '' }}>المالية</option>
+                                        <option value="الإدارة العليا" {{ $user->department == 'الإدارة العليا' ? 'selected' : '' }}>الإدارة العليا</option>
+                                        <option value="الموارد البشرية" {{ $user->department == 'الموارد البشرية' ? 'selected' : '' }}>الموارد البشرية</option>
+                                    </select>
                                 </div>
 
                                 <div>
@@ -141,7 +159,7 @@
 
                             <div class="mt-10 flex gap-4 justify-end">
                                 <button type="button" id="toggle-edit-btn" onclick="toggleEditMode()" class="bg-wadimakkah-light text-white px-8 py-2.5 rounded-lg shadow-sm hover:bg-wadimakkah-dark transition text-sm font-semibold">تعديل البيانات</button>
-                                <button type="submit" id="save-btn" class="hidden bg-green-600 text-white px-8 py-2.5 rounded-lg shadow-sm hover:bg-green-700 transition text-sm font-semibold">حفظ التغييرات</button>
+                                <button type="submit" id="save-btn" class="hidden bg-green-600 text-white px-8 py-2.5 rounded-lg shadow-sm hover:bg-green-700 transition text-sm font-semibold">حفظ البيانات</button>
                                 <button type="button" id="cancel-btn" onclick="toggleEditMode()" class="hidden bg-gray-200 text-gray-700 px-8 py-2.5 rounded-lg shadow-sm hover:bg-gray-300 transition text-sm font-semibold">إلغاء</button>
                             </div>
                         </form>

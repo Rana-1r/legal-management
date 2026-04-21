@@ -29,6 +29,7 @@ class ProfileController extends Controller
         
         $request->validate([
         'full_name' => 'required|string|max:255',
+        'email'      => 'required|email|max:255',
         'department' => 'nullable|string|max:255',
         'job_title' => 'nullable|string|max:255',
         'phone' => 'nullable|string|max:20',
@@ -37,6 +38,7 @@ class ProfileController extends Controller
     // تنفيذ التحديث في الداتابيس
     $user->update([
         'full_name'  => $request->full_name,
+        'email'      => $request->email,
         'department' => $request->department,
         'job_title'  => $request->job_title,
         'phone'      => $request->phone,
