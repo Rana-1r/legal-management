@@ -122,7 +122,7 @@
 
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">البريد الإلكتروني</label>
-                                    <p id="view-email" class="text-gray-800 p-2 border-b-2 border-transparent">{{ $user->email }}</p>
+                                    <p id="view-email" class="text-blue-800 p-2 border-b-2 border-transparent">{{ $user->email }}</p>
                                     <input type="email" name="email" value="{{ $user->email }}" class="edit-input hidden w-full p-2 rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
                                 </div>
 
@@ -132,8 +132,8 @@
                                     <p id="view-department" class="text-blue-800 p-2 border-b-2 border-transparent">
                                     {{ $user->department ?? 'غير محدد' }}
                                     </p>
-    
-                                    <select name="department" class="edit-input hidden w-full p-2 rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
+
+                                    <select name="department" class="edit-input hidden w-full p-2 h-[44px] rounded-md border focus:border-wadimakkah-light focus:ring-1 focus:ring-wadimakkah-light transition">
                                         <option value="" disabled {{ !$user->department ? 'selected' : '' }}>اختر القسم...</option>
                                         <option value="تقنية المعلومات" {{ $user->department == 'تقنية المعلومات' ? 'selected' : '' }}>تقنية المعلومات</option>
                                         <option value="الإدارة القانونية" {{ $user->department == 'الإدارة القانونية' ? 'selected' : '' }}>الإدارة القانونية</option>
