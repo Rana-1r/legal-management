@@ -239,8 +239,8 @@
 
         // تدرج لوني للخلفية (مثل الصورة)
         const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(96, 165, 250, 0.5)'); // أزرق فاتح شفاف
-        gradient.addColorStop(1, 'rgba(96, 165, 250, 0.0)'); // شفاف تماماً
+        gradient.addColorStop(0, 'rgba(96, 165, 250, 0.5)'); 
+        gradient.addColorStop(1, 'rgba(96, 165, 250, 0.0)'); 
 
         new Chart(ctx, {
             type: 'line',
@@ -288,7 +288,5 @@
             }
         });
     </script>
-
 </body>
-
 </html>
