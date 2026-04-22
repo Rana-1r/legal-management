@@ -22,3 +22,6 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth:web')
+    ->name('dashboard');
