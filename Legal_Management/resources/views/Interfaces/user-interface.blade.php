@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-sm mb-2">إنشاءعقد</h3>
+                    <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
                     <p class="text-xs text-gray-500 leading-6 mb-4">
                       تتيح هذه الخدمة إمكانية إنشاء عقد  و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
                     </p>
