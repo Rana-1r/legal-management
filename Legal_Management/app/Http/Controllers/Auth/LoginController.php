@@ -44,6 +44,6 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
        
-        return redirect()->route('dashboard');
+        return redirect()->route('user-interface');
     }
 }

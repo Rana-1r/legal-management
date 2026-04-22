@@ -16,7 +16,7 @@ Route::post('/', [LoginController::class, 'login']);
 
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->middleware('auth:web')
-    ->name('dashboard');
+    ->name('user-interface');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 
