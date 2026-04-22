@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -39,7 +37,7 @@
     </div>
     
         <div class="flex items-center gap-6">
-            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="{{ route('profile.') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
         </div>
@@ -263,4 +261,4 @@ tailwind.config = {
 
         </div>
     </footer>
->>>>>>> ece1baaa4d9f772a4a9075a16f55af0b2a0c8674
+</body>
