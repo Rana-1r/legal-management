@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0543979bdd0d2d16edcc11080693fcf4c65b7fc9
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
