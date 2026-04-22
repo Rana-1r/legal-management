@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 0543979bdd0d2d16edcc11080693fcf4c65b7fc9
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -29,7 +32,7 @@
 
     <!--  هنا كان فيه خطأ وتم تصحيحه -->
     <div class="flex gap-8 text-sm font-medium">
-        <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+        <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
         <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
         <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
         <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
@@ -265,5 +268,9 @@ tailwind.config = {
 
         </div>
     </footer>
+<<<<<<< HEAD
 >>>>>>> ece1baaa4d9f772a4a9075a16f55af0b2a0c8674
 >>>>>>> 50e553cb9fb9c1bb80b9cf9c52cd057730428e36
+=======
+</body>
+>>>>>>> 0543979bdd0d2d16edcc11080693fcf4c65b7fc9
