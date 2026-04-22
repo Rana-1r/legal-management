@@ -51,7 +51,7 @@
             <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 
             <div class="flex gap-8 text-sm font-medium">
-                <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+                <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
