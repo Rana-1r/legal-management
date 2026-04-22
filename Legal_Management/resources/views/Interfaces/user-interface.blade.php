@@ -97,46 +97,55 @@
             
             <div class="grid grid-cols-4 gap-6 text-center">
 
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-sm mb-2">انشاء قضية</h3>
-                    <p class="text-xs text-gray-500 leading-6 mb-4">
-                        تتيح هذه الخدمة للمستخدم تقديم طلب قضية جديدة عبر إدخال البيانات الأساسية للقضية وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
-                    </p>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                        الانتقال إلى الخدمة
-                    </button>
-                </div>
+    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
+        <h3 class="font-bold text-sm mb-2">انشاء قضية</h3>
+        <p class="text-xs text-gray-500 leading-6 mb-4">
+            تتيح هذه الخدمة للمستخدم تقديم طلب قضية جديدة عبر إدخال البيانات الأساسية للقضية وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
+        </p>
+        <div class="mt-auto">
+            <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+                الانتقال إلى الخدمة
+            </button>
+        </div>
+    </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
-                    <p class="text-xs text-gray-500 leading-6 mb-4">
-                      تتيح هذه الخدمة إمكانية إنشاء عقد  و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
-                    </p>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                        الانتقال إلى الخدمة
-                    </button>
-                </div>
+    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
+        <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
+        <p class="text-xs text-gray-500 leading-6 mb-4">
+          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
+        </p>
+        <div class="mt-auto">
+            <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+                الانتقال إلى الخدمة
+            </button>
+        </div>
+    </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-sm mb-2">طلب إستشارة</h3>
-                    <p class="text-xs text-gray-500 leading-6 mb-6">
-                        تتيح هذه الخدمة تقديم طلب استشارة قانونية ومتابعة حالة الطلب حتى استلام الرد النهائي من المحامي.
-                    </p>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                        الانتقال إلى الخدمة
-                    </button>
-                </div>
+    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
+        <h3 class="font-bold text-sm mb-2">طلب إستشارة</h3>
+        <p class="text-xs text-gray-500 leading-6 mb-4">
+            تتيح هذه الخدمة تقديم طلب استشارة قانونية ومتابعة حالة الطلب حتى استلام الرد النهائي من المحامي.
+        </p>
+        <div class="mt-auto">
+            <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+                الانتقال إلى الخدمة
+            </button>
+        </div>
+    </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="font-bold text-sm mb-2">متابعة الجلسات</h3>
-                    <p class="text-xs text-gray-500 leading-6 mb-6">
-تتيح هذه الخدمة جدولة الجلسات القانونية ومتابعة مواعيدها وتحديث حالتها مع تسجيل النتائج المرتبطة بكل جلسة وحفظها في النظام.
-                    <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                        الانتقال إلى الخدمة
-                    </button>
-                </div>
+    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
+        <h3 class="font-bold text-sm mb-2">متابعة الجلسات</h3>
+        <p class="text-xs text-gray-500 leading-6 mb-4">
+            تتيح هذه الخدمة جدولة الجلسات القانونية ومتابعة مواعيدها وتحديث حالتها مع تسجيل النتائج المرتبطة بكل جلسة وحفظها في النظام.
+        </p>
+        <div class="mt-auto">
+            <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+                الانتقال إلى الخدمة
+            </button>
+        </div>
+    </div>
 
-            </div>
+</div>
 
         </div>
 
