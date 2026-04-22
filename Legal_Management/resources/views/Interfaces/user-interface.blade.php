@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -237,7 +230,7 @@ tailwind.config = {
 }
 </script>
 
-<!--  Footer -->
+    <!--  Footer -->
     <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
         <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
             
@@ -276,9 +269,5 @@ tailwind.config = {
             </div>
 
         </div>
-    </footer>
-<<<<<<< Updated upstream
-=======
->>>>>>> ece1baaa4d9f772a4a9075a16f55af0b2a0c8674
->>>>>>> 50e553cb9fb9c1bb80b9cf9c52cd057730428e36
->>>>>>> Stashed changes
+    </footer>    
+</body>
