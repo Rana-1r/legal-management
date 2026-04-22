@@ -16,10 +16,10 @@
 <body class="bg-gray-50">
 
 <!--  Navbar -->
-<header class="bg-[#2D3E8D] text-white shadow-lg"> 
+<header class="bg-wadimakkah-dark text-white shadow-lg"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    <div class="bg-[#344C93] text-white px-16 py-6 flex items-center justify-between">
+    <div class="text-white px-16 py-6 flex items-center justify-between">
 
     <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 

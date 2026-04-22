@@ -46,8 +46,8 @@
 
 <body class="bg-wadimakkah-bg antialiased">
 
-    <header class="bg-[#2D3E8D] text-white shadow-lg">
-        <div class="bg-[#344C93] text-white px-16 py-6 flex items-center justify-between">
+    <header class="bg-wadimakkah-dark text-white shadow-lg">
+        <div class="text-white px-16 py-6 flex items-center justify-between">
             <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 
             <div class="flex gap-8 text-sm font-medium">
