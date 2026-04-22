@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
@@ -15,7 +16,7 @@ Route::post('/', [LoginController::class, 'login']);
 
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->middleware('auth:web')
-    ->name('user-interface');
+    ->name('dashboard');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 
