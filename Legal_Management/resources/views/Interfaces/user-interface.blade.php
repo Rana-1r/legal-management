@@ -37,9 +37,9 @@
     </div>
     
         <div class="flex items-center gap-6">
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
         </div>
     </div>
 </header>
