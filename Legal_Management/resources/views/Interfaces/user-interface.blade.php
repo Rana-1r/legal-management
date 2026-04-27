@@ -166,7 +166,7 @@
     <!-- Dropdown -->
     <select id="dashboardSelect"
         class="bg-white px-6 py-3 rounded-xl shadow-md text-sm outline-none cursor-pointer mb-6">
-        <option value="">اختر القسم </option>
+        <!-- <option value="">اختر القسم </option>-->
         <option value="cases">قضايا</option>
         <option value="contracts">عقود</option>
         <option value="consultations">استشارات</option>
