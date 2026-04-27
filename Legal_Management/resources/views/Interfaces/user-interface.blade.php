@@ -1,16 +1,25 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة الإدارة القانونية</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<!--  Navbar -->
+<header class="bg-wadimakkah-dark text-white shadow-lg"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-<<<<<<< HEAD
-    <div class="bg-[#344C93] text-white px-16 py-6 flex items-center justify-between">
+    <div class="text-white px-16 py-6 flex items-center justify-between">
 
     <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 
@@ -99,12 +108,12 @@
             </button>
         </div>
     </div>
-   
 
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
         <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
         <p class="text-xs text-gray-500 leading-6 mb-4">
-          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
+          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ
+ التعديلات في النظام.
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
@@ -120,12 +129,14 @@
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+<<<<<<< HEAD
                 الانتقال إلى الخدمة 
                     
+=======
+                الانتقال إلى الخدمة
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
             </button>
         </div>
-    
-
     </div>
 
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
@@ -155,13 +166,13 @@
     </h2>
 
  
-<!-- 🔽 Dropdown +  Power BI Dashboard -->
+<!--  Dropdown +  Power BI Dashboard -->
 <div class="flex flex-col items-center mt-6 px-10">
 
     <!-- Dropdown -->
     <select id="dashboardSelect"
         class="bg-white px-6 py-3 rounded-xl shadow-md text-sm outline-none cursor-pointer mb-6">
-        <option value="">اختر القسم ↓</option>
+        <option value="">اختر القسم </option>
         <option value="cases">قضايا</option>
         <option value="contracts">عقود</option>
         <option value="consultations">استشارات</option>
@@ -219,6 +230,7 @@ tailwind.config = {
                 'wadimakkah-dark': '#1e3a8a',
                 'wadimakkah-light': '#60a5fa',
                 'wadimakkah-bg': '#f9fafb',
+<<<<<<< HEAD
 =======
     <script>
         tailwind.config = {
@@ -241,12 +253,15 @@ tailwind.config = {
                     } 
                 } 
 >>>>>>> Stashed changes
+=======
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
             }
         }
-    </script>
-    <style>body { font-family: 'Cairo', sans-serif; }</style>
-</head>
+    }
+}
+</script>
 
+<<<<<<< HEAD
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
 <header class="bg-wadimakkah-dark text-white shadow-lg">
@@ -349,11 +364,21 @@ tailwind.config = {
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
         <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
 
+=======
+    <!--  Footer -->
+    <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
+        <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
+            
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
             <div>
                 <h5 class="font-bold mb-4">روابط مهمة</h5>
                 <ul class="space-y-2 text-gray-300">
                     <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+<<<<<<< HEAD
                     <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+=======
+ <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
                 </ul>
             </div>
 
@@ -378,11 +403,16 @@ tailwind.config = {
 
             <div class="flex flex-col items-center text-center px-6 -mt-4">
                 <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
                 <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
                 <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
             </div>
 
         </div>
+<<<<<<< HEAD
     </footer>
 
 <script>
@@ -412,3 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+=======
+    </footer>    
+</body>
+>>>>>>> 060fb3d42512ac4b7443a92c617a8a3a60630e9e
