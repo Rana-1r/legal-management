@@ -23,3 +23,10 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+Route::get('/user-interface', [DashboardController::class, 'index'])
+    ->name('user-interface');
+
+Route::resource('consultations', ConsultationController::class);
+
+Route::get('/my-consultations', [ConsultationController::class, 'my'])
+    ->name('consultations.my');

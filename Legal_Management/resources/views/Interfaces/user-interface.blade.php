@@ -108,6 +108,7 @@
             </button>
         </div>
     </div>
+   
 
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
         <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
@@ -128,9 +129,12 @@
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                الانتقال إلى الخدمة
+                الانتقال إلى الخدمة 
+                    <a href="{{ route('consultations.page') }}">
             </button>
         </div>
+    
+
     </div>
 
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
