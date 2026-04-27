@@ -121,7 +121,7 @@
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
                 الانتقال إلى الخدمة 
-                    <a href="{{ route('consultations.page') }}">
+                    
             </button>
         </div>
     
