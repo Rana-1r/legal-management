@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-gray-50">
-
+<!--Navbar-->
 <header class="bg-wadimakkah-dark text-white shadow-lg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
         <div class="text-white px-16 py-6 flex items-center justify-between">
@@ -24,7 +24,7 @@
                 <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+              <a href="{{ route('consultations.page') }}">الاستشارات</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
@@ -268,3 +268,4 @@ tailwind.config = {
         </div>
     </footer>    
 </body> 
+<html>
