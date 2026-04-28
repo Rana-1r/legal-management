@@ -51,7 +51,7 @@
                 class="w-full bg-white px-4 py-3 rounded-lg shadow outline-none text-sm">
         </div>
 
-        <!-- 📊 Status Cards -->
+        <!-- Status Cards -->
         <div class="bg-white p-6 rounded-xl shadow mb-6">
             <h3 class="text-sm font-bold mb-4">حالة الاستشارة القانونية</h3>
 
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <!-- 🧩 Services -->
+        <!--  Services -->
         <div class="bg-white p-6 rounded-xl shadow mb-6">
             <h3 class="text-sm font-bold mb-4">الخدمات</h3>
 
@@ -192,7 +192,7 @@
             </div>
         </div>
 
-  
+    </div>
 
 </body>
 </html>
