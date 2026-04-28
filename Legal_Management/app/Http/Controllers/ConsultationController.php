@@ -40,7 +40,7 @@ class ConsultationController extends Controller
 
         $lawyers = User_wm::where('role_id', 2)->get();
 
-        return view('Consultations.legalManager.page.g', [
+        return view('Consultations.legalManager.page.legalmanager', [
             'stats'            => $stats,
             'needsAssignment'  => $needsAssignment,
             'pendingApprovals' => $pendingApprovals,
