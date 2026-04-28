@@ -71,6 +71,6 @@ class ConsultationController extends Controller
     {
         $myTasks = Consultation::where('assigned_to', auth()->id())->get();
       
-        return view('Consultations.legal.Employee');
+        return view('Consultations.legal.Employee', compact('myTasks'));
     }
 }
