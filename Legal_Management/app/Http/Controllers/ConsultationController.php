@@ -11,17 +11,25 @@ class ConsultationController extends Controller
     /**
      * صفحة المستخدم
      */
-    public function userPage()
-    {
-        $consultations = Consultation::latest()->take(5)->get();
+  public function userPage()
+{
+    $consultations = Consultation::latest()->take(5)->get();
 
-        $notifications = [];
+    return view('Consultations.user.page.consultations-page', [
 
-        return view('Consultations.user.page.consultations-page', [
-            'consultations' => $consultations,
-            'notifications' => $notifications
-        ]);
-    }
+        'consultations' => $consultations,
+
+        // 👇 الإحصائيات (هنا السحر)
+        'total' => Consultation::count(),
+
+        'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
+
+        'replied' => Consultation::where('status', 'تم الرد')->count(),
+
+        // إشعارات
+        'notifications' => []
+    ]);
+}
 
     /**
      * صفحة المدير
