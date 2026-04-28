@@ -72,25 +72,32 @@
 <div class="mt-10"></div>
 
 <!-- Stats -->
-<div class="px-10">
-    <div class="grid grid-cols-3 gap-6">
+<div class="grid grid-cols-3 gap-6 mt-6 px-10">
 
-        <div class="bg-gray-200 p-6 rounded-lg text-center">
-            <p class="text-sm text-gray-500">قيد المراجعة</p>
-            <h2 class="text-xl font-bold">3</h2>
-        </div>
-
-        <div class="bg-gray-200 p-6 rounded-lg text-center">
-            <p class="text-sm text-gray-500">الاستشارات</p>
-            <h2 class="text-xl font-bold">6</h2>
-        </div>
-
-        <div class="bg-gray-200 p-6 rounded-lg text-center">
-            <p class="text-sm text-gray-500">تم الرد</p>
-            <h2 class="text-xl font-bold">3</h2>
-        </div>
-
+    <!-- كرت 1 -->
+    <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
+        <p class="text-sm text-gray-500 mb-2">قيد المراجعة</p>
+        <h2 class="text-2xl font-bold text-gray-800">
+            {{ $under_review ?? 0 }}
+        </h2>
     </div>
+
+    <!-- كرت 2 -->
+    <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
+        <p class="text-sm text-gray-500 mb-2">الاستشارات</p>
+        <h2 class="text-2xl font-bold text-gray-800">
+            {{ $total ?? 0 }}
+        </h2>
+    </div>
+
+    <!-- كرت 3 -->
+    <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
+        <p class="text-sm text-gray-500 mb-2">تم الرد</p>
+        <h2 class="text-2xl font-bold text-gray-800">
+            {{ $replied ?? 0 }}
+        </h2>
+    </div>
+
 </div>
 
 <!-- Services -->
@@ -135,72 +142,77 @@
 </div>
 
 <!-- TABLE -->
-<div class="px-10 mt-10">
+<!-- 📋 آخر الطلبات -->
+<div class="bg-white border border-gray-300 rounded-xl shadow-lg overflow-hidden">
 
-    <h3 class="text-sm font-bold mb-4 text-right">آخر الطلبات</h3>
- <div class="bg-white border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+    <div class="p-4 border-b bg-gray-100">
+        <h3 class="text-sm font-bold text-right">
+            آخر الطلبات
+        </h3>
+    </div>
 
-        <table class="w-full text-sm text-center">
+    <table class="w-full text-sm text-center">
 
-            <thead class="bg-gray-200 text-gray-700">
-                <tr>
-                    <th class="p-3">رقم الاستشارة</th>
-                    <th class="p-3">عنوان الاستشارة</th>
-                    <th class="p-3">الحالة</th>
-                    <th class="p-3">المحامي المسؤول</th>
-                    <th class="p-3">الإجراءات</th>
-                </tr>
-            </thead>
+        <thead class="bg-gray-200 text-gray-700">
+            <tr>
+                <th class="p-3">رقم الاستشارة</th>
+                <th class="p-3">عنوان الاستشارة</th>
+                <th class="p-3">الحالة</th>
+                <th class="p-3">المحامي المسؤول</th>
+                <th class="p-3">الإجراءات</th>
+            </tr>
+        </thead>
 
-            <tbody class="divide-y">
+        <tbody class="divide-y">
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-3 font-semibold">3053</td>
-                    <td>عقد</td>
-                    <td class="text-gray-500">مكتملة</td>
-                    <td>الباسم</td>
-                    <td>
-                        <button class="bg-blue-500 text-white px-4 py-1 rounded text-xs hover:bg-blue-600">
-                            عرض
-                        </button>
-                    </td>
-                </tr>
+        @if(isset($consultations) && count($consultations) > 0)
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-3 font-semibold">3054</td>
-                    <td>نزاع</td>
-                    <td class="text-gray-500">مكتملة</td>
-                    <td>الباسم</td>
-                    <td>
-                        <button class="bg-blue-500 text-white px-4 py-1 rounded text-xs hover:bg-blue-600">
-                            عرض
-                        </button>
-                    </td>
-                </tr>
+            @foreach($consultations as $consultation)
+            <tr class="hover:bg-gray-50">
+                <td class="p-3 font-semibold">
+                    {{ $consultation->consultation_id }}
+                </td>
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-3 font-semibold">3055</td>
-                    <td>مراجعة عقد جزائي</td>
-                    <td class="text-gray-500">مكتملة</td>
-                    <td>الباسم</td>
-                    <td>
-                        <button class="bg-blue-500 text-white px-4 py-1 rounded text-xs hover:bg-blue-600">
-                            عرض
-                        </button>
-                    </td>
-                </tr>
+                <td>
+                    {{ $consultation->consultation_type }}
+                </td>
 
-            </tbody>
+                <td class="text-gray-500">
+                    {{ $consultation->status }}
+                </td>
 
-        </table>
+                <td>
+                    {{ $consultation->lawyer_name ?? '—' }}
+                </td>
 
-        <!-- Show More -->
-        <div class="text-left px-4 py-3 border-t bg-gray-50">
-            <a href="#" class="text-blue-500 text-sm font-medium hover:underline flex items-center gap-1">
-                عرض المزيد ←
-            </a>
-        </div>
+                <td>
+                    <button class="bg-blue-500 text-white px-4 py-1 rounded text-xs">
+                        عرض
+                    </button>
+                </td>
+            </tr>
+            @endforeach
 
+        @else
+
+            <!-- 🚨 إذا فاضي -->
+            <tr>
+                <td colspan="5" class="p-6 text-gray-400">
+                    لا توجد طلبات حالياً
+                </td>
+            </tr>
+
+        @endif
+
+        </tbody>
+
+    </table>
+
+    <!-- عرض المزيد -->
+    <div class="text-left px-4 py-3 border-t bg-gray-50">
+        <a href="#" class="text-blue-500 text-sm hover:underline">
+            عرض المزيد ←
+        </a>
     </div>
 
 </div>
