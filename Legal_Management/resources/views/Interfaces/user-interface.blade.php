@@ -112,7 +112,8 @@
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
         <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
         <p class="text-xs text-gray-500 leading-6 mb-4">
-          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
+          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ
+          التعديلات في النظام.
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
@@ -166,7 +167,7 @@
     <!-- Dropdown -->
     <select id="dashboardSelect"
         class="bg-white px-6 py-3 rounded-xl shadow-md text-sm outline-none cursor-pointer mb-6">
-        <option value="">اختر القسم ↓</option>
+        <!-- <option value="">اختر القسم </option>-->
         <option value="cases">قضايا</option>
         <option value="contracts">عقود</option>
         <option value="consultations">استشارات</option>
