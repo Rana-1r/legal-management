@@ -72,7 +72,7 @@
             <div class="text-center mt-4">
                 <span class="text-gray-500 text-sm">ليس لديك حساب؟</span>
 
-                <a href="{{ route('register') }}"
+                <a href="{{ route('page') }}"
                 class="text-blue-500 hover:text-blue-700 font-semibold text-sm mr-1">
                 أنشئ حساب
                 </a>
