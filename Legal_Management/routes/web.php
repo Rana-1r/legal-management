@@ -7,7 +7,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConsultationController;
 
-
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'register']);
@@ -25,8 +24,23 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->name('user-interface');
 
-    Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
-    ->name('consultations.page');
+Route::resource('consultations', ConsultationController::class);
+
+Route::get('/my-consultations', [ConsultationController::class, 'my'])
+    ->name('consultations.my');
+
+Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal-manager');
+
+<<<<<<< HEAD
+Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
+
+Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
+    ->name('employee.dashboard')
+    ->middleware('auth');
+=======
+Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations-assign');
+>>>>>>> f4fff8177609a94881236c583b96e3d0b00b928b

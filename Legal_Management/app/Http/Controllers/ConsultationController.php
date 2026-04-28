@@ -46,7 +46,7 @@ class ConsultationController extends Controller
 
         $pendingApprovals = Consultation::where('status', 'بحاجة إلى اعتماد')->get();
 
-        $lawyers = User_wm::where('role_id', 2)->get();
+        $lawyers = User_wm::where('role_id', 1)->get();
 
         return view('Consultations.legalManager.page.legalmanager', [
             'stats'            => $stats,
