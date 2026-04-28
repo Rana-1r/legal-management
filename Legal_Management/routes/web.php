@@ -26,7 +26,5 @@ Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->name('user-interface');
 
-Route::resource('consultations', ConsultationController::class);
-
-Route::get('/my-consultations', [ConsultationController::class, 'my'])
-    ->name('consultations.my');
+Route::get('/consultations-page', [ConsultationController::class, 'page'])
+    ->name('consultations.page');

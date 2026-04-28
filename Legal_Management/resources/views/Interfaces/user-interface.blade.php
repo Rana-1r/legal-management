@@ -28,7 +28,10 @@
         <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
         <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
         <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-        <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+<a href="{{ route('consultations.page') }}" class="text-sm hover:underline">
+    الاستشارات
+</a>
+</a>
         <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
         <a href="#" class="flex items-center gap-1">
                     اللغة العربية
