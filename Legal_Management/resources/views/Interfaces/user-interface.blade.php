@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -113,7 +113,7 @@
         <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
         <p class="text-xs text-gray-500 leading-6 mb-4">
           تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ
- التعديلات في النظام.
+          التعديلات في النظام.
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
@@ -161,13 +161,13 @@
     </h2>
 
  
-<!--  Dropdown +  Power BI Dashboard -->
+<!-- 🔽 Dropdown +  Power BI Dashboard -->
 <div class="flex flex-col items-center mt-6 px-10">
 
     <!-- Dropdown -->
     <select id="dashboardSelect"
         class="bg-white px-6 py-3 rounded-xl shadow-md text-sm outline-none cursor-pointer mb-6">
-        <option value="">اختر القسم </option>
+        <!-- <option value="">اختر القسم </option>-->
         <option value="cases">قضايا</option>
         <option value="contracts">عقود</option>
         <option value="consultations">استشارات</option>
@@ -239,7 +239,7 @@ tailwind.config = {
                 <h5 class="font-bold mb-4">روابط مهمة</h5>
                 <ul class="space-y-2 text-gray-300">
                     <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
- <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
                 </ul>
             </div>
 
@@ -271,4 +271,4 @@ tailwind.config = {
 
         </div>
     </footer>    
-</body>
+</body> 
