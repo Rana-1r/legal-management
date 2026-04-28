@@ -18,38 +18,94 @@
 </head>
 
 <body class="bg-gray-100">
+    <!-- Tailwind  -->
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'wadimakkah-dark': '#1e3a8a',
+                'wadimakkah-light': '#60a5fa',
+                'wadimakkah-bg': '#f9fafb',
+            }
+        }
+    }
+}
+</script>
 
-    <!-- 🔷 Navbar -->
-    <div class="bg-[#344C93] text-white px-10 py-4 flex justify-between items-center">
+
+<!--  Navbar -->
+<header class="bg-wadimakkah-dark text-white shadow-lg"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <div class="text-white px-16 py-6 flex items-center justify-between">
+
+    <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
+
+    <!--  هنا كان فيه خطأ وتم تصحيحه -->
+    <div class="flex gap-8 text-sm font-medium">
+        <a href="{{ route('user-interface') }}">
+    الرئيسية
+</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
+<a href="{{ route('consultations.page') }}" class="text-sm hover:underline">
+    الاستشارات
+</a>
+</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
+        <a href="#" class="flex items-center gap-1">
+                    اللغة العربية
+                        <i class="fas fa-globe text-wadimakkah-light"></i>
+                </a>
+    </div>
+    
         <div class="flex items-center gap-6">
-            <span class="text-sm">الرئيسية</span>
-            <span class="text-sm">قضايا</span>
-            <span class="text-sm">عقود</span>
-            <span class="text-sm font-bold">استشارات</span>
-        </div>
-
-        <div class="flex items-center gap-4">
-            <span>👤</span>
-            <span>🔔</span>
-            <span>⚙️</span>
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
         </div>
     </div>
+</header>
+        
 
-    <!-- 🔷 Container -->
-    <div class="px-10 py-8">
+<div class="mt-10 text-center">
+    <h1 class="text-3xl font-bold text-gray-800">
+        منصة الإدارة القانونية
+    </h1>
+    <p class="text-sm text-gray-500 mt-2">
+        المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة
+    </p>
+</div>
 
-        <!-- Title -->
-        <div class="mb-6">
-            <h2 class="text-sm text-gray-500">الرئيسية / الاستشارات القانونية</h2>
-            <h1 class="text-2xl font-bold">إدارة الاستشارات القانونية</h1>
-        </div>
+<!-- Search -->
+<div class="flex justify-center mt-6 px-10">
+    
+    <div class="flex items-center bg-white shadow-md rounded-lg w-full max-w-3xl px-4 py-3">
+  
+         
+        <!--  أيقونة البحث -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5 text-gray-400 ml-2" 
+             fill="none" 
+             viewBox="0 0 24 24" 
+             stroke="currentColor">
+            
+            <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"></line>
 
-        <!-- 🔍 Search -->
-        <div class="mb-6">
-            <input type="text"
-                placeholder="ابحث عن استشارة..."
-                class="w-full bg-white px-4 py-3 rounded-lg shadow outline-none text-sm">
-        </div>
+        </svg>
+
+        <input 
+            type="text" 
+            placeholder="ابحث عن قضية، عقد، مستند..."
+            class="flex-1 outline-none text-sm bg-transparent"
+        >
+
+    </div>
+
+</div>
+
 
         <!-- Status Cards -->
         <div class="bg-white p-6 rounded-xl shadow mb-6">
@@ -193,6 +249,48 @@
         </div>
 
     </div>
+    
+    <!--  Footer -->
+    <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
+        <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
+            
+            <div>
+                <h5 class="font-bold mb-4">روابط مهمة</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold mb-4">المساعدة والدعم</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
+                <div class="flex gap-4 text-2xl text-gray-300">
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center text-center px-6 -mt-4">
+                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+    
+                <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
+                <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
+            </div>
+
+        </div>
+    </footer>    
+</body> 
 
 </body>
 </html>
