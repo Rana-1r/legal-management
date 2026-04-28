@@ -36,6 +36,7 @@ class ConsultationController extends Controller
      */
     public function employeePage()
     {
-        return view('Consultations.legal.Employee');
+      
+       return view('Consultations.legal.Employee');
     }
 }
