@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ConsultationController;
+
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
@@ -26,5 +28,5 @@ Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->name('user-interface');
 
-Route::get('/consultations-page', [ConsultationController::class, 'page'])
+    Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.page');
