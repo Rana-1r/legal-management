@@ -33,6 +33,6 @@ Route::resource('consultations', ConsultationController::class);
 Route::get('/my-consultations', [ConsultationController::class, 'my'])
     ->name('consultations.my');
 
-Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal.manager');
+Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal-manager');
 
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
+Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations-assign');
