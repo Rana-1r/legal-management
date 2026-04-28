@@ -32,7 +32,6 @@ public function up(): void {
         $table->string('department')->nullable();
         $table->boolean('is_active')->default(true);
 
-        // 5. التوقيت (Datetime) كما في الرسمة
         // سطر timestamps ينشئ created_at و updated_at تلقائياً
         $table->timestamps(); 
     });
