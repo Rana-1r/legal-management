@@ -69,8 +69,22 @@ class ConsultationController extends Controller
      */
     public function employeePage()
     {
-        $myTasks = Consultation::where('assigned_to', auth()->id())->get();
+        $userId = auth()->id();
+
+        // 1. جلب المهام المسندة للموظف
+        $myTasks = Consultation::where('assigned_to', $userId)->get();
       
-        return view('Consultations.legal.Employee', compact('myTasks'));
+        // 2. جلب الإحصائيات الخاصة بهذا الموظف
+        $stats = [
+            'total_assigned' => Consultation::where('assigned_to', $userId)->count(),
+            'in_progress'    => Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
+            'completed'      => Consultation::where('assigned_to', $userId)->where('is_closed', true)->count(),
+        ];
+
+        // 3. إرسال البيانات للـ View
+        return view('Consultations.legal.Employee', [
+            'myTasks' => $myTasks,
+            'stats'   => $stats
+        ]);
     }
 }
