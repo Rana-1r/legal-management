@@ -53,20 +53,9 @@ tailwind.config = {
     <p class="text-sm text-gray-500 mt-2">المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة</p>
 </div>
 
-<div class="flex justify-center mt-6 px-10">
-    <div class="flex items-center bg-white shadow-md rounded-lg w-full max-w-3xl px-4 py-3">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"></line>
-        </svg>
-        <input type="text" placeholder="ابحث عن قضية، عقد، مستند..." class="flex-1 outline-none text-sm bg-transparent">
-    </div>
-</div>
-
 <main class="container mx-auto px-6 py-10">
     <div class="mb-8">
-        <nav class="text-s text-blue-600 mb-2">الرئيسية / الإستشارات القانونية</nav>
-        <h1 class="text-2xl font-bold text-gray-800">إدارة الإستشارات القانونية</h1>
+        <h1 class="text-2xl font-bold text-gray-800">إدارة الاستشارات القانونية</h1>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">

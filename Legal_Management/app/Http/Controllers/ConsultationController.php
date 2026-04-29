@@ -76,20 +76,25 @@ class ConsultationController extends Controller
      * صفحة الموظف القانوني
      */
     public function employeePage()
-    {
-        $userId = auth()->id();
-
-    // جلب المهام من الجدول الجديد
+{
+    $userId = auth()->id();
     $myTasks = \App\Models\Task::where('assigned_to', $userId)->get();
-  
-    // حساب الإحصائيات
+ 
     $stats = [
-        'total_tasks' => \App\Models\Task::where('assigned_to', $userId)->count(),
-        'pending'     => \App\Models\Task::where('assigned_to', $userId)->where('status', 'pending')->count(),
-        'completed'   => \App\Models\Task::where('assigned_to', $userId)->where('status', 'completed')->count(),
+        'total_tasks'    => \App\Models\Task::where('assigned_to', $userId)->count(),
+        'total_assigned' => \App\Models\Consultation::where('assigned_to', $userId)->count(), // أضفنا هذا
+        'in_progress'    => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
+        'completed'      => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'مكتملة')->count(),
     ];
     
-    // التعديل هنا ليتناسب مع المسار: Consultations/legalemployee.blade.php
-    return view('Consultations.legalemployee', compact('myTasks', 'stats'));
-    }
+    return view('Consultations.legalEmployee.page.legalemployee', compact('myTasks', 'stats'));
+}
+public function completeTask($id)
+{
+    $task = \App\Models\Task::findOrFail($id);
+    $task->status = 'completed'; // أو 'مكتملة' حسب قاعدة بياناتك
+    $task->save();
+    
+    return redirect()->back()->with('success', 'تم تحديث حالة المهمة!');
+}
 }
