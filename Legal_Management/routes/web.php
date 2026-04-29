@@ -48,7 +48,7 @@ Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'
 
 
 
-<<<<<<< HEAD
+
 
 
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
@@ -60,7 +60,10 @@ Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
     ->middleware('auth');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7655ab0623b9e0630c8ef8a4dc11ee919f2a34d3
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.user');
 
