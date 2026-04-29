@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>لوحة تحكم المدير | منصة الإدارة القانونية</title>
+    <title>إدارة الاستشارات القانونية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
     <div class="text-white px-16 py-6 flex items-center justify-between">
         <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
         <div class="flex gap-8 text-sm font-medium">
-            <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="{{ route('manager.interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
             <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
@@ -40,7 +40,7 @@
             </a>
         </div>
         <div class="flex items-center gap-6">
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
         </div>
