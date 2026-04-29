@@ -28,6 +28,7 @@ class ConsultationController extends Controller
 
         // إشعارات
         'notifications' => []
+        
     ]);
 }
 
@@ -96,5 +97,9 @@ public function completeTask($id)
     $task->save();
     
     return redirect()->back()->with('success', 'تم تحديث حالة المهمة!');
+}
+public function create()
+{
+    return view('Consultations.user.page.request-consultation');
 }
 }

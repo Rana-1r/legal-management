@@ -62,23 +62,28 @@
 </div>
 
 
-<!--SEARCH -->
+<!-- SEARCH -->
 <div class="flex justify-center mt-6 px-10">
 
     <div class="flex items-center bg-white shadow-md rounded-xl w-full max-w-3xl px-4 py-3 border border-gray-200">
 
-        <svg class="w-5 h-5 text-gray-400 ml-3" fill="none" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+        <!-- search icon -->
+        <svg class="w-5 h-5 text-gray-400 ml-3"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
 
         <input type="text"
-               placeholder="ابحث عن قضية، عقد، مستند..."
+               placeholder="ابحث عن استشارة بالرقم الخاص بها..."
                class="flex-1 outline-none text-sm bg-transparent"/>
 
     </div>
 
 </div>
-
 
 <!--STATS  -->
 <div class="px-10 mt-10">
@@ -117,13 +122,16 @@
 
 <!-- SERVICES -->
 <div class="px-10 mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+    
 
     <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
         <h3 class="font-bold mb-2">طلب استشارة قانونية</h3>
         <p class="text-xs text-gray-500 mb-4">
             تتيح هذه الخدمة للمستخدم تقديم طلب استشارة قانونية جديدة عبر إدخال تفاصيل الطلب وتحديد نوع الاستشارة وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
-        </p>
-        <button class="bg-gray-100 px-4 py-1 rounded text-xs">الانتقال الى الخدمة</button>
+      <a href="{{ route('consultations.create') }}"
+   class="bg-gray-200 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
+    الانتقال إلى الخدمة
+</a>
     </div>
 
     <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
