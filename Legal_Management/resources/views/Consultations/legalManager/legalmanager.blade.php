@@ -65,7 +65,7 @@ tailwind.config = {
 
 <main class="container mx-auto px-6 py-10">
     <div class="mb-8">
-        <nav class="text-s text-blue-600 mb-2">الرئيسية / الاستشارات القانونية</nav>
+        <nav class="text-s text-blue-600 mb-2">الاستشارات القانونية</nav>
         <h1 class="text-2xl font-bold text-gray-800">إدارة الاستشارات القانونية</h1>
     </div>
 
