@@ -34,7 +34,7 @@ tailwind.config = {
             <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-            <a href="{{ route('legal-manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
             <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
             <a href="#" class="hover:text-wadimakkah-light transition">
                 اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
@@ -114,7 +114,7 @@ tailwind.config = {
                         @endif
                         </td>
                         <td class="p-4">
-                            <form action="{{ route('consultations-assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
+                            <form action="{{ route('consultations.assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
                                 @csrf
                                 <select name="lawyer_id" required class="text-xs border rounded-md px-2 py-1.5 bg-white outline-none focus:ring-1 focus:ring-blue-500">
                                     <option value="">اختر محامي...</option>
