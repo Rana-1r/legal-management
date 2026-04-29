@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -72,8 +72,7 @@
 <div class="mt-10"></div>
 
 <!-- Stats -->
- 
-    
+<div class="grid grid-cols-3 gap-6 mt-6 px-10">
 
     <!-- كرت 1 -->
     <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
@@ -146,6 +145,7 @@
     <h2 class="text-lg font-bold text-gray-700 mb-4">
         آخر الطلبات
     </h2>
+
     <!-- Card -->
     <div class="bg-white border border-gray-300 rounded-2xl shadow-sm p-5">
 
