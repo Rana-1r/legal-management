@@ -10,7 +10,7 @@
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
 <script>
 tailwind.config = {
@@ -34,7 +34,7 @@ tailwind.config = {
             <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-            <a href="{{ route('legal-manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
             <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
             <a href="#" class="hover:text-wadimakkah-light transition">
                 اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
@@ -102,21 +102,22 @@ tailwind.config = {
                 <tbody class="divide-y divide-gray-100">
                     @forelse($needsAssignment as $consult)
                     <tr class="hover:bg-gray-50 transition text-sm">
-                        <td class="p-4 font-bold text-blue-800">#{{ $consult->consultation_id }}</td>
-                        <td class="p-4">{{ $consult->consulation_type }}</td>
+                        <td class="p-4 font-bold text-[#1e3a8a]">#{{ $consult->consultation_id }}</td>
+                        <td class="p-4 text-[#1e3a8a]">{{ $consult->consulation_type }}</td>
                         <td class="p-4">
-                        @if(isset($consult->priority) && $consult->priority)
-                         <span class="flex items-center gap-1 {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-500' }}">
-                         <i class="fas fa-circle text-[8px]"></i> {{ $consult->priority }} 
-                         </span>
-                        @else
-                         <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
-                        @endif
+                            @if(isset($consult->priority) && $consult->priority)
+                                <span class="flex items-center gap-1 text-[#1e3a8a]">
+                                    <i class="fas fa-circle text-[8px] {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-400' }}"></i> 
+                                    {{ $consult->priority }} 
+                                </span>
+                            @else
+                                <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
+                            @endif
                         </td>
                         <td class="p-4">
-                            <form action="{{ route('consultations-assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
+                            <form action="{{ route('consultations.assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
                                 @csrf
-                                <select name="lawyer_id" required class="text-xs border rounded-md px-2 py-1.5 bg-white outline-none focus:ring-1 focus:ring-blue-500">
+                                <select name="lawyer_id" required class="text-xs border rounded-md px-2 py-1.5 bg-white outline-none focus:ring-1 focus:ring-blue-500 text-[#1e3a8a]">
                                     <option value="">اختر محامي...</option>
                                     @foreach($lawyers as $lawyer)
                                         <option value="{{ $lawyer->user_id }}">{{ $lawyer->full_name }}</option>
@@ -129,10 +130,7 @@ tailwind.config = {
                         </td>
                     </tr>
                     @empty
-                    <tr>
-                        <td colspan="4" class="p-10 text-center text-gray-400">لا توجد طلبات جديدة بانتظار الإسناد.</td>
-                    </tr>
-                    @endforelse
+                        @endforelse
                 </tbody>
             </table>
         </div>
@@ -155,18 +153,15 @@ tailwind.config = {
                 <tbody class="divide-y divide-gray-100">
                     @forelse($pendingApprovals as $item)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="p-4 font-bold">#{{ $item->consultation_id }}</td>
-                        <td class="p-4 text-blue-600 font-medium">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="p-4"><span class="font-bold italic text-blue-800">{{ $item->status }}</span></td>
+                        <td class="p-4 font-bold text-[#1e3a8a]">#{{ $item->consultation_id }}</td>
+                        <td class="p-4 text-[#1e3a8a] font-medium">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="p-4"><span class="font-medium text-[#1e3a8a]">{{ $item->status }}</span></td>
                         <td class="p-4 text-center">
-                            <a href="#" class="text-blue-600 hover:underline"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
+                            <a href="#" class="text-[#1e3a8a] hover:underline font-semibold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
                         </td>
                     </tr>
                     @empty
-                    <tr>
-                        <td colspan="4" class="p-10 text-center text-gray-400">لا توجد طلبات بانتظار الاعتماد حالياً.</td>
-                    </tr>
-                    @endforelse
+                        @endforelse
                 </tbody>
             </table>
         </div>
