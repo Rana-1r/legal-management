@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Consultation;
 use App\Models\User_wm;
+use App\Models\Task;
 
 class ConsultationController extends Controller
 {
@@ -72,6 +73,43 @@ class ConsultationController extends Controller
 
     }
 
+    public function storeTask(Request $request)
+    {
+        $request->validate([
+            'title'       => 'required|string|max:255',
+            'assigned_to' => 'required|exists:users_wm,user_id',
+            'due_date'    => 'nullable|date',
+            'priority'    => 'required|in:high,medium,low',
+        ]);
+
+    \App\Models\Task::create([
+        'title'       => $request->title,
+        'description' => $request->description,
+        'assigned_to' => $request->assigned_to,
+        'due_date'    => $request->due_date,
+        'priority'    => $request->priority,
+        'status'      => 'pending', // الحالة الافتراضية
+    ]);
+
+    return redirect()->back()->with('success', 'تم إنشاء المهمة وإسنادها للموظف بنجاح.');
+}
+
+public function managerIndex()
+{
+    $stats = [
+        'total_cases'         => \App\Models\Task::where('related_entity_Type', 'قضية')->count(), 
+        'total_contracts'     => \App\Models\Task::where('related_entity_Type', 'عقد')->count(),
+        'total_consultations' => \App\Models\Consultation::count(),
+    ];
+
+    $lawyers = \App\Models\User_wm::where('role_id', 1)->get();
+
+
+    return view('Interfaces.manager-interface', [
+        'stats'            => $stats,
+        'lawyers'          => $lawyers,
+    ]);
+}
     /**
      * صفحة الموظف القانوني
      */

@@ -4,34 +4,36 @@
     <meta charset="UTF-8">
     <title>إدارة الاستشارات القانونية</title>
     <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
     </style>
-</head>
 
-<body class="bg-gray-100">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
 
-<script>
-tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                'wadimakkah-dark': '#1e3a8a',
-                'wadimakkah-light': '#60a5fa',
-                'wadimakkah-bg': '#f9fafb',
+                   'wadimakkah-dark': '#1e3a8a',
+                   'wadimakkah-light': '#60a5fa',
+                   'wadimakkah-bg': '#f9fafb',
+                }
             }
         }
     }
-}
-</script>
+    </script>
+    </head>
+
+<body class= min-h-screen flex flex-col>
 
 <header class="bg-wadimakkah-dark text-white shadow-lg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <div class="text-white px-16 py-6 flex items-center justify-between">
         <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
         <div class="flex gap-8 text-sm font-medium">
-            <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
             <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
@@ -48,14 +50,10 @@ tailwind.config = {
     </div>
 </header>
 
-<div class="mt-10 text-center">
-    <h1 class="text-3xl font-bold text-gray-800">منصة الإدارة القانونية</h1>
-    <p class="text-sm text-gray-500 mt-2">المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة</p>
-</div>
-
-<main class="container mx-auto px-6 py-10">
-    <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-800">إدارة الاستشارات القانونية</h1>
+<main class="container mx-auto px-6 py-10 flex-grow">
+    <div class="mt-10 text-center">
+       <h1 class="text-3xl font-bold text-gray-800">منصة الإدارة القانونية</h1>
+       <p class="text-sm text-gray-500 mt-2">المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
