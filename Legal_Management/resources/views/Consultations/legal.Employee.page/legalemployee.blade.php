@@ -41,19 +41,27 @@
             </div>
         </div>
 
-        <div class="bg-[#1e3a8a] text-white p-3 text-center font-bold rounded-t-lg">المهام المسندة إلي</div>
-        <div class="bg-white p-6 rounded-b-lg shadow-sm border border-t-0 mb-10">
-            @if($myTasks->isEmpty())
-                <p class="text-center text-gray-500">لا توجد مهام مسندة إليك حالياً.</p>
-            @else
-                <div class="space-y-4">
-                    @foreach($myTasks as $task)
-                        <div class="border-r-4 border-blue-500 pr-4 py-3 bg-gray-50 flex justify-between items-center">
-                            <span>{{ $task->subject ?? 'استشارة قانونية' }}</span>
-                            <span class="text-xs text-gray-400">{{ $task->created_at->format('Y/m/d') }}</span>
-                        </div>
-                    @endforeach
-                </div>
+        <h2 class="text-2xl font-bold text-[#1e3a8a]">{{ $stats['total_tasks'] }}</h2>
+
+<div class="grid grid-cols-3 gap-6 mb-10">
+    <div class="bg-white p-6 rounded-lg shadow-sm border text-center">
+        <p class="text-gray-500 text-sm">إجمالي المهام</p>
+        <h2 class="text-2xl font-bold text-[#1e3a8a] mt-2">{{ $stats['total_tasks'] }}</h2>
+    </div>
+    </div>
+
+<div class="bg-white p-6 rounded-b-lg shadow-sm border">
+    @forelse($myTasks as $task)
+        <div class="border-r-4 border-blue-500 pr-4 py-3 bg-gray-50 flex justify-between items-center mb-2">
+            <div>
+                <h4 class="font-bold">{{ $task->title }}</h4>
+            </div>
+            <span class="text-xs text-gray-400">{{ $task->due_date }}</span>
+        </div>
+    @empty
+        <p class="text-center text-gray-500">لا توجد مهام حالياً.</p>
+    @endforelse
+</div>
             @endif
         </div>
     </main>

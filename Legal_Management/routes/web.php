@@ -37,3 +37,6 @@ Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->na
 
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
+Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
+    ->name('legal.employee')
+    ->middleware('auth');
