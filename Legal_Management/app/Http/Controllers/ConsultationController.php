@@ -48,7 +48,7 @@ class ConsultationController extends Controller
 
         $lawyers = User_wm::where('role_id', 1)->get();
 
-        return view('Consultations.legalManager.page.legalmanager', [
+        return view('Consultations.legalManager.legalmanager', [
             'stats'            => $stats,
             'needsAssignment'  => $needsAssignment,
             'pendingApprovals' => $pendingApprovals,
