@@ -90,8 +90,8 @@
                     @forelse($needsAssignment as $consult)
                     <tr class="hover:bg-gray-50 transition text-sm">
                         <td class="p-4 font-bold text-[#1e3a8a]">#{{ $consult->consultation_id }}</td>
-                        <td class="p-4 text-[#1e3a8a]">{{ $consult->consulation_type }}</td>
-                        <td class="p-4">
+                        <td class="p-4 font-bold text-[#1e3a8a]">{{ $consult->consulation_type }}</td>
+                        <td class="p-4 font-bold text-wadimakkah-dark">
                             @if(isset($consult->priority) && $consult->priority)
                                 <span class="flex items-center gap-1 text-[#1e3a8a]">
                                     <i class="fas fa-circle text-[8px] {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-400' }}"></i> 
@@ -131,20 +131,20 @@
             <table class="w-full text-right border-collapse text-sm">
                 <thead>
                     <tr class="bg-gray-100 text-gray-600">
-                        <th class="p-4 border-b">رقم الطلب</th>
-                        <th class="p-4 border-b">المحامي المسؤول</th>
-                        <th class="p-4 border-b">الحالة</th>
-                        <th class="p-4 border-b text-center">الإجراء</th>
+                        <th class="p-4">رقم الطلب</th>
+                        <th class="p-4">المحامي المسؤول</th>
+                        <th class="p-4">الحالة</th>
+                        <th class="p-4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($pendingApprovals as $item)
                     <tr class="hover:bg-gray-50 transition">
                         <td class="p-4 font-bold text-[#1e3a8a]">#{{ $item->consultation_id }}</td>
-                        <td class="p-4 text-[#1e3a8a] font-medium">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="p-4"><span class="font-medium text-[#1e3a8a]">{{ $item->status }}</span></td>
+                        <td class="p-4 text-[#1e3a8a] font-bold">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="p-4"><span class="font-bold text-[#1e3a8a]">{{ $item->status }}</span></td>
                         <td class="p-4 text-center">
-                            <a href="#" class="text-[#1e3a8a] hover:underline font-semibold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
+                            <a href="#" class="text-[#1e3a8a] hover:underline font-bold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
                         </td>
                     </tr>
                     @empty

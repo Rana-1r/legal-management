@@ -103,31 +103,26 @@
         <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full text-right border-collapse text-sm">
-                    <thead class="bg-gray-200 text-gray-700">
+                    <thead class="bg-gray-100 text-gray-600">
                         <tr>
-                            <th class="p-4 border-l border-gray-300">رقم المحامي</th>
-                            <th class="p-4 border-l border-gray-300">اسم المحامي</th>
-                            <th class="p-4 border-l border-gray-300 text-center">القسم</th>
-                            <th class="p-4 border-l border-gray-300 text-center">عدد المهام</th>
+                            <th class="p-4">رقم المحامي</th>
+                            <th class="p-4">اسم المحامي</th>
+                            <th class="p-4">عدد المهام</th>
                             <th class="p-4 text-center">الإجراء</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
                         @forelse($lawyers as $lawyer)
-                        <tr class="hover:bg-gray-50 transition border-b border-gray-100">
-                            <td class="p-4 text-gray-600">{{ $lawyer->user_id }}</td>
-                            <td class="p-4 font-bold text-gray-800">{{ $lawyer->name }}</td>
-                            <td class="p-4 text-center text-gray-600">
-                                {{-- يمكنك هنا وضع تخصص المحامي إذا كان متوفراً --}}
-                                @if($lawyer->role_id == 1) إستشارات @else عام @endif
-                            </td>
-                            <td class="p-4 text-center text-gray-600">
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-wadimakkah-dark">#{{ $lawyer->user_id }}</td>
+                            <td class="p-4 font-bold text-wadimakkah-dark">{{ $lawyer->name }}</td>
+                            <td class="p-4 font-bold text-wadimakkah-dark">
                                 {{-- عرض عدد المهام المسندة حالياً --}}
                                 {{ \App\Models\Task::where('assigned_to', $lawyer->user_id)->count() }}
                             </td>
                             <td class="p-4 text-center">
                                 <button onclick="openAssignModal({{ $lawyer->user_id }}, '{{ $lawyer->name }}')" 
-                                        class="bg-wadimakkah-light hover:bg-blue-500 text-white px-6 py-1 rounded shadow-sm text-xs transition font-bold">
+                                        class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                                     إضافة مهمة
                                 </button>
                             </td>
@@ -139,9 +134,6 @@
                         @endforelse
                     </tbody>
                 </table>
-            </div>
-            <div class="bg-gray-50 px-4 py-2 text-left">
-                <a href="#" class="text-wadimakkah-light text-xs font-bold hover:underline">عرض المزيد ←</a>
             </div>
         </div>
     </div>
