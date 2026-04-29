@@ -33,14 +33,6 @@ Route::resource('consultations', ConsultationController::class);
 Route::get('/my-consultations', [ConsultationController::class, 'my'])
     ->name('consultations.my');
 
-Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal-manager');
+Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal.manager');
 
-<<<<<<< HEAD
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
-
-Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
-    ->name('employee.dashboard')
-    ->middleware('auth');
-=======
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations-assign');
->>>>>>> f4fff8177609a94881236c583b96e3d0b00b928b
+Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');ٍ
