@@ -31,10 +31,10 @@ tailwind.config = {
     <div class="text-white px-16 py-6 flex items-center justify-between">
         <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
         <div class="flex gap-8 text-sm font-medium">
-            <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
             <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
             <a href="#" class="hover:text-wadimakkah-light transition">
                 اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
@@ -90,9 +90,9 @@ tailwind.config = {
             <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">إجمالي: {{ $needsAssignment->count() }}</span>
         </div>
         <div class="overflow-x-auto">
-            <table class="w-full text-right border-collapse">
+            <table class="w-full text-right border-collapse text-sm">
                 <thead>
-                    <tr class="bg-gray-100 text-gray-600 text-xs uppercase">
+                    <tr class="bg-gray-100 text-gray-600">
                         <th class="p-4">رقم الطلب</th>
                         <th class="p-4">نوع الإستشارة</th>
                         <th class="p-4">الأولوية</th>
@@ -105,9 +105,13 @@ tailwind.config = {
                         <td class="p-4 font-bold text-blue-800">#{{ $consult->consultation_id }}</td>
                         <td class="p-4">{{ $consult->consulation_type }}</td>
                         <td class="p-4">
-                            <span class="flex items-center gap-1 text-red-500">
-                                <i class="fas fa-circle text-[8px]"></i> عاجل
-                            </span>
+                        @if(isset($consult->priority) && $consult->priority)
+                         <span class="flex items-center gap-1 {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-500' }}">
+                         <i class="fas fa-circle text-[8px]"></i> {{ $consult->priority }} 
+                         </span>
+                        @else
+                         <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
+                        @endif
                         </td>
                         <td class="p-4">
                             <form action="{{ route('consultations.assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
@@ -153,7 +157,7 @@ tailwind.config = {
                     <tr class="hover:bg-gray-50 transition">
                         <td class="p-4 font-bold">#{{ $item->consultation_id }}</td>
                         <td class="p-4 text-blue-600 font-medium">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="p-4"><span class="text-orange-600 font-bold italic">بانتظار المراجعة النهائية</span></td>
+                        <td class="p-4"><span class="font-bold italic text-blue-800">{{ $item->status }}</span></td>
                         <td class="p-4 text-center">
                             <a href="#" class="text-blue-600 hover:underline"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
                         </td>
