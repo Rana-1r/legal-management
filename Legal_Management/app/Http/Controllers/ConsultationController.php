@@ -19,7 +19,7 @@ class ConsultationController extends Controller
 
         'consultations' => $consultations,
 
-        // 👇 الإحصائيات (هنا السحر)
+        // الإحصائيات
         'total' => Consultation::count(),
 
         'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
@@ -48,7 +48,7 @@ class ConsultationController extends Controller
 
         $lawyers = User_wm::where('role_id', 1)->get();
 
-        return view('Consultations.legalManager.page.legalmanager', [
+        return view('Consultations.legalManager.legalmanager', [
             'stats'            => $stats,
             'needsAssignment'  => $needsAssignment,
             'pendingApprovals' => $pendingApprovals,

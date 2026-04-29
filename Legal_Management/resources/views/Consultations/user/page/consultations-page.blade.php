@@ -14,7 +14,7 @@
 </head>
 
 
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
 <!-- Navbar -->
 <header class="bg-wadimakkah-dark text-white shadow-lg">
@@ -26,7 +26,7 @@
                 <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-              <a href="{{ route('consultations.page') }}">الاستشارات</a>
+                <a href="{{ route('consultations.user') }}">الاستشارات</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
@@ -72,12 +72,13 @@
 <div class="mt-10"></div>
 
 <!-- Stats -->
-<div class="grid grid-cols-3 gap-6 mt-6 px-10">
+ 
+    
 
     <!-- كرت 1 -->
     <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
         <p class="text-sm text-gray-500 mb-2">قيد المراجعة</p>
-        <h2 class="text-2xl font-bold text-gray-800">
+       <h2 class="text-2xl font-bold text-[#1e3a8a]">
             {{ $under_review ?? 0 }}
         </h2>
     </div>
@@ -85,7 +86,7 @@
     <!-- كرت 2 -->
     <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
         <p class="text-sm text-gray-500 mb-2">الاستشارات</p>
-        <h2 class="text-2xl font-bold text-gray-800">
+          <h2 class="text-2xl font-bold text-[#1e3a8a]">
             {{ $total ?? 0 }}
         </h2>
     </div>
@@ -93,7 +94,7 @@
     <!-- كرت 3 -->
     <div class="bg-white shadow-md rounded-xl p-6 text-center border border-gray-200">
         <p class="text-sm text-gray-500 mb-2">تم الرد</p>
-        <h2 class="text-2xl font-bold text-gray-800">
+          <h2 class="text-2xl font-bold text-[#1e3a8a]">
             {{ $replied ?? 0 }}
         </h2>
     </div>
@@ -141,80 +142,76 @@
     </div>
 </div>
 
-<!-- TABLE -->
-<!-- 📋 آخر الطلبات -->
-<div class="bg-white border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+<div class="mt-10 px-10">
+    <h2 class="text-lg font-bold text-gray-700 mb-4">
+        آخر الطلبات
+    </h2>
+    <!-- Card -->
+    <div class="bg-white border border-gray-300 rounded-2xl shadow-sm p-5">
 
-    <div class="p-4 border-b bg-gray-100">
-        <h3 class="text-sm font-bold text-right">
-            آخر الطلبات
-        </h3>
+        <table class="w-full text-sm text-center">
+
+            <!-- Header -->
+            <thead>
+                <tr class="bg-gray-100 text-gray-600 text-xs font-semibold">
+                    <th class="py-3 px-2 rounded-r-xl">رقم الاستشارة</th>
+                    <th class="py-3 px-2">عنوان الاستشارة</th>
+                    <th class="py-3 px-2">الحالة</th>
+                    <th class="py-3 px-2">المحامي المسؤول</th>
+                    <th class="py-3 px-2 rounded-l-xl">الإجراءات</th>
+                </tr>
+            </thead>
+
+            <!-- Body -->
+            <tbody>
+
+                @forelse($consultations ?? [] as $c)
+                <tr class="border-b last:border-0 hover:bg-gray-50 transition">
+
+                    <td class="py-3 font-medium text-gray-700">
+                        {{ $c->id }}
+                    </td>
+
+                    <td class="py-3 text-gray-600">
+                        {{ $c->title ?? '—' }}
+                    </td>
+
+                    <td class="py-3">
+                        <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">
+                            {{ $c->status ?? 'قيد المراجعة' }}
+                        </span>
+                    </td>
+
+                    <td class="py-3 text-gray-500">
+                        {{ $c->lawyer ?? '—' }}
+                    </td>
+
+                    <td class="py-3">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-md text-xs transition">
+                            عرض
+                        </button>
+                    </td>
+
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="py-6 text-gray-400">
+                        لا توجد طلبات حالياً
+                    </td>
+                </tr>
+                @endforelse
+
+            </tbody>
+        </table>
+
+        <!-- More -->
+        <div class="mt-4 text-left">
+            <a href="#" class="text-blue-500 text-sm hover:underline font-medium">
+                عرض المزيد ←
+            </a>
+        </div>
+
     </div>
-
-    <table class="w-full text-sm text-center">
-
-        <thead class="bg-gray-200 text-gray-700">
-            <tr>
-                <th class="p-3">رقم الاستشارة</th>
-                <th class="p-3">عنوان الاستشارة</th>
-                <th class="p-3">الحالة</th>
-                <th class="p-3">المحامي المسؤول</th>
-                <th class="p-3">الإجراءات</th>
-            </tr>
-        </thead>
-
-        <tbody class="divide-y">
-
-        @if(isset($consultations) && count($consultations) > 0)
-
-            @foreach($consultations as $consultation)
-            <tr class="hover:bg-gray-50">
-                <td class="p-3 font-semibold">
-                    {{ $consultation->consultation_id }}
-                </td>
-
-                <td>
-                    {{ $consultation->consultation_type }}
-                </td>
-
-                <td class="text-gray-500">
-                    {{ $consultation->status }}
-                </td>
-
-                <td>
-                    {{ $consultation->lawyer_name ?? '—' }}
-                </td>
-
-                <td>
-                    <button class="bg-blue-500 text-white px-4 py-1 rounded text-xs">
-                        عرض
-                    </button>
-                </td>
-            </tr>
-            @endforeach
-
-        @else
-
-            <!-- إذا فاضي -->
-            <tr>
-                <td colspan="5" class="p-6 text-gray-400">
-                    لا توجد طلبات حالياً
-                </td>
-            </tr>
-
-        @endif
-
-        </tbody>
-
-    </table>
-
-    <!-- عرض المزيد -->
-    <div class="text-left px-4 py-3 border-t bg-gray-50">
-        <a href="#" class="text-blue-500 text-sm hover:underline">
-            عرض المزيد ←
-        </a>
-    </div>
-
 </div>
 <!-- Tailwind  -->
 <script>
