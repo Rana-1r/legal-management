@@ -41,11 +41,15 @@ Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assig
 Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
     ->name('employee.dashboard')
     ->middleware('auth');
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations-assign');
 
 
+<<<<<<< HEAD
+Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
+    ->name('consultations.user');
+=======
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
 Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
     ->middleware('auth');
+>>>>>>> df12443f32b5b875bc550f65f0f8bd29b1f00282
