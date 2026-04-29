@@ -40,7 +40,13 @@ Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assig
 
 Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
     ->name('employee.dashboard')
-    ->middleware('auth');
+    ->middleware('auth'); 
+
+    Route::get('/consultations', function () {
+    return view('consultations.user');
+})->name('consultations.user');  
+
+
 
 <<<<<<< HEAD
 
@@ -54,10 +60,10 @@ Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
     ->middleware('auth');
 
-=======
+
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.user');
 
 Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
     ->name('tasks.complete');
->>>>>>> d1d6ad3f0bc3bdada33447fbe1dad2b65f370582
+
