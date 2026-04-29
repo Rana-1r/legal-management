@@ -87,7 +87,7 @@ class ConsultationController extends Controller
         'completed'      => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'مكتملة')->count(),
     ];
     
-    return view('Consultations.legalEmployee.page.legalemployee', compact('myTasks', 'stats'));
+    return view('Interfaces.Employee-interface', compact('myTasks', 'stats'));
 }
 public function completeTask($id)
 {
