@@ -19,7 +19,7 @@ class ConsultationController extends Controller
 
         'consultations' => $consultations,
 
-        // 👇 الإحصائيات (هنا السحر)
+        // الإحصائيات
         'total' => Consultation::count(),
 
         'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),

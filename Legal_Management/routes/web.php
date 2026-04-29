@@ -41,8 +41,7 @@ Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assig
 Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
     ->name('employee.dashboard')
     ->middleware('auth');
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations-assign');
 
 
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
-
+Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
+    ->name('consultations.user');
