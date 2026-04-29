@@ -10,7 +10,7 @@
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
 <script>
 tailwind.config = {
@@ -155,7 +155,7 @@ tailwind.config = {
                     <tr class="hover:bg-gray-50 transition">
                         <td class="p-4 font-bold text-[#1e3a8a]">#{{ $item->consultation_id }}</td>
                         <td class="p-4 text-[#1e3a8a] font-medium">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="p-4"><span class="font-bold text-[#1e3a8a]">{{ $item->status }}</span></td>
+                        <td class="p-4"><span class="font-medium text-[#1e3a8a]">{{ $item->status }}</span></td>
                         <td class="p-4 text-center">
                             <a href="#" class="text-[#1e3a8a] hover:underline font-semibold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
                         </td>
