@@ -36,6 +36,10 @@
             <a href="#">العقود</a>
             <a href="{{ route('consultations.user') }}">الاستشارات</a>
             <a href="#">المستندات والتقارير</a>
+             <a href="#" class="hover:text-wadimakkah-light transition">
+                    اللغة العربية
+                    <i class="fas fa-globe text-wadimakkah-light"></i>
+                </a>
         </div>
 
         <div class="flex items-center gap-6">
