@@ -48,7 +48,7 @@ class ConsultationController extends Controller
 
         $lawyers = User_wm::where('role_id', 1)->get();
 
-        return view('Consultations.legalManager.page.legalmanager', [
+        return view('Consultations.legalManager.legalmanager', [
             'stats'            => $stats,
             'needsAssignment'  => $needsAssignment,
             'pendingApprovals' => $pendingApprovals,
@@ -79,20 +79,17 @@ class ConsultationController extends Controller
     {
         $userId = auth()->id();
 
-        // 1. جلب المهام المسندة للموظف
-        $myTasks = Consultation::where('assigned_to', $userId)->get();
-      
-        // 2. جلب الإحصائيات الخاصة بهذا الموظف
-        $stats = [
-            'total_assigned' => Consultation::where('assigned_to', $userId)->count(),
-            'in_progress'    => Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
-            'completed'      => Consultation::where('assigned_to', $userId)->where('is_closed', true)->count(),
-        ];
-
-        // 3. إرسال البيانات للـ View
-        return view('Consultations.legal.Employee', [
-            'myTasks' => $myTasks,
-            'stats'   => $stats
-        ]);
+    // جلب المهام من الجدول الجديد
+    $myTasks = \App\Models\Task::where('assigned_to', $userId)->get();
+  
+    // حساب الإحصائيات
+    $stats = [
+        'total_tasks' => \App\Models\Task::where('assigned_to', $userId)->count(),
+        'pending'     => \App\Models\Task::where('assigned_to', $userId)->where('status', 'pending')->count(),
+        'completed'   => \App\Models\Task::where('assigned_to', $userId)->where('status', 'completed')->count(),
+    ];
+    
+    // التعديل هنا ليتناسب مع المسار: Consultations/legalemployee.blade.php
+    return view('Consultations.legalemployee', compact('myTasks', 'stats'));
     }
 }
