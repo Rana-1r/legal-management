@@ -96,7 +96,7 @@ tailwind.config = {
     </div>
 </div>
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-        <div class="bg-gray-50 px-6 py-4 border-b">
+        <div class="bg-gray-50 px-6 py-4 border-b flex justify-between items-center">
             <h3 class="font-bold text-gray-700">المهام المسندة لي</h3>
         </div>
         <div class="overflow-x-auto">
@@ -110,13 +110,13 @@ tailwind.config = {
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($myTasks as $task)
-                    <tr class="hover:bg-gray-50 transition">
+                    <tr class="hover:bg-gray-50 transition text-sm">
                         <td class="p-4 font-bold text-wadimakkah-dark">{{ $task->title }}</td>
-                        <td class="p-4"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">{{ $task->status }}</span></td>
+                        <td class="p-4 font-bold text-wadimakkah-dark">{{ $task->status }}</td>
                         <td class="p-4 text-center">
                             <form action="{{ route('tasks.complete', $task->task_id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="bg-wadimakkah-dark hover:bg-blue-800 text-white px-4 py-1.5 rounded-md text-xs transition">
+                                <button type="submit" class="bg-wadimakkah-dark hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                                     إتمام المهمة
                                 </button>
                             </form>
@@ -124,7 +124,7 @@ tailwind.config = {
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="3" class="p-6 text-center text-gray-500">لا توجد مهام مسندة إليك حالياً.</td>
+                        <td colspan="5" class="p-6 text-center text-gray-500">لا توجد مهام مسندة إليك حالياً.</td>
                     </tr>
                     @endforelse
                 </tbody>

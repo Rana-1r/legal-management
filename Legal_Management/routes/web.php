@@ -36,20 +36,14 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal.manager');
 
-
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
 Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
     ->name('employee.dashboard')
     ->middleware('auth');
 
-
-
-
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.user');
-
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
 Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
@@ -69,4 +63,8 @@ Route::get('/consultations/request', [ConsultationController::class, 'create'])
 Route::post('/consultations/request', [ConsultationController::class, 'store'])
     ->name('consultations.store');
 
+
+Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])->name('manager.interface');   
+
+Route::post('/assign-task', [ConsultationController::class, 'storeTask'])->name('tasks.assign');
 
