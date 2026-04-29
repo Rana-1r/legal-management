@@ -35,9 +35,5 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal.manager');
 
-<<<<<<< HEAD
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');ٍ
-
-=======
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
->>>>>>> 25a9de34fbd948a28cf6f3ed6bdf0e7d526a45dc
+
