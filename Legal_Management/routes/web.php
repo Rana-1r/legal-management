@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConsultationController;
 
+
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'register']);
@@ -35,7 +36,6 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])->name('legal.manager');
 
-
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
 Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
@@ -46,6 +46,7 @@ Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'
     return view('consultations.user');
 })->name('consultations.user');  
 
+<<<<<<< HEAD
 
 
 
@@ -55,10 +56,10 @@ Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'
 >>>>>>> 7655ab0623b9e0630c8ef8a4dc11ee919f2a34d3
 
 
+=======
+>>>>>>> 82d0adb319ff9e96a0a671dfbaf3d2634dfc43cb
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.user');
-
-Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])->name('consultations.assign');
 
 Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
@@ -76,4 +77,17 @@ Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
 
 Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
     ->name('tasks.complete');
+    // صفحة طلب استشارة (الفورم)
+Route::get('/consultations/request', [ConsultationController::class, 'create'])
+    ->name('consultations.create');
+
+
+// حفظ الطلب (submit)
+Route::post('/consultations/request', [ConsultationController::class, 'store'])
+    ->name('consultations.store');
+
+
+Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])->name('manager.interface');   
+
+Route::post('/assign-task', [ConsultationController::class, 'storeTask'])->name('tasks.assign');
 
