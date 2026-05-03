@@ -24,11 +24,7 @@
                 <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-<<<<<<< HEAD
-                <a href="#" class="hover:text-wadimakkah-light transition">ال</a>
-=======
                 <a href="{{ route('consultations.user') }}">الاستشارات</a>
->>>>>>> 82d0adb319ff9e96a0a671dfbaf3d2634dfc43cb
                 <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
