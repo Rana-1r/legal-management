@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>منصة الإدارة القانونية</title>
+    <title> الإدارة القانونية</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
