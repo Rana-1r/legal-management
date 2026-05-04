@@ -10,7 +10,7 @@
         body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
     </style>
     <script>
-tailwind.config = {
+      tailwind.config = {
     theme: {
         extend: {
             colors: {

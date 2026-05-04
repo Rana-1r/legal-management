@@ -61,6 +61,6 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return back()->with('success', 'تمت تغيير الصورة الشخصية');
+        return back()->with('success', 'تم تغيير الصورة الشخصية');
     }
 }

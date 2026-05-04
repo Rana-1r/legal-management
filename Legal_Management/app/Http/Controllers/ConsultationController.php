@@ -45,6 +45,10 @@ class ConsultationController extends Controller
         ]);
     }
 
+
+
+
+
     /**
      * صفحة المدير
      */
@@ -123,6 +127,18 @@ class ConsultationController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
+=======
+    return view('Interfaces.manager-interface', [
+        'stats'            => $stats,
+        'lawyers'          => $lawyers,
+    ]);
+}
+
+
+
+
+>>>>>>> 75cadc53ef447d4ce7b20b0dda5b699122f02429
     /**
      * صفحة الموظف القانوني
      */
