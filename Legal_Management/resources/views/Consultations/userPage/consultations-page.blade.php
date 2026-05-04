@@ -129,22 +129,34 @@
     
 
     <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
-        <h3 class="font-bold mb-2">طلب استشارة قانونية</h3>
-        <p class="text-xs text-gray-500 mb-4">
-            تتيح هذه الخدمة للمستخدم تقديم طلب استشارة قانونية جديدة عبر إدخال تفاصيل الطلب وتحديد نوع الاستشارة وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
-      <a href="{{ route('consultations.create') }}"
-   class="bg-gray-200 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-    الانتقال إلى الخدمة
-</a>
-    </div>
+    
+    <h3 class="font-bold mb-2">طلب استشارة قانونية</h3>
 
-    <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
-        <h3 class="font-bold mb-2">متابعة حالة الاستشارات</h3>
-        <p class="text-xs text-gray-500 mb-4">
-تتيح هذه الخدمة للمستخدم تتبع تقدم استشاراته ومعرفة آخر التحديثات على كل طلب، مع إمكانية الاطلاع على تفاصيل الحالة والتغييرات التي تطرأ عليها بشكل مستمر ودقيق.       </p>
-        <button class="bg-gray-100 px-4 py-1 rounded text-xs">الانتقال الى الخدمة</button>
-    </div>
+    <p class="text-xs text-gray-500 mb-4">
+        تتيح هذه الخدمة للمستخدم تقديم طلب استشارة قانونية جديدة عبر إدخال تفاصيل الطلب وتحديد نوع الاستشارة وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
+    </p>
 
+    <a href="{{ route('consultations.create') }}"
+       class="bg-gray-100 px-4 py-1 rounded text-xs inline-block hover:bg-gray-200 transition">
+        الانتقال الى الخدمة
+    </a>
+
+</div>
+
+   <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
+
+    <h3 class="font-bold mb-2">متابعة حالة الاستشارات</h3>
+
+    <p class="text-xs text-gray-500 mb-4">
+        تتيح هذه الخدمة للمستخدم تتبع تقدم استشاراته ومعرفة آخر التحديثات على كل طلب، مع إمكانية الاطلاع على تفاصيل الحالة والتغييرات التي تطرأ عليها بشكل مستمر ودقيق.
+    </p>
+
+    <a href="{{ route('consultations.status') }}"
+       class="bg-gray-100 px-4 py-1 rounded text-xs inline-block hover:bg-gray-200 transition">
+        الانتقال الى الخدمة
+    </a>
+
+</div>
     <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
         <h3 class="font-bold mb-2">استشاراتي</h3>
         <p class="text-xs text-gray-500 mb-4">

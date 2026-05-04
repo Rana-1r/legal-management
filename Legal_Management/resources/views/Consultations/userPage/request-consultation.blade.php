@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>طلب استشارة قانونية</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine (عشان التفاعل) -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f5f7fb]">
+
+<!-- ================= NAVBAR ================= -->
+<header class="bg-[#2f4597] text-white shadow-md">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <div class="px-16 py-5 flex items-center justify-between">
+
+        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-16">
+
+        <div class="flex gap-10 text-sm font-medium">
+            <a href="{{ route('user-interface') }}">الرئيسية</a>
+            <a href="#">القضايا</a>
+            <a href="#">العقود</a>
+            <a href="{{ route('consultations.user') }}" class="font-semibold">الاستشارات</a>
+            <a href="#">المستندات والتقارير</a>
+             <a href="#" class="hover:text-wadimakkah-light transition">
+                    اللغة العربية
+                    <i class="fas fa-globe text-wadimakkah-light"></i>
+                </a>
+        </div>
+
+        <div class="flex items-center gap-5 text-xl">
+            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+        </div>
+
+    </div>
+</header>
+
+<!-- ================= HEADER ================= -->
+<div class="text-center mt-14">
+    <h2 class="text-3xl font-bold text-gray-800">
+        إدارة الاستشارات القانونية
+    </h2>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="flex justify-center mt-12 px-4">
+
+    <div class="bg-white w-full max-w-2xl rounded-3xl shadow-lg p-8">
+
+        <h3 class="text-lg font-bold mb-2 text-right">
+            طلب استشارة قانونية
+        </h3>
+
+        <p class="text-xs text-gray-400 mb-4 text-right">
+            تحديد نوع الاستشارة
+        </p>
+
+        <!-- ================= CHIPS ================= -->
+        <div x-data="{ selected: '' }" class="flex justify-end gap-2 mb-5 text-xs">
+
+            <button type="button"
+                @click="selected = 'contracts'"
+                :class="selected === 'contracts' 
+                    ? 'bg-[#2f4597] text-white' 
+                    : 'bg-gray-100 text-gray-600 hover:bg-[#2f4597] hover:text-white'"
+                class="px-4 py-1 rounded-full transition">
+                عقود
+            </button>
+
+            <button type="button"
+                @click="selected = 'companies'"
+                :class="selected === 'companies' 
+                    ? 'bg-[#2f4597] text-white' 
+                    : 'bg-gray-100 text-gray-600 hover:bg-[#2f4597] hover:text-white'"
+                class="px-4 py-1 rounded-full transition">
+                شركات
+            </button>
+
+            <button type="button"
+                @click="selected = 'labor'"
+                :class="selected === 'labor' 
+                    ? 'bg-[#2f4597] text-white' 
+                    : 'bg-gray-100 text-gray-600 hover:bg-[#2f4597] hover:text-white'"
+                class="px-4 py-1 rounded-full transition">
+                عمالي
+            </button>
+
+            <!-- هذا يرسل القيمة للباك -->
+            <input type="hidden" name="type" :value="selected">
+
+        </div>
+
+        <!-- رفع مستند -->
+        <div class="mb-5 text-left">
+            <button type="button"
+                class="text-xs bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200 transition">
+                + إرفاق مستند
+            </button>
+        </div>
+
+        <!-- الفورم -->
+        <form method="POST" action="{{ route('consultations.store') }}" class="space-y-4">
+            @csrf
+
+            <input type="text" name="beneficiary"
+                placeholder="اسم المستفيد"
+                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
+
+            <input type="text" name="title"
+                placeholder="عنوان الاستشارة"
+                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
+
+            <textarea name="description" rows="4"
+                placeholder="وصف الاستشارة"
+                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]"></textarea>
+
+            <!-- زر -->
+            <div class="flex justify-end pt-3">
+                <button
+                    class="bg-[#2f4597] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#243b82] transition shadow-sm">
+                    إرسال الطلب
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#2f4597] text-white py-10 mt-20">
+
+    <div class="grid grid-cols-4 gap-10 px-16 text-sm">
+
+        <div>
+            <h5 class="font-bold mb-3">روابط مهمة</h5>
+            <ul class="space-y-2 text-gray-300">
+                <li>سياسة الخصوصية</li>
+                <li>الشروط والأحكام</li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-bold mb-3">الدعم</h5>
+            <ul class="space-y-2 text-gray-300">
+                <li>الدعم الفني</li>
+                <li>تواصل معنا</li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-bold mb-3">التواصل</h5>
+            <div class="flex gap-3 text-xl">
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-16 mx-auto mb-3">
+            <p class="text-xs text-gray-300">شركة وادي مكة للتقنية</p>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

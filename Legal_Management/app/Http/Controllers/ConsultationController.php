@@ -12,26 +12,38 @@ class ConsultationController extends Controller
     /**
      * صفحة المستخدم
      */
-  public function userPage()
-{
-    $consultations = Consultation::latest()->take(5)->get();
+    public function userPage()
+    {
+        $consultations = Consultation::latest()->take(5)->get();
 
-    return view('Consultations.user.page.consultations-page', [
+        return view('Consultations.userPage.consultations-page', [
 
-        'consultations' => $consultations,
+            'consultations' => $consultations,
 
-        // الإحصائيات
-        'total' => Consultation::count(),
+            // الإحصائيات
+            'total' => Consultation::count(),
 
-        'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
+            'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
 
-        'replied' => Consultation::where('status', 'تم الرد')->count(),
+            'replied' => Consultation::where('status', 'تم الرد')->count(),
 
-        // إشعارات
-        'notifications' => []
-        
-    ]);
-}
+            // إشعارات
+            'notifications' => []
+            
+        ]);
+    }
+
+    /**
+     * صفحة حالة الاستشارات (اليوزر)
+     */
+    public function status()
+    {
+        $consultations = Consultation::latest()->get();
+
+        return view('Consultations.userPage.consultation-status', [
+            'consultations' => $consultations
+        ]);
+    }
 
     /**
      * صفحة المدير
@@ -83,61 +95,63 @@ class ConsultationController extends Controller
             'priority'    => 'required|in:high,medium,low',
         ]);
 
-    \App\Models\Task::create([
-        'title'       => $request->title,
-        'description' => $request->description,
-        'assigned_to' => $request->assigned_to,
-        'due_date'    => $request->due_date,
-        'priority'    => $request->priority,
-        'status'      => 'pending', // الحالة الافتراضية
-    ]);
+        \App\Models\Task::create([
+            'title'       => $request->title,
+            'description' => $request->description,
+            'assigned_to' => $request->assigned_to,
+            'due_date'    => $request->due_date,
+            'priority'    => $request->priority,
+            'status'      => 'pending',
+        ]);
 
-    return redirect()->back()->with('success', 'تم إنشاء المهمة وإسنادها للموظف بنجاح.');
-}
+        return redirect()->back()->with('success', 'تم إنشاء المهمة وإسنادها للموظف بنجاح.');
+    }
 
-public function managerIndex()
-{
-    $stats = [
-        'total_cases'         => \App\Models\Task::where('related_entity_Type', 'قضية')->count(), 
-        'total_contracts'     => \App\Models\Task::where('related_entity_Type', 'عقد')->count(),
-        'total_consultations' => \App\Models\Consultation::count(),
-    ];
+    public function managerIndex()
+    {
+        $stats = [
+            'total_cases'         => \App\Models\Task::where('related_entity_Type', 'قضية')->count(), 
+            'total_contracts'     => \App\Models\Task::where('related_entity_Type', 'عقد')->count(),
+            'total_consultations' => \App\Models\Consultation::count(),
+        ];
 
-    $lawyers = \App\Models\User_wm::where('role_id', 1)->get();
+        $lawyers = \App\Models\User_wm::where('role_id', 1)->get();
 
+        return view('Interfaces.manager-interface', [
+            'stats'   => $stats,
+            'lawyers' => $lawyers,
+        ]);
+    }
 
-    return view('Interfaces.manager-interface', [
-        'stats'            => $stats,
-        'lawyers'          => $lawyers,
-    ]);
-}
     /**
      * صفحة الموظف القانوني
      */
     public function employeePage()
-{
-    $userId = auth()->id();
-    $myTasks = \App\Models\Task::where('assigned_to', $userId)->get();
- 
-    $stats = [
-        'total_tasks'    => \App\Models\Task::where('assigned_to', $userId)->count(),
-        'total_assigned' => \App\Models\Consultation::where('assigned_to', $userId)->count(), // أضفنا هذا
-        'in_progress'    => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
-        'completed'      => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'مكتملة')->count(),
-    ];
+    {
+        $userId = auth()->id();
+        $myTasks = \App\Models\Task::where('assigned_to', $userId)->get();
     
-    return view('Interfaces.Employee-interface', compact('myTasks', 'stats'));
-}
-public function completeTask($id)
-{
-    $task = \App\Models\Task::findOrFail($id);
-    $task->status = 'completed'; // أو 'مكتملة' حسب قاعدة بياناتك
-    $task->save();
-    
-    return redirect()->back()->with('success', 'تم تحديث حالة المهمة!');
-}
-public function create()
-{
-    return view('Consultations.user.page.request-consultation');
-}
+        $stats = [
+            'total_tasks'    => \App\Models\Task::where('assigned_to', $userId)->count(),
+            'total_assigned' => \App\Models\Consultation::where('assigned_to', $userId)->count(),
+            'in_progress'    => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
+            'completed'      => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'مكتملة')->count(),
+        ];
+        
+        return view('Interfaces.Employee-interface', compact('myTasks', 'stats'));
+    }
+
+    public function completeTask($id)
+    {
+        $task = \App\Models\Task::findOrFail($id);
+        $task->status = 'completed';
+        $task->save();
+        
+        return redirect()->back()->with('success', 'تم تحديث حالة المهمة!');
+    }
+
+    public function create()
+    {
+        return view('Consultations.userPage.request-consultation');
+    }
 }
