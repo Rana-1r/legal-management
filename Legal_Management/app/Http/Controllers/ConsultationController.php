@@ -33,6 +33,10 @@ class ConsultationController extends Controller
     ]);
 }
 
+
+
+
+
     /**
      * صفحة المدير
      */
@@ -111,6 +115,10 @@ public function managerIndex()
         'lawyers'          => $lawyers,
     ]);
 }
+
+
+
+
     /**
      * صفحة الموظف القانوني
      */

@@ -14,31 +14,35 @@
 </head>
 
 <body class="bg-gray-50">
-<!--Navbar-->
-<header class="bg-wadimakkah-dark text-white shadow-lg">
+
+<!--  Navbar -->
+<header class="bg-wadimakkah-dark text-white shadow-lg"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-        <div class="text-white px-16 py-6 flex items-center justify-between">
-            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
 
-            <div class="flex gap-8 text-sm font-medium">
-                <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-                <a href="{{ route('consultations.user') }}">الاستشارات</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">
+    <div class="text-white px-16 py-6 flex items-center justify-between">
+
+    <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
+
+    <!--  هنا كان فيه خطأ وتم تصحيحه -->
+    <div class="flex gap-8 text-sm font-medium">
+        <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+        <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
+        <a href="#" class="flex items-center gap-1">
                     اللغة العربية
-                    <i class="fas fa-globe text-wadimakkah-light"></i>
+                        <i class="fas fa-globe text-wadimakkah-light"></i>
                 </a>
-            </div>
-
-            <div class="flex items-center gap-6">
-                <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
-                <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
-                <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
-            </div>
+    </div>
+    
+        <div class="flex items-center gap-6">
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
         </div>
-    </header>
+    </div>
+</header>
         
 
 <!--  العنوان -->
@@ -108,8 +112,7 @@
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">
         <h3 class="font-bold text-sm mb-2">إنشاء عقد</h3>
         <p class="text-xs text-gray-500 leading-6 mb-4">
-          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ
-          التعديلات في النظام.
+          تتيح هذه الخدمة إمكانية إنشاء عقد و إدخال بياناته و إرسالة إلى المراجعة القانونية مع حفظ التعديلات في النظام.
         </p>
         <div class="mt-auto">
             <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
@@ -267,5 +270,4 @@ tailwind.config = {
 
         </div>
     </footer>    
-</body> 
-<html>
+</body>
