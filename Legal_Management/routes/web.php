@@ -18,6 +18,10 @@ Route::post('/', [LoginController::class, 'login']);
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
@@ -43,6 +47,7 @@ Route::resource('consultations', ConsultationController::class)
         ->name('profile.photo.update');
 
     Route::resource('consultations', ConsultationController::class);
+<<<<<<< HEAD
 
 
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
@@ -103,3 +108,6 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 });
 
+=======
+};
+>>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
