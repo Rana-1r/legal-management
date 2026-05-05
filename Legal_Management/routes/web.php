@@ -72,8 +72,4 @@ Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage
 // لوحة تحكم الموظف القانوني 
 Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
     ->name('employee.interface');
-<<<<<<< HEAD
-
-=======
->>>>>>> 1bd1a088f27cfea83eebd27aabe5a9d67e7f40c1
 });
