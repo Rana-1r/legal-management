@@ -81,7 +81,10 @@ Route::get('/employee/interface', [ConsultationController::class, 'employeeInter
     ->name('employee.interface');
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f5dcdded92b7fc5677a7310eb05251d7865e4e3b
 =======
 >>>>>>> 1bd1a088f27cfea83eebd27aabe5a9d67e7f40c1
 });
