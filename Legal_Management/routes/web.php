@@ -30,14 +30,14 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 Route::resource('consultations', ConsultationController::class)
     ->except(['show']);
 
+Route::get('/user-interface', [DashboardController::class, 'index'])
+    ->name('user-interface');
 
-    Route::get('/user-interface', [DashboardController::class, 'index'])
-        ->name('user-interface');
+    oute::resource('consultations', ConsultationController::class);
 
-    Route::resource('consultations', ConsultationController::class);
-
-    Route::get('/my-consultations', [ConsultationController::class, 'my'])
-        ->name('consultations.my');
+Route::get('/my-consultations', [ConsultationController::class, 'my'])
+    ->middleware('auth') // حماية الصفحة
+    ->name('consultations.my');
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
     ->name('legal.manager');
@@ -50,7 +50,8 @@ Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'
     ->middleware('auth');
 
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
-    ->name('consultations.user');
+    ->middleware('auth')
+    ->name('consultations.page');
 
 Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
@@ -73,7 +74,7 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
-    Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
-    ->name('tasks.assign');
-        
+Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
+    ->name('manager.interface');
+
 });
