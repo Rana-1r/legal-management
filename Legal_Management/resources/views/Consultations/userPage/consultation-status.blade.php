@@ -30,7 +30,7 @@
             <a href="{{ route('user-interface') }}">الرئيسية</a>
             <a href="#">القضايا</a>
             <a href="#">العقود</a>
-            <a href="{{ route('consultations.user') }}" class="font-semibold">الاستشارات</a>
+            <a href="{{ route('consultations.page') }}" class="font-semibold">الاستشارات</a>
             <a href="#">المستندات والتقارير</a>
              <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية

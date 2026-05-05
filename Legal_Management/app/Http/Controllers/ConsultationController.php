@@ -127,9 +127,13 @@ class ConsultationController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     /**
  * صفحة الموظف القانوني
  */
+=======
+
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     /**
      * صفحة الموظف القانوني
      */
@@ -176,4 +180,17 @@ class ConsultationController extends Controller
     {
         return view('Consultations.userPage.request-consultation');
     }
+<<<<<<< HEAD
 }
+=======
+   public function my()
+    {
+        // جلب استشارات المستخدم الحالي
+        $consultations = Consultation::where('request_by', auth()->id())->get();
+
+        // مهم: المسار الصحيح للـ Blade
+        return view('Consultations.userPage.my-consultation', compact('consultations'));
+    }
+
+}
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676

@@ -18,6 +18,25 @@ Route::post('/', [LoginController::class, 'login']);
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
+Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+
+/* مهم: لازم status يكون قبل resource */
+Route::get('/consultations/status', [ConsultationController::class, 'status'])
+    ->name('consultations.status');
+
+/* عدلناها عشان ما ينادي show */
+Route::resource('consultations', ConsultationController::class)
+    ->except(['show']);
+
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     Route::get('/user-interface', [DashboardController::class, 'index'])
         ->name('user-interface');
 
@@ -30,16 +49,60 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])
         ->name('profile.photo.update');
 
+<<<<<<< HEAD
     // مهم: قبل resource
     Route::get('/consultations/status', [ConsultationController::class, 'status'])
         ->name('consultations.status');
 
     Route::resource('consultations', ConsultationController::class)
         ->except(['show']);
+=======
+    Route::resource('consultations', ConsultationController::class);
+<<<<<<< HEAD
+
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
 
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
         ->name('consultations.my');
 
+<<<<<<< HEAD
+=======
+
+Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
+    ->name('legal.manager');
+
+Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])
+    ->name('consultations.assign');
+
+Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
+    ->name('employee.dashboard')
+    ->middleware('auth');
+
+Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
+    ->name('consultations.user');
+
+Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
+    ->name('legal.employee')
+    ->middleware('auth');
+
+Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
+    ->name('tasks.complete');
+
+/* صفحة طلب استشارة */
+Route::get('/consultations/request', [ConsultationController::class, 'create'])
+    ->name('consultations.create');
+
+/* حفظ طلب الاستشارة */
+Route::post('/consultations/request', [ConsultationController::class, 'store'])
+    ->name('consultations.store');
+
+Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
+    ->name('manager.interface');
+
+Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
+    ->name('tasks.assign');
+
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
         ->name('legal.manager');
 
@@ -49,6 +112,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
         ->name('employee.dashboard');
 
+<<<<<<< HEAD
     Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
         ->name('consultations.user');
 
@@ -74,3 +138,19 @@ Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee');
 
 });
+=======
+
+Route::get('/my-consultations', [ConsultationController::class, 'my'])
+    ->middleware('auth') // حماية الصفحة
+    ->name('consultations.my');
+    
+    Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
+    ->middleware('auth')
+    ->name('consultations.page');
+
+});
+
+=======
+};
+>>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676

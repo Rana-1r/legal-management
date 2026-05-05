@@ -28,7 +28,9 @@
         <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
         <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
         <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-        <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+         <a href="{{ route('consultations.page') }}" class="hover:text-wadimakkah-light transition">
+    الاستشارات
+</a>
         <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
         <a href="#" class="flex items-center gap-1">
                     اللغة العربية
@@ -127,10 +129,11 @@
             تتيح هذه الخدمة تقديم طلب استشارة قانونية ومتابعة حالة الطلب حتى استلام الرد النهائي من المحامي.
         </p>
         <div class="mt-auto">
-            <button class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300">
-                الانتقال إلى الخدمة
-            </button>
-        </div>
+        <a href="{{ route('consultations.create') }}"
+           class="bg-gray-200 text-gray-700 px-4 py-1 text-xs rounded-md hover:bg-gray-300 transition inline-block">
+            الانتقال إلى الخدمة
+        </a>
+    </div>
     </div>
 
     <div class="bg-white p-6 rounded-xl shadow-md flex flex-col h-full">

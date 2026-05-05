@@ -34,7 +34,7 @@
             <a href="{{ route('user-interface') }}">الرئيسية</a>
             <a href="#">القضايا</a>
             <a href="#">العقود</a>
-            <a href="{{ route('consultations.user') }}">الاستشارات</a>
+            <a href="{{ route('consultations.page') }}">الاستشارات</a>
             <a href="#">المستندات والتقارير</a>
              <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
@@ -157,12 +157,16 @@
     </a>
 
 </div>
-    <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
+     <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
+
         <h3 class="font-bold mb-2">استشاراتي</h3>
         <p class="text-xs text-gray-500 mb-4">
     تتيح هذه الخدمة للمستخدم إدارة واستعراض جميع طلبات الاستشارات الخاصة به، مع عرض التفاصيل الكاملة لكل استشارة، والاطلاع على الردود والتوصيات القانونية المرتبطة بها.
         </p>
-        <button class="bg-gray-100 px-4 py-1 rounded text-xs">الانتقال الى الخدمة</button>
+         <a href="{{ route('consultations.my') }}"
+       class="bg-gray-100 px-4 py-1 rounded text-xs inline-block hover:bg-gray-200 transition">
+        الانتقال الى الخدمة
+    </a>
     </div>
 
 </div>
