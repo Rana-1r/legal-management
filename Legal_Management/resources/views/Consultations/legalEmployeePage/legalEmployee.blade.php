@@ -29,7 +29,7 @@
     <h2 class="text-xl font-bold mb-8 text-center border-b border-blue-700 pb-4">شركة وادي مكة</h2>
     <ul class="space-y-4">
         <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-home ml-2"></i> لوحة التحكم</a></li>
-        <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-list ml-2"></i> استشاراتي</a></li>
+        <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-list ml-2"></i> قائمة الإستشارات</a></li>
         <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-exclamation-circle ml-2"></i> بحاجة لمراجعة</a></li>
         <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-bell ml-2"></i> تنبيهات</a></li>
         <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-history ml-2"></i> آخر الأنشطة</a></li>
@@ -42,13 +42,24 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="flex items-center gap-4 text-wadimakkah-dark font-bold">
-            <i class="fas fa-user-circle text-3xl"></i>
-            <span>مرحباً بك، مستخدم</span>
+           <a href="{{ route('profile.show') }}" class="flex items-center gap-3 text-wadimakkah-dark font-bold">
+    @if(Auth::user()->photo)
+        <img src="{{ asset('storage/' . Auth::user()->photo) }}" 
+             alt="Profile" 
+             class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+    @else
+        <i class="fas fa-user-circle text-4xl"></i>
+    @endif
+    
+    <span class="block">مرحباً بك، {{ auth()->user()->full_name }}</span>
+</a>
+
+
         </div>
     </header>
 
     <div class="p-8">
-        <h1 class="text-2xl font-bold mb-6 text-gray-800">لوحة التحكم</h1>
+        <h1 class="text-2xl font-bold mb-6 text-gray-800">مؤشرات الإستشارات</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
             <div class="bg-white p-6 rounded-2xl border-b-4 border-blue-500 shadow-sm text-center">
@@ -71,7 +82,7 @@
 
         <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
             <div class="bg-gray-50 px-6 py-4 border-b">
-                <h3 class="font-bold text-gray-700">قائمة الاستشارات</h3>
+                <h3 class="font-bold text-gray-700">الاستشارات اليوم</h3>
             </div>
             <table class="w-full text-center text-sm">
                 <thead class="bg-gray-100 text-gray-600">
