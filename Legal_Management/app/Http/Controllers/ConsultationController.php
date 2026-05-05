@@ -126,12 +126,7 @@ class ConsultationController extends Controller
             'lawyers' => $lawyers,
         ]);
     }
-<<<<<<< HEAD
 
-
-=======
-    
->>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c
     /**
      * صفحة الموظف القانوني
      */
@@ -178,7 +173,7 @@ class ConsultationController extends Controller
     {
         return view('Consultations.userPage.request-consultation');
     }
-<<<<<<< HEAD
+
 
 
 
@@ -191,6 +186,5 @@ class ConsultationController extends Controller
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
 
-=======
->>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c
+
 }
