@@ -73,7 +73,7 @@
         </p>
 
         <!-- ================= CHIPS ================= -->
-        <div x-data="{ selected: '' }" class="flex justify-end gap-2 mb-5 text-xs">
+        <div x-data="{ selected: '' }" class="flex justify-start gap-2 mb-5 text-xs">
 
             <button type="button"
                 @click="selected = 'contracts'"
@@ -102,19 +102,25 @@
                 عمالي
             </button>
 
-            <!-- هذا يرسل القيمة للباك -->
+
             <input type="hidden" name="type" :value="selected">
 
         </div>
 
-        <!-- رفع مستند -->
-        <div class="mb-5 text-left">
-            <button type="button"
-                class="text-xs bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200 transition">
-                + إرفاق مستند
-            </button>
-        </div>
+     <!-- رفع مستند -->
+<div class="mb-5 text-left">
 
+    <!-- input مخفي -->
+    <input type="file" id="fileInput" class="hidden">
+
+    <!-- الزر -->
+    <button type="button"
+        onclick="document.getElementById('fileInput').click()"
+        class="text-xs bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200 transition">
+        + إرفاق مستند
+    </button>
+
+</div>
         <!-- الفورم -->
         <form method="POST" action="{{ route('consultations.store') }}" class="space-y-4">
             @csrf

@@ -43,7 +43,7 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <i class="fas fa-user-circle text-2xl"></i>
+            <i class="fas fa-user-circle text-2xl"></i>icon
             <i class="fas fa-bell text-xl"></i>
             <i class="fas fa-cog text-xl"></i>
         </div>
