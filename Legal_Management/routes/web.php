@@ -33,7 +33,7 @@ Route::resource('consultations', ConsultationController::class)
 Route::get('/user-interface', [DashboardController::class, 'index'])
     ->name('user-interface');
 
-    oute::resource('consultations', ConsultationController::class);
+Route::resource('consultations', ConsultationController::class);
 
 Route::get('/my-consultations', [ConsultationController::class, 'my'])
     ->middleware('auth') // حماية الصفحة
