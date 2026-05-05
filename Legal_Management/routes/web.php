@@ -69,6 +69,7 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
+<<<<<<< HEAD
 
 Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
     ->name('manager.interface');
@@ -81,4 +82,6 @@ Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage
 Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
     ->name('employee.interface');
 
+=======
+>>>>>>> 463ba191e023cfcbb99ce9910a12e5f91bcd8701
 });

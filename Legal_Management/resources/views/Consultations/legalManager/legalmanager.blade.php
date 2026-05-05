@@ -54,7 +54,7 @@
        <p class="text-sm text-gray-500 mt-2">المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 py-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 mt-6">
         <div class="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl shadow-sm text-center">
             <p class="text-gray-600 font-bold mb-2">قيد المراجعة</p>
             <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['under_review'] }}</span>
@@ -68,30 +68,27 @@
             <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['closed'] }}</span>
         </div>
     </div>
-
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden mb-10">
-        <div class="bg-gray-50 px-6 py-4 border-b flex justify-between items-center">
-            <h3 class="font-bold text-gray-700">طلبات بحاجة إلى إسناد</h3>
-            <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">إجمالي: {{ $needsAssignment->count() }}</span>
-        </div>
+    
+    <h2 class="text-xl font-bold text-gray-700 mb-6">طلبات بحاجة إلى إسناد</h2>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden mb-12">
         <div class="overflow-x-auto">
             <table class="w-full text-right border-collapse text-sm">
-                <thead>
-                    <tr class="bg-gray-100 text-gray-600">
-                        <th class="p-4">رقم الطلب</th>
-                        <th class="p-4">نوع الإستشارة</th>
-                        <th class="p-4">الأولوية</th>
-                        <th class="p-4 text-center">إسناد لمحامي</th>
+                <thead class="bg-gray-100 text-gray-600">
+                    <tr>
+                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
+                        <th class="p-4 w-1/4 text-center">نوع الإستشارة</th>
+                        <th class="p-4 w-1/4 text-center">الأولوية</th>
+                        <th class="p-4 w-1/4 text-center">إسناد لمحامي</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($needsAssignment as $consult)
-                    <tr class="hover:bg-gray-50 transition text-sm">
-                        <td class="p-4 font-bold text-[#1e3a8a]">#{{ $consult->consultation_id }}</td>
-                        <td class="p-4 font-bold text-[#1e3a8a]">{{ $consult->consulation_type }}</td>
-                        <td class="p-4 font-bold text-wadimakkah-dark">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $consult->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $consult->consulation_type }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">
                             @if(isset($consult->priority) && $consult->priority)
-                                <span class="flex items-center gap-1 text-[#1e3a8a]">
+                                <span class="items-center gap-1 text-[#1e3a8a]">
                                     <i class="fas fa-circle text-[8px] {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-400' }}"></i> 
                                     {{ $consult->priority }} 
                                 </span>
@@ -99,7 +96,7 @@
                                 <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
                             @endif
                         </td>
-                        <td class="p-4">
+                        <td class="px-4 py-4">
                             <form action="{{ route('consultations.assign', $consult->consultation_id) }}" method="POST" class="flex items-center gap-2 justify-center">
                                 @csrf
                                 <select name="lawyer_id" required class="text-xs border rounded-md px-2 py-1.5 bg-white outline-none focus:ring-1 focus:ring-blue-500 text-[#1e3a8a]">
@@ -121,32 +118,32 @@
         </div>
     </div>
 
+    <h2 class="text-xl font-bold text-gray-700 mb-6">طلبات بحاجة إلى اعتماد</h2>
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-        <div class="bg-gray-50 px-6 py-4 border-b">
-            <h3 class="font-bold text-gray-700">طلبات بحاجة إلى اعتماد</h3>
-        </div>
         <div class="overflow-x-auto">
             <table class="w-full text-right border-collapse text-sm">
-                <thead>
-                    <tr class="bg-gray-100 text-gray-600">
-                        <th class="p-4">رقم الطلب</th>
-                        <th class="p-4">المحامي المسؤول</th>
-                        <th class="p-4">الحالة</th>
-                        <th class="p-4 text-center">الإجراء</th>
+                <thead class="bg-gray-100 text-gray-600">
+                    <tr>
+                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
+                        <th class="p-4 w-1/4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 w-1/4 text-center">الحالة</th>
+                        <th class="p-4 w-1/4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($pendingApprovals as $item)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="p-4 font-bold text-[#1e3a8a]">#{{ $item->consultation_id }}</td>
-                        <td class="p-4 text-[#1e3a8a] font-bold">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="p-4"><span class="font-bold text-[#1e3a8a]">{{ $item->status }}</span></td>
-                        <td class="p-4 text-center">
-                            <a href="#" class="text-[#1e3a8a] hover:underline font-bold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $item->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="px-4 py-4 text-center"><span class="font-bold text-wadimakkah-dark">{{ $item->status }}</span></td>
+                        <td class="px-4 py-4 text-center">
+                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                            عرض
+                            </button>
                         </td>
                     </tr>
                     @empty
-                        @endforelse
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -191,6 +188,5 @@
     setTimeout(() => { document.getElementById('toast').style.display = 'none'; }, 4000);
 </script>
 @endif
-
 </body>
 </html>

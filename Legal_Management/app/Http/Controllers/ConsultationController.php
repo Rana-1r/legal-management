@@ -191,6 +191,11 @@ class ConsultationController extends Controller
     }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 463ba191e023cfcbb99ce9910a12e5f91bcd8701
    public function my()
     {
         // جلب استشارات المستخدم الحالي
