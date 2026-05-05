@@ -91,7 +91,10 @@
         <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <h3 class="font-bold text-lg mb-2">الإستشارات القانونية</h3>
             <p class="text-gray-500 text-sm mb-6">اطلع على الاستشارات، قدم الردود، وأرسلها للاعتماد</p>
-            <a href="#" class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">الانتقال إلى الصفحة</a>
+            <a href="{{ route('employee.legal') }}"class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
+    الانتقال إلى الصفحة
+</a>
+
         </div>
     </div>
 </div>
