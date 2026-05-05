@@ -127,17 +127,26 @@ class ConsultationController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
-    /**
- * صفحة الموظف القانوني
- */
-=======
-
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     /**
      * صفحة الموظف القانوني
      */
-    public function employeePage()
+    public function employeeInterfacePage()
+{
+    $userId = auth()->id();
+
+    $myTasks = Task::where('assigned_to', $userId)->get();
+    $myConsultations = Consultation::where('assigned_to', $userId)->get();
+
+    $stats = [
+        'total_assigned' => $myConsultations->count(),
+        'in_progress' => $myConsultations->where('status', 'in_progress')->count(),
+        'completed' => $myConsultations->where('status', 'completed')->count(),
+    ];
+
+    return view('Interfaces.Employee-interface', compact('myTasks', 'myConsultations', 'stats'));
+}
+
+    public function legalEmployeePage()
     {
         // أول شيء: نجيب رقم المستخدم
         $userId = auth()->id();
@@ -180,9 +189,7 @@ class ConsultationController extends Controller
     {
         return view('Consultations.userPage.request-consultation');
     }
-<<<<<<< HEAD
-}
-=======
+
    public function my()
     {
         // جلب استشارات المستخدم الحالي
@@ -193,4 +200,3 @@ class ConsultationController extends Controller
     }
 
 }
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676

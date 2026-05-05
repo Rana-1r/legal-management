@@ -53,10 +53,6 @@ Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->middleware('auth')
     ->name('consultations.page');
 
-Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
-    ->name('legal.employee')
-    ->middleware('auth');
-
 Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
     ->name('tasks.complete');
 
@@ -76,5 +72,13 @@ Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
 
 Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
     ->name('manager.interface');
+
+// صفحة الموظف القانوني للإستشارات
+Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
+    ->name('employee.legal');
+
+// لوحة تحكم الموظف القانوني 
+Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
+    ->name('employee.interface');
 
 });
