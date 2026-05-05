@@ -18,12 +18,7 @@ Route::post('/', [LoginController::class, 'login']);
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
@@ -36,7 +31,6 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 Route::resource('consultations', ConsultationController::class)
     ->except(['show']);
 
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     Route::get('/user-interface', [DashboardController::class, 'index'])
         ->name('user-interface');
 
@@ -49,24 +43,18 @@ Route::resource('consultations', ConsultationController::class)
     Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])
         ->name('profile.photo.update');
 
-<<<<<<< HEAD
     // مهم: قبل resource
     Route::get('/consultations/status', [ConsultationController::class, 'status'])
         ->name('consultations.status');
 
     Route::resource('consultations', ConsultationController::class)
         ->except(['show']);
-=======
-    Route::resource('consultations', ConsultationController::class);
-<<<<<<< HEAD
 
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
+    Route::resource('consultations', ConsultationController::class);
+
 
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
         ->name('consultations.my');
-
-<<<<<<< HEAD
-=======
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
     ->name('legal.manager');
@@ -102,7 +90,6 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
         ->name('legal.manager');
 
@@ -112,7 +99,7 @@ Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
         ->name('employee.dashboard');
 
-<<<<<<< HEAD
+
     Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
         ->name('consultations.user');
 
@@ -138,7 +125,6 @@ Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee');
 
 });
-=======
 
 Route::get('/my-consultations', [ConsultationController::class, 'my'])
     ->middleware('auth') // حماية الصفحة
@@ -148,9 +134,5 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
     ->middleware('auth')
     ->name('consultations.page');
 
-});
 
-=======
-};
->>>>>>> 2c58b4d4422c5ecf636c29b7ebd4eab6ae32c69e
->>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
+
