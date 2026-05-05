@@ -18,7 +18,10 @@ Route::post('/', [LoginController::class, 'login']);
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b538462f637164a3398b57d1e46ab2bdc0b0435d
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
@@ -31,6 +34,7 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 Route::resource('consultations', ConsultationController::class)
     ->except(['show']);
 
+<<<<<<< HEAD
     Route::get('/user-interface', [DashboardController::class, 'index'])
         ->name('user-interface');
 
@@ -52,6 +56,13 @@ Route::resource('consultations', ConsultationController::class)
 
     Route::resource('consultations', ConsultationController::class);
 
+=======
+
+    Route::get('/user-interface', [DashboardController::class, 'index'])
+        ->name('user-interface');
+
+    Route::resource('consultations', ConsultationController::class);
+>>>>>>> b538462f637164a3398b57d1e46ab2bdc0b0435d
 
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
         ->name('consultations.my');
@@ -89,6 +100,7 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
+<<<<<<< HEAD
 
     Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
         ->name('legal.manager');
@@ -136,3 +148,7 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 
 
+=======
+        
+});
+>>>>>>> b538462f637164a3398b57d1e46ab2bdc0b0435d
