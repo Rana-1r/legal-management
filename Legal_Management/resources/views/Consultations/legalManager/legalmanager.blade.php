@@ -88,7 +88,7 @@
                         <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $consult->consulation_type }}</td>
                         <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">
                             @if(isset($consult->priority) && $consult->priority)
-                                <span class="flex items-center gap-1 text-[#1e3a8a]">
+                                <span class="items-center gap-1 text-[#1e3a8a]">
                                     <i class="fas fa-circle text-[8px] {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-400' }}"></i> 
                                     {{ $consult->priority }} 
                                 </span>
