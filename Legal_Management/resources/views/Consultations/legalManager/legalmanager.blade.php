@@ -141,8 +141,10 @@
                         <td class="p-4 font-bold text-[#1e3a8a]">#{{ $item->consultation_id }}</td>
                         <td class="p-4 text-[#1e3a8a] font-bold">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
                         <td class="p-4"><span class="font-bold text-[#1e3a8a]">{{ $item->status }}</span></td>
-                        <td class="p-4 text-center">
-                            <a href="#" class="text-[#1e3a8a] hover:underline font-bold"><i class="fas fa-eye mr-1"></i> عرض التفاصيل</a>
+                        <td>
+                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                            عرض
+                            </button>
                         </td>
                     </tr>
                     @empty
