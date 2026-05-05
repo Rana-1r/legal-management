@@ -105,18 +105,18 @@
                 <table class="w-full text-right border-collapse text-sm">
                     <thead class="bg-gray-100 text-gray-600">
                         <tr>
-                            <th class="p-4 w-1/4">رقم المحامي</th>
-                            <th class="p-4 w-1/4">اسم المحامي</th>
-                            <th class="p-4 w-1/4">عدد المهام</th>
+                            <th class="p-4 w-1/4 text-center">رقم المحامي</th>
+                            <th class="p-4 w-1/4 text-center">اسم المحامي</th>
+                            <th class="p-4 w-1/4 text-center">عدد المهام</th>
                             <th class="p-4 w-1/4 text-center">الإجراء</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
                         @forelse($lawyers as $lawyer)
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="px-4 py-4 font-bold text-wadimakkah-dark">#{{ $lawyer->user_id }}</td>
-                            <td class="px-4 py-4 font-bold text-wadimakkah-dark">{{ $lawyer->full_name }}</td>
-                            <td class="px-4 py-4 font-bold text-wadimakkah-dark">
+                            <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $lawyer->user_id }}</td>
+                            <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $lawyer->full_name }}</td>
+                            <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">
                                 {{-- عرض عدد المهام المسندة حالياً --}}
                                 {{ \App\Models\Task::where('assigned_to', $lawyer->user_id)->count() }}
                             </td>

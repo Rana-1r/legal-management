@@ -75,18 +75,18 @@
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4">رقم الطلب</th>
-                        <th class="p-4 w-1/4">نوع الإستشارة</th>
-                        <th class="p-4 w-1/4">الأولوية</th>
+                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
+                        <th class="p-4 w-1/4 text-center">نوع الإستشارة</th>
+                        <th class="p-4 w-1/4 text-center">الأولوية</th>
                         <th class="p-4 w-1/4 text-center">إسناد لمحامي</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($needsAssignment as $consult)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="px-4 py-4 font-bold text-wadimakkah-dark">#{{ $consult->consultation_id }}</td>
-                        <td class="px-4 py-4 font-bold text-wadimakkah-dark">{{ $consult->consulation_type }}</td>
-                        <td class="px-4 py-4 font-bold text-wadimakkah-dark">
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $consult->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $consult->consulation_type }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">
                             @if(isset($consult->priority) && $consult->priority)
                                 <span class="flex items-center gap-1 text-[#1e3a8a]">
                                     <i class="fas fa-circle text-[8px] {{ $consult->priority == 'عاجل' ? 'text-red-500' : 'text-blue-400' }}"></i> 
@@ -124,18 +124,18 @@
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4">رقم الطلب</th>
-                        <th class="p-4 w-1/4">المحامي المسؤول</th>
-                        <th class="p-4 w-1/4">الحالة</th>
+                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
+                        <th class="p-4 w-1/4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 w-1/4 text-center">الحالة</th>
                         <th class="p-4 w-1/4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($pendingApprovals as $item)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="px-4 py-4 font-bold text-wadimakkah-dark">#{{ $item->consultation_id }}</td>
-                        <td class="px-4 py-4 font-bold text-wadimakkah-dark">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
-                        <td class="px-4 py-4"><span class="font-bold text-wadimakkah-dark">{{ $item->status }}</span></td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $item->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="px-4 py-4 text-center"><span class="font-bold text-wadimakkah-dark">{{ $item->status }}</span></td>
                         <td class="px-4 py-4 text-center">
                             <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                             عرض
