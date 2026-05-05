@@ -127,31 +127,52 @@ class ConsultationController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
+    /**
+ * صفحة الموظف القانوني
+ */
+=======
 
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676
     /**
      * صفحة الموظف القانوني
      */
     public function employeePage()
     {
+        // أول شيء: نجيب رقم المستخدم
         $userId = auth()->id();
-        $myTasks = \App\Models\Task::where('assigned_to', $userId)->get();
-    
+
+        // استشارات الموظف
+        $myConsultations = Consultation::where('assigned_to', $userId)->get();
+
+        // مهام الموظف
+        $myTasks = Task::where('assigned_to', $userId)->get();
+
+        // الإحصائيات
         $stats = [
-            'total_tasks'    => \App\Models\Task::where('assigned_to', $userId)->count(),
-            'total_assigned' => \App\Models\Consultation::where('assigned_to', $userId)->count(),
-            'in_progress'    => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'قيد المراجعة')->count(),
-            'completed'      => \App\Models\Consultation::where('assigned_to', $userId)->where('status', 'مكتملة')->count(),
+            'total_tasks'    => Task::where('assigned_to', $userId)->count(),
+            'total_assigned' => Consultation::where('assigned_to', $userId)->count(),
+            'in_progress'    => Consultation::where('assigned_to', $userId)
+                                            ->where('status', 'قيد المراجعة')
+                                            ->count(),
+            'completed'      => Consultation::where('assigned_to', $userId)
+                                            ->where('status', 'مكتملة')
+                                            ->count(),
         ];
-        
-        return view('Interfaces.Employee-interface', compact('myTasks', 'stats'));
+
+        return view('Consultations.legalEmployeePage.legalEmployee', compact(
+            'myTasks',
+            'stats',
+            'myConsultations'
+        ));
     }
 
     public function completeTask($id)
     {
-        $task = \App\Models\Task::findOrFail($id);
+        $task = Task::findOrFail($id);
         $task->status = 'completed';
         $task->save();
-        
+
         return redirect()->back()->with('success', 'تم تحديث حالة المهمة!');
     }
 
@@ -159,6 +180,9 @@ class ConsultationController extends Controller
     {
         return view('Consultations.userPage.request-consultation');
     }
+<<<<<<< HEAD
+}
+=======
    public function my()
     {
         // جلب استشارات المستخدم الحالي
@@ -169,3 +193,4 @@ class ConsultationController extends Controller
     }
 
 }
+>>>>>>> ae609dbe75f97058b3d2b5b50249308efed7f676

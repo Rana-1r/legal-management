@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConsultationController;
 
-
+// التسجيل
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -30,24 +30,14 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 Route::resource('consultations', ConsultationController::class)
     ->except(['show']);
 
+
     Route::get('/user-interface', [DashboardController::class, 'index'])
         ->name('user-interface');
 
-    Route::get('/profile', [ProfileController::class, 'show'])
-        ->name('profile.show');
-
-    Route::post('/profile/update', [ProfileController::class, 'updateInfo'])
-        ->name('profile.update');
-
-    Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])
-        ->name('profile.photo.update');
-
     Route::resource('consultations', ConsultationController::class);
-
 
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
         ->name('consultations.my');
-
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
     ->name('legal.manager');
@@ -82,24 +72,5 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
-
-    Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
-        ->name('legal.manager');
-
-    Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])
-        ->name('consultations.assign');
-
-    Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'])
-        ->name('employee.dashboard');
-
-
-Route::get('/my-consultations', [ConsultationController::class, 'my'])
-    ->middleware('auth') // حماية الصفحة
-    ->name('consultations.my');
-    
-    Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
-    ->middleware('auth')
-    ->name('consultations.page');
-
+        
 });
-
