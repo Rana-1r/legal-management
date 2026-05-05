@@ -190,6 +190,12 @@ class ConsultationController extends Controller
         return view('Consultations.userPage.request-consultation');
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> d900c609af8e258355b238618e0745d1f1d58093
    public function my()
     {
         // جلب استشارات المستخدم الحالي
@@ -198,5 +204,6 @@ class ConsultationController extends Controller
         // مهم: المسار الصحيح للـ Blade
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
+
 
 }

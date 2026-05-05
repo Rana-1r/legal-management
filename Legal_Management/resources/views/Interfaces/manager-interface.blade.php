@@ -115,7 +115,7 @@
                         @forelse($lawyers as $lawyer)
                         <tr class="hover:bg-gray-50 transition">
                             <td class="p-4 font-bold text-wadimakkah-dark">#{{ $lawyer->user_id }}</td>
-                            <td class="p-4 font-bold text-wadimakkah-dark">{{ $lawyer->name }}</td>
+                            <td class="p-4 font-bold text-wadimakkah-dark">{{ $lawyer->full_name }}</td>
                             <td class="p-4 font-bold text-wadimakkah-dark">
                                 {{-- عرض عدد المهام المسندة حالياً --}}
                                 {{ \App\Models\Task::where('assigned_to', $lawyer->user_id)->count() }}

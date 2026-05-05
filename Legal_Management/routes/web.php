@@ -17,7 +17,7 @@ Route::post('/', [LoginController::class, 'login']);
 
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
-
+ 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
@@ -34,9 +34,8 @@ Route::get('/user-interface', [DashboardController::class, 'index'])
     ->name('user-interface');
 
 Route::resource('consultations', ConsultationController::class);
-
+  
 Route::get('/my-consultations', [ConsultationController::class, 'my'])
-    ->middleware('auth') // حماية الصفحة
     ->name('consultations.my');
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
@@ -70,6 +69,7 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
+<<<<<<< HEAD
 Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
     ->name('manager.interface');
 
@@ -81,4 +81,6 @@ Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage
 Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
     ->name('employee.interface');
 
+=======
+>>>>>>> d900c609af8e258355b238618e0745d1f1d58093
 });
