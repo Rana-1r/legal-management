@@ -69,18 +69,4 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
-<<<<<<< HEAD
-Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
-    ->name('manager.interface');
-
-// صفحة الموظف القانوني للإستشارات
-Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
-    ->name('employee.legal');
-
-// لوحة تحكم الموظف القانوني 
-Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
-    ->name('employee.interface');
-
-=======
->>>>>>> d900c609af8e258355b238618e0745d1f1d58093
 });
