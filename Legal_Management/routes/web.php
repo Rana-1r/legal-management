@@ -17,7 +17,11 @@ Route::post('/', [LoginController::class, 'login']);
 
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
@@ -30,12 +34,17 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 Route::resource('consultations', ConsultationController::class)
     ->except(['show']);
 
+<<<<<<< HEAD
     Route::get('/user-interface', [DashboardController::class, 'index'])
         ->name('user-interface');
+=======
+Route::get('/user-interface', [DashboardController::class, 'index'])
+    ->name('user-interface');
+>>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c
 
-    Route::get('/profile', [ProfileController::class, 'show'])
-        ->name('profile.show');
+Route::resource('consultations', ConsultationController::class);
 
+<<<<<<< HEAD
     Route::post('/profile/update', [ProfileController::class, 'updateInfo'])
         ->name('profile.update');
 
@@ -56,6 +65,11 @@ Route::resource('consultations', ConsultationController::class)
     Route::get('/my-consultations', [ConsultationController::class, 'my'])
         ->name('consultations.my');
 
+=======
+Route::get('/my-consultations', [ConsultationController::class, 'my'])
+    ->middleware('auth') // حماية الصفحة
+    ->name('consultations.my');
+>>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c
 
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
     ->name('legal.manager');
@@ -68,7 +82,8 @@ Route::get('/employee/dashboard', [ConsultationController::class, 'employeePage'
     ->middleware('auth');
 
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
-    ->name('consultations.user');
+    ->middleware('auth')
+    ->name('consultations.page');
 
 Route::get('/legal/employee', [ConsultationController::class, 'employeePage'])
     ->name('legal.employee')
@@ -91,6 +106,7 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
+<<<<<<< HEAD
 
     Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
         ->name('legal.manager');
@@ -138,3 +154,9 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 
 
 
+=======
+Route::get('/manager-interface', [ConsultationController::class, 'managerIndex'])
+    ->name('manager.interface');
+
+});
+>>>>>>> dce6e4709648c56c20c7c7bbe30a003dc4857c5c

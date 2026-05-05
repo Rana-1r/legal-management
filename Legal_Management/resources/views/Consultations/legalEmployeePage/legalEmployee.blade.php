@@ -71,7 +71,7 @@
 
         <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
             <div class="bg-gray-50 px-6 py-4 border-b">
-                <h3 class="font-bold text-gray-700">قائمة استشاراتي</h3>
+                <h3 class="font-bold text-gray-700">قائمة الاستشارات</h3>
             </div>
             <table class="w-full text-center text-sm">
                 <thead class="bg-gray-100 text-gray-600">
