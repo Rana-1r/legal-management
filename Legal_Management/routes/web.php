@@ -72,5 +72,8 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
+
+    Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
+    ->name('tasks.assign');
         
 });
