@@ -70,7 +70,7 @@
             <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['total_contracts'] ?? 0 }}</span>
         </div>
         <div class="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl shadow-sm text-center">
-            <p class="text-gray-600 font-bold mb-2">إجمالي الإستشارات</p>
+            <p class="text-gray-600 font-bold mb-2">إجمالي الاستشارات</p>
             <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['total_consultations'] ?? 0 }}</span>
         </div>
     </div>
@@ -91,7 +91,7 @@
             </div>
 
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-                <h3 class="font-bold text-lg mb-2">الإستشارات القانونية</h3>
+                <h3 class="font-bold text-lg mb-2">الاستشارات القانونية</h3>
                 <p class="text-gray-500 text-sm mb-6">اطلع على الاستشارات، وقدم إعتماداتك.</p>
                 <a href="{{ route('legal.manager') }}" class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">الانتقال إلى الصفحة</a>
             </div>
@@ -170,7 +170,6 @@
                 <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
                 <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
             </div>
-
         </div>
     </footer>
 </body>
