@@ -88,6 +88,60 @@
                     <th class="p-4">الإجراء</th>
                 </tr>
             </thead>
+<!-- 🔎 شريط الفلترة -->
+<form method="GET" class="bg-white px-6 py-4 border-b grid grid-cols-1 md:grid-cols-5 gap-4">
+
+    <!-- بحث -->
+    <input 
+        type="text" 
+        name="search" 
+        value="{{ request('search') }}"
+        placeholder="ابحث عن استشارة..."
+        class="border rounded-lg px-3 py-2 text-sm focus:ring focus:ring-blue-200"
+    >
+
+    <!-- القسم -->
+    <select name="department" class="border rounded-lg px-3 py-2 text-sm">
+        <option value="">كل الأقسام</option>
+        <option value="القسم القانوني" {{ request('department')=='القسم القانوني' ? 'selected' : '' }}>القسم القانوني</option>
+        <option value="الموارد البشرية" {{ request('department')=='الموارد البشرية' ? 'selected' : '' }}>الموارد البشرية</option>
+        <option value="المالية" {{ request('department')=='المالية' ? 'selected' : '' }}>المالية</option>
+    </select>
+
+    <!-- الموظف -->
+    <select name="employee" class="border rounded-lg px-3 py-2 text-sm">
+        <option value="">كل الموظفين</option>
+        @foreach($employees as $emp)
+            <option value="{{ $emp->id }}" {{ request('employee')==$emp->id ? 'selected' : '' }}>
+                {{ $emp->full_name }}
+            </option>
+        @endforeach
+    </select>
+
+    <!-- الحالة -->
+    <select name="status" class="border rounded-lg px-3 py-2 text-sm">
+        <option value="">كل الحالات</option>
+        <option value="1" {{ request('status')=='1' ? 'selected' : '' }}>قيد المراجعة</option>
+        <option value="2" {{ request('status')=='2' ? 'selected' : '' }}>مكتملة</option>
+        <option value="3" {{ request('status')=='3' ? 'selected' : '' }}>مرفوضة</option>
+    </select>
+
+    <!-- التاريخ -->
+    <input 
+        type="date" 
+        name="date" 
+        value="{{ request('date') }}"
+        class="border rounded-lg px-3 py-2 text-sm"
+    >
+
+    <!-- زر تطبيق -->
+    <div class="md:col-span-5 flex justify-end">
+        <button class="bg-wadimakkah-dark text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition">
+            تطبيق الفلتر
+        </button>
+    </div>
+
+</form>
 
             <tbody class="divide-y divide-gray-100">
                 @foreach($consultations as $c)

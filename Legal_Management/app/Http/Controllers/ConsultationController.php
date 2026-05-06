@@ -203,14 +203,50 @@ class ConsultationController extends Controller
         // مهم: المسار الصحيح للـ Blade
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
-     // جدول الاستشارات
-     public function consultationsTable()
-{
-    $consultations = \App\Models\Consultation::with('status')->latest()->get();
 
-    return view('Consultations.legalEmployeePage.consultations-table', compact('consultations'));
+
+     // جدول الاستشارات + فلترة
+     public function consultationsTable(Request $request)
+  {
+    $consultations = \App\Models\Consultation::with('status')->latest()->get();
+    $query = Consultation::query();
+
+    // بحث نصي
+    if ($request->search) {
+        $query->where('title', 'LIKE', "%{$request->search}%");
+    }
+
+    // فلترة القسم
+    if ($request->department) {
+        $query->where('department', $request->department);
+    }
+
+    // فلترة الموظف
+    if ($request->employee) {
+        $query->where('assigned_to', $request->employee);
+    }
+
+    // فلترة الحالة
+    if ($request->status) {
+        $query->where('status_id', $request->status);
+    }
+
+    // فلترة التاريخ
+    if ($request->date) {
+        $query->whereDate('created_at', $request->date);
+    }
+
+    $consultations = $query->latest()->get();
+
+    // الموظفين (للفلتر)
+    $employees = User_wm::all();
+
+    return view('Consultations.legalEmployeePage.consultations-table', compact('consultations', 'employees'));
+
+    //return view('Consultations.legalEmployeePage.consultations-table', compact('consultations'));
 
 }
+
 
 
 }
