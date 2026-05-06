@@ -48,15 +48,9 @@
         </div>
 
         <div class="flex items-center gap-6">
-<<<<<<< HEAD
-            <i class="fas fa-user-circle text-2xl hover:text-blue-300 cursor-pointer"></i>
-            <i class="fas fa-bell text-xl hover:text-blue-300 cursor-pointer"></i>
-            <i class="fas fa-cog text-xl hover:text-blue-300 cursor-pointer"></i>
-=======
             <i class="fas fa-user-circle text-2xl"></i>
             <i class="fas fa-bell text-xl"></i>
             <i class="fas fa-cog text-xl"></i>
->>>>>>> 4d75cb709838f52c7f1919631f7a62ddd6b9c4f5
         </div>
 
     </div>
