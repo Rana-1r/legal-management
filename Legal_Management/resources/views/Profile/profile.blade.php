@@ -217,7 +217,6 @@
                 <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
                 <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
             </div>
-
         </div>
     </footer>
 
