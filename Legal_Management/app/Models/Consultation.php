@@ -9,6 +9,7 @@ class Consultation extends Model
     protected $primaryKey = 'consultation_id';
 
     protected $fillable = [
+        'title',
         'consulation_type',
         'priority',
         'request_date', 

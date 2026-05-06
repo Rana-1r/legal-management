@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('consultation_id');
 
             $table->string('consulation_type');
+             $table->string('title');
             $table->date('request_date');
             $table->date('response_date')->nullable();
             $table->string('status');
