@@ -75,10 +75,10 @@
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
-                        <th class="p-4 w-1/4 text-center">نوع الإستشارة</th>
-                        <th class="p-4 w-1/4 text-center">الأولوية</th>
-                        <th class="p-4 w-1/4 text-center">إسناد لمحامي</th>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">نوع الإستشارة</th>
+                        <th class="p-4 text-center">الأولوية</th>
+                        <th class="p-4 text-center">إسناد لمحامي</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -119,15 +119,15 @@
     </div>
 
     <h2 class="text-xl font-bold text-gray-700 mb-6">طلبات بحاجة إلى اعتماد</h2>
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden mb-12">
         <div class="overflow-x-auto">
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
-                        <th class="p-4 w-1/4 text-center">المحامي المسؤول</th>
-                        <th class="p-4 w-1/4 text-center">الحالة</th>
-                        <th class="p-4 w-1/4 text-center">الإجراء</th>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 text-center">الحالة</th>
+                        <th class="p-4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -148,36 +148,82 @@
             </table>
         </div>
     </div>
+
+    <h2 class="text-xl font-bold text-gray-700 mb-6">أرشفة الاستشارات</h2>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-right border-collapse text-sm">
+                <thead class="bg-gray-100 text-gray-600">
+                    <tr>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">تاريخ الطلب</th>
+                        <th class="p-4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 text-center">الحالة</th>
+                        <th class="p-4 text-center">الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @forelse($archivedConsultations as $archive)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $archive->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->created_at->format('d/m/Y') }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->status }}</td>
+                        <td class="px-4 py-4 text-center">
+                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                                عرض الرد
+                            </button>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="p-6 text-center text-gray-500">لا توجد استشارات مؤرشفة حالياً</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
 </main>
 
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
-    <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm text-center">
-        <div>
-            <h5 class="font-bold mb-4">روابط مهمة</h5>
-            <ul class="space-y-2 text-gray-300">
-                <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
-                <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
-            </ul>
-        </div>
-        <div>
-            <h5 class="font-bold mb-4">المساعدة والدعم</h5>
-            <ul class="space-y-2 text-gray-300">
-                <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
-                <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
-            </ul>
-        </div>
-        <div>
-            <h5 class="font-bold mb-4 text-center">وسائل التواصل الاجتماعي</h5>
-            <div class="flex gap-4 text-2xl text-gray-300 justify-center">
-                <i class="fab fa-linkedin"></i><i class="fab fa-youtube"></i><i class="fab fa-instagram"></i>
+        <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
+
+            <div>
+                <h5 class="font-bold mb-4">روابط مهمة</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+                </ul>
             </div>
+
+            <div>
+                <h5 class="font-bold mb-4">المساعدة والدعم</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
+                <div class="flex gap-4 text-2xl text-gray-300">
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center text-center px-6 -mt-4">
+                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+                <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
+                <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
+            </div>
+
         </div>
-        <div>
-            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20 mb-4 mx-auto opacity-80">
-            <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 @if(session('success'))
 <div id="toast" class="fixed bottom-10 left-10 bg-green-600 text-white px-6 py-3 rounded-lg shadow-2xl z-50 flex items-center gap-3">
