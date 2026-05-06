@@ -75,10 +75,10 @@
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
-                        <th class="p-4 w-1/4 text-center">نوع الإستشارة</th>
-                        <th class="p-4 w-1/4 text-center">الأولوية</th>
-                        <th class="p-4 w-1/4 text-center">إسناد لمحامي</th>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">نوع الإستشارة</th>
+                        <th class="p-4 text-center">الأولوية</th>
+                        <th class="p-4 text-center">إسناد لمحامي</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -119,15 +119,15 @@
     </div>
 
     <h2 class="text-xl font-bold text-gray-700 mb-6">طلبات بحاجة إلى اعتماد</h2>
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden mb-12">
         <div class="overflow-x-auto">
             <table class="w-full text-right border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4 text-center">رقم الطلب</th>
-                        <th class="p-4 w-1/4 text-center">المحامي المسؤول</th>
-                        <th class="p-4 w-1/4 text-center">الحالة</th>
-                        <th class="p-4 w-1/4 text-center">الإجراء</th>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 text-center">الحالة</th>
+                        <th class="p-4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -143,6 +143,42 @@
                         </td>
                     </tr>
                     @empty
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-bold text-gray-700 mb-6">أرشفة الاستشارات</h2>
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-right border-collapse text-sm">
+                <thead class="bg-gray-100 text-gray-600">
+                    <tr>
+                        <th class="p-4 text-center">رقم الطلب</th>
+                        <th class="p-4 text-center">تاريخ الطلب</th>
+                        <th class="p-4 text-center">المحامي المسؤول</th>
+                        <th class="p-4 text-center">الحالة</th>
+                        <th class="p-4 text-center">الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @forelse($archivedConsultations as $archive)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">#{{ $archive->consultation_id }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->created_at->format('d/m/Y') }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->assignedTo->full_name ?? 'غير معروف' }}</td>
+                        <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->status }}</td>
+                        <td class="px-4 py-4 text-center">
+                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                                عرض الرد
+                            </button>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="p-6 text-center text-gray-500">لا توجد استشارات مؤرشفة حالياً</td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>
