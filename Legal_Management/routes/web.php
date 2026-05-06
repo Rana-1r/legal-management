@@ -65,11 +65,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
         ->name('tasks.complete');
 
-// صفحة الموظف القانوني للإستشارات
-Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
-    ->name('employee.legal');
+    // الموظف القانوني
+    Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
+        ->name('employee.legal');
 
-// لوحة تحكم الموظف القانوني 
-Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
-    ->name('employee.interface');
+    Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
+        ->name('employee.interface');
+
 });

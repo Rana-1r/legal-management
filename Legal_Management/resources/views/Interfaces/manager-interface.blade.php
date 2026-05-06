@@ -97,7 +97,6 @@
             </div>
         </div>
     </div>
-
     <h2 class="text-xl font-bold text-gray-700 mb-6">إسناد المهام</h2>
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
         <div class="overflow-x-auto">
