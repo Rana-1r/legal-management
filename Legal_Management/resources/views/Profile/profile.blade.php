@@ -57,11 +57,10 @@
 </a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
                  <a href="{{ route('consultations.page') }}"
-   class="hover:text-wadimakkah-light transition">
-   الرئيسية
-</a>
+                <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            
+                <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
                     <i class="fas fa-globe text-wadimakkah-light"></i>
@@ -218,7 +217,6 @@
                 <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
                 <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
             </div>
-
         </div>
     </footer>
 

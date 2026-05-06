@@ -64,12 +64,15 @@ class ConsultationController extends Controller
 
         $pendingApprovals = Consultation::where('status', 'بحاجة إلى اعتماد')->get();
 
+        $archivedConsultations = Consultation::where('is_closed', true)->get();
+
         $lawyers = User_wm::where('role_id', 1)->get();
 
         return view('Consultations.legalManager.legalmanager', [
             'stats'            => $stats,
             'needsAssignment'  => $needsAssignment,
             'pendingApprovals' => $pendingApprovals,
+            'archivedConsultations' => $archivedConsultations,
             'lawyers'          => $lawyers
         ]);
 
