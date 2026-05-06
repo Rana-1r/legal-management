@@ -200,6 +200,14 @@ class ConsultationController extends Controller
         // مهم: المسار الصحيح للـ Blade
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
+     // جدول الاستشارات
+     public function consultationsTable()
+{
+    $consultations = \App\Models\Consultation::with('status')->latest()->get();
+
+    return view('Consultations.legalEmployeePage.consultations-table', compact('consultations'));
+
+}
 
 
 }

@@ -71,5 +71,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
         ->name('employee.interface');
+    // جدول الاستشارات
+    Route::get('/consultations/table', [ConsultationController::class, 'consultationsTable'])
+    ->name('consultations.table');
 
 });
