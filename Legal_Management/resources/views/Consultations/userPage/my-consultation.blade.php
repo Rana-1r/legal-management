@@ -125,6 +125,7 @@ tailwind.config = {
 
                     <td class="py-3 font-medium">
                         {{ $consultation->consultation_id }}
+               
                     </td>
 
                     <td>
@@ -152,7 +153,7 @@ tailwind.config = {
                     </td>
 
                     <td>
-                        {{ optional($consultation->assignedTo)->name ?? '-' }}
+                        {{$consultation->assigned_to->full_name ?? 'لم يتم التعيين بعد' }}
                     </td>
 
                     <td>

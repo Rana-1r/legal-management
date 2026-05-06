@@ -94,28 +94,33 @@
 <!-- SERVICES -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-        <h3 class="font-bold text-lg mb-2">طلب استشارة</h3>
-        <p class="text-gray-500 text-sm mb-6">تتيح هذه الخدمة للمستخدم تقديم طلب استشارة قانونية جديدة عبر إدخال تفاصيل الطلب وتحديد نوع الاستشارة وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.</p>
-        <a href="#" class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
-    الانتقال إلى الخدمة
-</a>
-    </div>
-
+ <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
+    
+    <h3 class="font-bold text-lg mb-2">طلب استشارة</h3>
+    <p class="text-gray-500 text-sm mb-6">
+        تتيح هذه الخدمة للمستخدم تقديم طلب استشارة قانونية جديدة عبر إدخال تفاصيل الطلب وتحديد نوع الاستشارة وإرفاق المستندات اللازمة لمراجعتها من قبل الإدارة القانونية.
+    </p>
+    <a href="{{ route('consultations.create') }}"
+       class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
+        الانتقال إلى الخدمة
+    </a>
+</div>
     <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
         <h3 class="font-bold text-lg mb-2">متابعة حالة الاستشارات</h3>
         <p class="text-gray-500 text-sm mb-6">تتيح هذه الخدمة للمستخدم تتبع تقدم استشاراته ومعرفة آخر التحديثات على كل طلب، مع إمكانية الاطلاع على تفاصيل الحالة والتغييرات التي تطرأ عليها بشكل مستمر ودقيق.</p>
-        <a href="#" class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
-    الانتقال إلى الخدمة
-</a>
+    <a href="{{ route('consultations.status') }}"
+       class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
+        الانتقال إلى الخدمة
+    </a>
     </div>
 
     <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
         <h3 class="font-bold text-lg mb-2">استشاراتي</h3>
         <p class="text-gray-500 text-sm mb-6">تتيح هذه الخدمة للمستخدم إدارة واستعراض جميع طلبات الاستشارات الخاصة به، مع عرض التفاصيل الكاملة لكل استشارة، والاطلاع على الردود والتوصيات القانونية المرتبطة بها.</p>
-        <a href="#" class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
-    الانتقال إلى الخدمة
-</a>
+      <a href="{{ route('consultations.my') }}"
+       class="block bg-gray-100 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">
+        الانتقال إلى الخدمة
+    </a>
     </div>
 
 </div>
@@ -171,11 +176,11 @@
         <table class="w-full text-right text-sm border-collapse">
             <thead class="bg-gray-100 text-gray-600">
                 <tr>
-                    <th class="p-4">رقم</th>
-                    <th class="p-4">عنوان</th>
+                    <th class="p-4"> رقم الطلب</th>
+                    <th class="p-4">عنوان الاستشارة</th>
                     <th class="p-4">الحالة</th>
-                    <th class="p-4">المحامي</th>
-                    <th class="p-4 text-center">إجراء</th>
+                    <th class="p-4">المحامي </th>
+                    <th class="p-4 text-center">الإجراءات</th>
                 </tr>
             </thead>
 
