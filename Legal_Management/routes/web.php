@@ -65,7 +65,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
         ->name('tasks.complete');
 
-<<<<<<< HEAD
     // الموظف القانوني
     Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
         ->name('employee.legal');
@@ -73,13 +72,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
         ->name('employee.interface');
 
-=======
-// صفحة الموظف القانوني للإستشارات
-Route::get('/employee/legal', [ConsultationController::class, 'legalEmployeePage'])
-    ->name('employee.legal');
-
-// لوحة تحكم الموظف القانوني 
-Route::get('/employee/interface', [ConsultationController::class, 'employeeInterfacePage'])
-    ->name('employee.interface');
->>>>>>> 7877dc6f170533f4817599eb169d0f850cfb1ba7
 });
