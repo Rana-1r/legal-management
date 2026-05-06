@@ -30,17 +30,17 @@
     <div class="text-white px-16 py-6 flex items-center justify-between">
         <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
         <div class="flex gap-8 text-sm font-medium">
-            <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
             <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
             <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-            <a href="{{ route('legal.manager') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
             <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
             <a href="#" class="hover:text-wadimakkah-light transition">
                 اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
             </a>
         </div>
         <div class="flex items-center gap-6">
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
             <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
         </div>
