@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>منصة الإدارة القانونية</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,7 +33,10 @@
                 <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-                <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+      <a href="{{ route('consultations.page') }}"
+   class="hover:text-wadimakkah-light transition">
+   الاستشارات
+</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
                 <a href="#" class="hover:text-wadimakkah-light transition">
                     اللغة العربية
@@ -80,7 +83,10 @@
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center flex flex-col justify-between">
                 <h3 class="font-bold mb-4">طلب استشارة</h3>
                 <p class="text-sm text-gray-600 mb-6">تتيح هذه الخدمة تقديم طلب استشارة قانونية ومتابعة حالة الطلب.</p>
-                <button class="bg-gray-100 px-4 py-2 rounded text-sm hover:bg-gray-200 w-full">الانتقال للخدمة</button>
+                <button onclick="window.location='{{ route('consultations.create') }}'"
+    class="bg-gray-100 px-4 py-2 rounded text-sm hover:bg-gray-200 w-full">
+    الانتقال للخدمة
+</button>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center flex flex-col justify-between">
                 <h3 class="font-bold mb-4">متابعة الجلسات</h3>

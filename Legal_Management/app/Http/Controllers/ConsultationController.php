@@ -190,6 +190,8 @@ class ConsultationController extends Controller
         return view('Consultations.userPage.request-consultation');
     }
 
+
+
    public function my()
     {
         // جلب استشارات المستخدم الحالي

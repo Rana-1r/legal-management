@@ -74,10 +74,13 @@
 
     <div class="w-[760px] bg-gray-100 rounded-lg shadow-sm px-4 py-2 flex items-center justify-between gap-3">
 
-        <button class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 flex items-center gap-1">
-            <span>🔍</span>
-            البحث برقم الإستشارة
-        </button>
+        
+    <input type="text" name="search"
+        placeholder="اكتب رقم الاستشارة..."
+        class="bg-white px-3 py-1 rounded text-xs border outline-none">
+
+  
+
 
         <select class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none">
             <option>المستشار المسؤول</option>
