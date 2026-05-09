@@ -97,16 +97,17 @@
             </div>
         </div>
     </div>
+
     <h2 class="text-xl font-bold text-gray-700 mb-6">إسناد المهام</h2>
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-right border-collapse text-sm">
+            <table class="w-full text-center border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
-                        <th class="p-4 w-1/4 text-center">رقم المحامي</th>
-                        <th class="p-4 w-1/4 text-center">اسم المحامي</th>
-                        <th class="p-4 w-1/4 text-center">عدد المهام</th>
-                        <th class="p-4 w-1/4 text-center">الإجراء</th>
+                        <th class="p-4 text-center">رقم المحامي</th>
+                        <th class="p-4 text-center">اسم المحامي</th>
+                        <th class="p-4 text-center">عدد المهام</th>
+                        <th class="p-4 text-center">الإجراء</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -126,13 +127,29 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="p-6 text-center text-gray-500">لا يوجد موظفين قانونيين حالياً.</td>
+                        <td colspan="4" class="p-6 text-center text-gray-500">لا يوجد موظفين قانونيين حالياً.</td>
                     </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
     </div>
+
+    <div id="assignModal" class="fixed bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">إضافة مهمة</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                      أنت الآن تقوم بتعيين مهمة للمحامي: <span id="modalLawyerName" class="font-bold text-blue-800"></span>
+                    </p>
+                    <form action="{{ route('tasks.assign') }}" method="POST" class="mt-4">
+                        @csrf
+                        <input type="hidden" name="assigned_to" id="lawyerIdInput">
+                        <input type="text" name="title" class="w-full border border-gray-100 rounded-md p-2 text-sm mb-3" placeholder="عنوان المهمة" required>
+                        <textarea name="description" class="w-full border border-gray-100 rounded-md p-2 text-sm" placeholder="اكتب تفاصيل المهمة هنا..." required></textarea>
+                        
+
 </main>
 
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
@@ -172,5 +189,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+function openAssignModal(lawyerId, lawyerName) {
+    document.getElementById('modalLawyerName').innerText = lawyerName;
+    
+    // تأكد أن الـ ID هنا يطابق الـ ID في الـ input
+    document.getElementById('lawyerIdInput').value = lawyerId; 
+    
+    document.getElementById('assignModal').classList.remove('hidden');
+}
+
+function closeAssignModal() {
+    // تأكد أن 'assignModal' هو نفس الـ ID المعطى للحاوية الرئيسية للنافذة
+    const modal = document.getElementById('assignModal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+</script>
 </body>
 </html>
