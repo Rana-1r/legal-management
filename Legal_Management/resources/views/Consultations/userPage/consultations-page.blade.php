@@ -187,10 +187,15 @@
             <tbody class="divide-y divide-gray-100">
                 @forelse($consultations ?? [] as $c)
                 <tr class="hover:bg-gray-50 transition">
-                    <td class="p-4 font-bold text-wadimakkah-dark">#{{ $c->id }}</td>
+                    <td class="p-2">
+                 <br>
+                 {{ optional($c->assignedTo)->user_id ?? 'NULL' }}
+                </td>
                     <td class="p-4">{{ $c->title }}</td>
                     <td class="p-4">{{ $c->status }}</td>
-                    <td class="p-4">{{ $c->lawyer }}</td>
+                    <td class="p-4">
+                    {{ optional($c->assignedTo)->full_name ?? 'لم يتم التعيين بعد' }}
+                     </td>
                     <td class="p-4 text-center">
                         <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                             عرض
@@ -210,37 +215,41 @@
 </main>
 
 <!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
-    <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm text-center">
+    <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
 
         <div>
             <h5 class="font-bold mb-4">روابط مهمة</h5>
-            <ul class="space-y-2 text-gray-300 text-xs">
-                <li><a href="#" class="hover:text-wadimakkah-light">سياسة الخصوصية</a></li>
-                <li><a href="#" class="hover:text-wadimakkah-light">الشروط</a></li>
+            <ul class="space-y-2 text-gray-300">
+                <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+                <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
             </ul>
         </div>
 
         <div>
-            <h5 class="font-bold mb-4 text-xs">الدعم</h5>
-            <ul class="space-y-2 text-gray-300 text-xs">
-                <li><a href="#">الدعم الفني</a></li>
-                <li><a href="#">تواصل معنا</a></li>
+            <h5 class="font-bold mb-4">المساعدة والدعم</h5>
+            <ul class="space-y-2 text-gray-300">
+                <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
+                <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
             </ul>
         </div>
 
         <div>
-            <h5 class="font-bold mb-4 text-xs">التواصل</h5>
-            <div class="flex gap-4 justify-center text-xl text-gray-300">
-                <i class="fab fa-linkedin"></i>
-                <i class="fab fa-youtube"></i>
-                <i class="fab fa-instagram"></i>
+            <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
+            <div class="flex gap-4 text-2xl text-gray-300">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
 
-        <div>
-            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-16 mb-4 mx-auto opacity-80">
-            <p class="text-[10px] text-gray-400">© 2026 WadiMakkah</p>
+        <div class="flex flex-col items-center text-center px-6 -mt-4">
+            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20 mb-4 opacity-80">
+            <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
+            <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
         </div>
 
     </div>

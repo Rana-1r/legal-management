@@ -153,11 +153,11 @@
                                 </td>
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->updated_at->diffForHumans() }}
+                                 {{ $consultation->updated_at ? $consultation->updated_at->diffForHumans() : '-' }}
                                 </td>
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->created_at->diffForHumans() }}
+                                    {{ $consultation->created_at ? $consultation->created_at->diffForHumans() : '-' }}
                                 </td>
 
                             </tr>

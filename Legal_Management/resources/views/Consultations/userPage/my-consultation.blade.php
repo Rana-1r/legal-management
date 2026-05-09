@@ -152,16 +152,16 @@ tailwind.config = {
                         {{ $consultation->request_date }}
                     </td>
 
-                    <td>
-                        {{$consultation->assigned_to->full_name ?? 'لم يتم التعيين بعد' }}
-                    </td>
+                   <td>
+          {{ optional($consultation->assignedTo)->full_name ?? 'لم يتم التعيين بعد' }}
+</td>
 
-                    <td>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition">
+                     </td>
+                    <td class="p-4 text-center">
+                        <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                             عرض
                         </button>
                     </td>
-
                 </tr>
 
                 @empty

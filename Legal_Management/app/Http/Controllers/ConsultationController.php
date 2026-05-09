@@ -32,6 +32,10 @@ class ConsultationController extends Controller
             
         ]);
     }
+    public function assignedTo()
+{
+    return $this->belongsTo(User_wm::class, 'assigned_to', 'user_id');
+}
 
     /**
      * صفحة حالة الاستشارات (اليوزر)
