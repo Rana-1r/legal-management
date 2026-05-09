@@ -121,7 +121,7 @@
                         </td>
                         <td class="px-4 py-4 text-center">
                             <button onclick="openAssignModal({{ $lawyer->user_id }}, '{{ $lawyer->name }}')" class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
-                                إضافة مهمة
+                                إسناد مهمة
                             </button>
                         </td>
                     </tr>
@@ -135,21 +135,41 @@
         </div>
     </div>
 
-    <div id="assignModal" class="fixed bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+    <div id="assignModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">إضافة مهمة</h3>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">إسناد مهمة</h3>
                 <div class="mt-2 px-7 py-3">
                     <p class="text-sm text-gray-500">
-                      أنت الآن تقوم بتعيين مهمة للمحامي: <span id="modalLawyerName" class="font-bold text-blue-800"></span>
+                      أنت الآن تقوم بإسناد مهمة للمحامي: <span id="modalLawyerName" class="font-bold text-blue-800"></span>
                     </p>
-                    <form action="{{ route('tasks.assign') }}" method="POST" class="mt-4">
+                    <form action="{{ route('tasks.assign') }}" method="POST" class="mt-4" id="assignTaskForm">
                         @csrf
                         <input type="hidden" name="assigned_to" id="lawyerIdInput">
-                        <input type="text" name="title" class="w-full border border-gray-100 rounded-md p-2 text-sm mb-3" placeholder="عنوان المهمة" required>
-                        <textarea name="description" class="w-full border border-gray-100 rounded-md p-2 text-sm" placeholder="اكتب تفاصيل المهمة هنا..." required></textarea>
-                        
+                        <input type="text" name="title" class="w-full border border-gray-300 rounded-md p-2 text-sm mb-3" placeholder="عنوان المهمة" required>
+                        <textarea name="description" class="w-full border border-gray-300 rounded-md p-2 text-sm" placeholder="اكتب تفاصيل المهمة هنا..." required></textarea>
+                         
+                        <select name="priority" class="w-full border border-gray-300 rounded-md p-2 text-sm mt-3">
+                            <option value="" disabled selected>الأولوية</option>
+                            <option value="low">منخفض</option>
+                            <option value="medium">متوسط</option>
+                            <option value="high">عالي</option>
+                        </select>
 
+                        <div class="flex gap-3 items-center mt-3">
+                            <button type="submit" class="flex-1 px-4 py-2 bg-wadimakkah-dark text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-800 transition">
+                                تأكيد الإسناد
+                            </button>
+
+                            <button type="button" onclick="closeAssignModal()" class="flex-1 px-4 py-2 bg-gray-400 text-white text-sm font-medium rounded-md w-full shadow-sm hover:bg-gray-500 transition">
+                                إلغاء
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
