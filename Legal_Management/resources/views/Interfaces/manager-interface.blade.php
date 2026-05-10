@@ -53,7 +53,7 @@
         <p class="text-gray-500 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
     </div>
 
-    <div class="flex justify-center mt-6 px-10 mb-12">
+    <div class="flex justify-center mt-8 px-10 mb-12">
         <div class="flex items-center bg-white shadow-md rounded-lg w-full max-w-3xl px-4 py-3 border border-gray-200">
             <i class="fas fa-search text-gray-400 ml-2"></i>
             <input type="text" placeholder="ابحث عن قضية، عقد، استشارة، مستند، رقم مرجعي..." class="flex-1 outline-none text-sm bg-transparent">
