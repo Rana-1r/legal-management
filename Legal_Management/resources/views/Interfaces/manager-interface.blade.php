@@ -50,7 +50,7 @@
 <main class="container mx-auto px-6 py-10 flex-grow">
     <div class="mt-10 text-center">
         <h1 class="text-3xl font-bold text-gray-800">منصة الإدارة القانونية</h1>
-        <p class="text-sm text-gray-500 mt-2">المنصة الموحدة لإدارة الخدمات القانونية بشركة وادي مكة</p>
+        <p class="text-gray-500 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
     </div>
 
     <div class="flex justify-center mt-6 px-10 mb-12">
