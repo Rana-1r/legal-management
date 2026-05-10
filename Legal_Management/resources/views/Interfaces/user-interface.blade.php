@@ -51,16 +51,16 @@
 
 <main class="flex-grow container mx-auto px-6 py-10">
         
-        <div class="text-center mb-10">
+        <div class="mt-10 text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">منصة الإدارة القانونية</h1>
-            <p class="text-gray-600 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
+            <p class="text-gray-500 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
             
-          <div class="max-w-4xl mx-auto bg-white border border-gray-100 rounded-xl shadow-md p-3 flex items-center gap-4 transition-all hover:shadow-lg">
-    <i class="fas fa-search text-gray-400 mr-3"></i>
-    <input type="text" 
-           placeholder="ابحث عن قضية، عقد، مستند، رقم مرجعي..." 
-           class="flex-grow bg-transparent outline-none p-2 text-gray-700 placeholder-gray-400">
-</div>
+          <div class="flex justify-center mt-6 px-10 mb-12">
+        <div class="flex items-center bg-white shadow-md rounded-lg w-full max-w-3xl px-4 py-3 border border-gray-200">
+            <i class="fas fa-search text-gray-400 ml-2"></i>
+            <input type="text" placeholder="ابحث عن قضية، عقد، استشارة، مستند، رقم مرجعي..." class="flex-1 outline-none text-sm bg-transparent">
+        </div>
+    </div>
         </div>
         <div class="bg-wadimakkah-dark text-white p-4 text-center rounded-t-lg font-bold text-lg mt-10">
     أبرز الخدمات
