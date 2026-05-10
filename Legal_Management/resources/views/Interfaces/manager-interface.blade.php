@@ -120,7 +120,7 @@
                             {{ \App\Models\Task::where('assigned_to', $lawyer->user_id)->count() }}
                         </td>
                         <td class="px-4 py-4 text-center">
-                            <button onclick="openAssignModal({{ $lawyer->user_id }}, '{{ $lawyer->name }}')" class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                            <button onclick="openAssignModal({{ $lawyer->user_id }}, '{{ $lawyer->full_name }}')" class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
                                 إسناد مهمة
                             </button>
                         </td>
@@ -141,23 +141,23 @@
                 <h3 class="text-lg leading-6 font-medium text-gray-900">إسناد مهمة</h3>
                 <div class="mt-2 px-7 py-3">
                     <p class="text-sm text-gray-500">
-                      أنت الآن تقوم بإسناد مهمة للمحامي: <span id="modalLawyerName" class="font-bold text-blue-800"></span>
+                      أنت الآن تقوم بإسناد مهمة للمحامي/ة: <span id="modalLawyerName" class="font-bold text-wadimakkah-dark"></span>
                     </p>
                     <form action="{{ route('tasks.assign') }}" method="POST" class="mt-4" id="assignTaskForm">
                         @csrf
                         <input type="hidden" name="assigned_to" id="lawyerIdInput">
                         <input type="text" name="title" class="w-full border border-gray-300 rounded-md p-2 text-sm mb-3" placeholder="عنوان المهمة" required>
-                        <textarea name="description" class="w-full border border-gray-300 rounded-md p-2 text-sm" placeholder="اكتب تفاصيل المهمة هنا..." required></textarea>
+                        <textarea name="description" class="w-full border border-gray-300 rounded-md p-2 text-sm mb-2" placeholder="اكتب تفاصيل المهمة هنا..." required></textarea>
                          
-                        <select name="priority" class="w-full border border-gray-300 rounded-md p-2 text-sm mt-3">
+                        <select name="priority" class="w-full border border-gray-300 rounded-md p-2 text-sm mb-6">
                             <option value="" disabled selected>الأولوية</option>
                             <option value="low">منخفض</option>
                             <option value="medium">متوسط</option>
                             <option value="high">عالي</option>
                         </select>
 
-                        <div class="flex gap-3 items-center mt-3">
-                            <button type="submit" class="flex-1 px-4 py-2 bg-wadimakkah-dark text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-800 transition">
+                        <div class="flex gap-3 items-center">
+                            <button type="submit" class="flex-1 px-4 py-2 bg-wadimakkah-dark text-white text-sm font-medium rounded-md w-full shadow-sm hover:bg-blue-800 transition">
                                 تأكيد الإسناد
                             </button>
 
@@ -174,7 +174,6 @@
 
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
         <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
-
             <div>
                 <h5 class="font-bold mb-4">روابط مهمة</h5>
                 <ul class="space-y-2 text-gray-300">

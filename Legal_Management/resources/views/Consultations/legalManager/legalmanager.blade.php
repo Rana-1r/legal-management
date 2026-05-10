@@ -72,7 +72,7 @@
     <h2 class="text-xl font-bold text-gray-700 mb-6">طلبات بحاجة إلى إسناد</h2>
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden mb-12">
         <div class="overflow-x-auto">
-            <table class="w-full text-right border-collapse text-sm">
+            <table class="w-full text-center border-collapse text-sm">
                 <thead class="bg-gray-100 text-gray-600">
                     <tr>
                         <th class="p-4 text-center">رقم الطلب</th>
