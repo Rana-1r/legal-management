@@ -210,6 +210,102 @@
             </tbody>
         </table>
     </div>
+    <!-- أرشفة الاستشارات القانونية -->
+<div class="mt-10"> 
+
+    <h2 class="text-xl font-bold text-gray-700 mb-6">
+        أرشفة الاستشارات القانونية
+    </h2>
+
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+
+        <table class="w-full text-right text-sm border-collapse">
+
+            <thead class="bg-gray-100 text-gray-600">
+
+                <tr>
+
+                    <th class="p-4">رقم الأرشيف</th>
+
+                    <th class="p-4">عنوان الاستشارة</th>
+
+                    <th class="p-4">الحالة</th>
+
+                    <th class="p-4">تاريخ الأرشفة</th>
+
+                    <th class="p-4 text-center">الإجراءات</th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody class="divide-y divide-gray-100">
+
+                @forelse($archivedConsultations ?? [] as $archive)
+                <!-- لوب يعرض الاستشارات المؤرشفة -->
+
+                <tr class="hover:bg-gray-50 transition">
+
+                    <td class="p-4">
+                        AR-{{ $archive->id }}
+                    </td>
+                    <!-- رقم الأرشيف -->
+
+
+                    <td class="p-4">
+                        {{ $archive->title }}
+                    </td>
+                    <!-- عنوان الاستشارة -->
+
+
+                    <td class="p-4 text-green-600 font-semibold">
+                   مكتمل 
+                    </td>
+                    <!-- حالة الاستشارة -->
+
+
+                    <td class="p-4">
+                        {{ $archive->updated_at ? $archive->updated_at->diffForHumans() : '-' }}
+                    </td>
+                    <!-- تاريخ الأرشفة -->
+
+
+                    <td class="p-4 text-center">
+
+                        <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+
+                            عرض
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                @empty
+                <!-- إذا ما فيه استشارات مؤرشفة -->
+
+                <tr>
+
+                    <td colspan="5" class="p-6 text-center text-gray-500">
+
+                        لا توجد استشارات مؤرشفة
+
+                    </td>
+
+                </tr>
+
+                @endforelse
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
 </div>
 
 </main>

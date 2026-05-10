@@ -15,8 +15,13 @@ class ConsultationController extends Controller
     public function userPage()
     {
         $consultations = Consultation::latest()->take(5)->get();
+        $archivedConsultations = Consultation::where('is_archived', 1)
+    ->latest()
+    ->get();
 
         return view('Consultations.userPage.consultations-page', [
+            
+            'archivedConsultations' => $archivedConsultations,
 
             'consultations' => $consultations,
 
@@ -29,6 +34,7 @@ class ConsultationController extends Controller
 
             // إشعارات
             'notifications' => []
+            
             
         ]);
     }
