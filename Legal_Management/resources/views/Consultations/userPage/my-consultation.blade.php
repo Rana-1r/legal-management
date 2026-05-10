@@ -175,7 +175,7 @@ tailwind.config = {
             </tbody>
         </table>
 
-        <div class="p-3 text-right">
+        <div class="p-3 text-left">
             <a href="#" class="text-blue-500 text-sm hover:underline">
                 عرض المزيد ←
             </a>

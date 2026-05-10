@@ -48,6 +48,15 @@ class ConsultationController extends Controller
             'consultations' => $consultations
         ]);
     }
+     public function my()
+    {
+        // جلب استشارات المستخدم الحالي
+        $consultations = Consultation::where('request_by', auth()->id())->get();
+
+       
+        return view('Consultations.userPage.my-consultation', compact('consultations'));
+    }
+
 
 
 
@@ -198,15 +207,6 @@ class ConsultationController extends Controller
     }
 
 
-
-   public function my()
-    {
-        // جلب استشارات المستخدم الحالي
-        $consultations = Consultation::where('request_by', auth()->id())->get();
-
-        // مهم: المسار الصحيح للـ Blade
-        return view('Consultations.userPage.my-consultation', compact('consultations'));
-    }
 
 
      // جدول الاستشارات + فلترة

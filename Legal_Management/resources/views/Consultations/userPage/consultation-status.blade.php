@@ -63,12 +63,7 @@
                 إدارة الاستشارات القانونية
             </h1>
 
-            @if(session('success'))
-                <div class="bg-green-100 text-green-700 px-4 py-3 rounded-lg mb-6 text-sm">
-                    {{ session('success') }}
-                </div>
-            @endif
-
+           
             <!-- FILTER BAR -->
 <div class="mb-8 flex justify-center">
 
