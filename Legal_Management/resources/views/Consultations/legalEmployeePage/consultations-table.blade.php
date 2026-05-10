@@ -36,9 +36,9 @@
         <li><a href="{{ route('employee.interface') }}" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-home ml-2"></i>لوحة التحكم</a></li>        
         <li><a href="{{ route('employee.legal') }}"class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-chart-line ml-2"></i>مؤشرات الاستشارات</a></li>        
         <li><a href="{{ route('consultations.table') }}" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-list ml-2"></i> قائمة الإستشارات</a></li>
-        <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-exclamation-circle ml-2"></i> بحاجة لمراجعة</a></li>
+        <!-- <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-exclamation-circle ml-2"></i> بحاجة لمراجعة</a></li>
         <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-bell ml-2"></i> تنبيهات</a></li>
-        <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-history ml-2"></i> آخر الأنشطة</a></li>
+        <li><a href="#" class="block p-3 rounded hover:bg-blue-800 transition"><i class="fas fa-history ml-2"></i> آخر الأنشطة</a></li> -->
     </ul>
 </aside>
 
