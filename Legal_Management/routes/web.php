@@ -75,4 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/consultations/table', [ConsultationController::class, 'consultationsTable'])
     ->name('consultations.table');
 
+Route::get('/consultations/{id}', [ConsultationController::class, 'show'])
+    ->name('consultations.show');
+
 });

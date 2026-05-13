@@ -261,7 +261,7 @@
 
 
                     <td class="p-4 text-green-600 font-semibold">
-                   مكتمل 
+                   مكتملة✔ 
                     </td>
                     <!-- حالة الاستشارة -->
 

@@ -30,7 +30,7 @@ class ConsultationController extends Controller
 
             'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
 
-            'replied' => Consultation::where('status', 'تم الرد')->count(),
+            'replied' => Consultation::whereIn('status', ['تم الرد', 'مكتملة'])->count(),
 
             // إشعارات
             'notifications' => []
@@ -62,7 +62,14 @@ class ConsultationController extends Controller
        
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
+  public function show($id)
+    {
+        // يجيب الاستشارة من قاعدة البيانات
+        $consultation = Consultation::findOrFail($id);
 
+        // يرسل البيانات للصفحة
+        return view('consultations.show', compact('Consultation'));
+    }
 
 
 
