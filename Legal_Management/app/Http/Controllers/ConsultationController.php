@@ -62,18 +62,26 @@ class ConsultationController extends Controller
        
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
-  public function show($id)
-    {
-        // يجيب الاستشارة من قاعدة البيانات
-        $consultation = Consultation::findOrFail($id);
+ public function showResponse()
+{
+    $consultation = (object) [
 
-        // يرسل البيانات للصفحة
-        return view('consultations.show', compact('Consultation'));
-    }
+        'id' => 3052,
 
+        'status' => 'تم الرد',
 
+        'lawyer' => 'أحمد السلمي',
 
+        'response' =>
+        'بعد مراجعة الطلب والمستندات المرفقة، تبين أن الحالة تستوجب اتخاذ الإجراءات القانونية اللازمة وفقًا للأنظمة المعمول بها داخل المملكة العربية السعودية.'
 
+    ];
+
+    return view(
+        'Consultations.userPage.show',
+        compact('consultation')
+    );
+}
 
     /**
      * صفحة المدير

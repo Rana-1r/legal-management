@@ -74,8 +74,9 @@ Route::middleware('auth')->group(function () {
     // جدول الاستشارات
     Route::get('/consultations/table', [ConsultationController::class, 'consultationsTable'])
     ->name('consultations.table');
-
-Route::get('/consultations/{id}', [ConsultationController::class, 'show'])
-    ->name('consultations.show');
-
+//صفحه عرض الرد القانوني
+Route::get(
+    '/consultation-response',
+    [ConsultationController::class, 'showResponse']
+)->name('consultation.response');
 });

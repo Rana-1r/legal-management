@@ -170,46 +170,170 @@
 
 <!-- TABLE -->
 <div class="mt-10">
-    <h2 class="text-xl font-bold text-gray-700 mb-6">آخر الطلبات</h2>
 
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-        <table class="w-full text-right text-sm border-collapse">
-            <thead class="bg-gray-100 text-gray-600">
+    <h2 class="text-2xl font-bold text-gray-700 mb-6">
+        آخر الطلبات
+    </h2>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+
+        <table class="w-full text-right">
+
+            <!-- HEADER -->
+
+            <thead class="bg-gray-100 text-gray-700 text-sm">
+
                 <tr>
-                    <th class="p-4"> رقم الطلب</th>
-                    <th class="p-4">عنوان الاستشارة</th>
-                    <th class="p-4">الحالة</th>
-                    <th class="p-4">المحامي </th>
-                    <th class="p-4 text-center">الإجراءات</th>
+
+                    <th class="p-5 font-bold">
+                        رقم الطلب
+                    </th>
+
+                    <th class="p-5 font-bold">
+                        عنوان الاستشارة
+                    </th>
+
+                    <th class="p-5 font-bold">
+                        الحالة
+                    </th>
+
+                    <th class="p-5 font-bold">
+                        المحامي
+                    </th>
+
+                    <th class="p-5 font-bold text-center">
+                        الإجراءات
+                    </th>
+
                 </tr>
+
             </thead>
 
-            <tbody class="divide-y divide-gray-100">
+            <!-- BODY -->
+
+            <tbody class="divide-y divide-gray-100 text-sm text-gray-700">
+
                 @forelse($consultations ?? [] as $c)
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-2">
-                 <br>
-                 {{ optional($c->assignedTo)->user_id ?? 'NULL' }}
-                </td>
-                    <td class="p-4">{{ $c->title }}</td>
-                    <td class="p-4">{{ $c->status }}</td>
-                    <td class="p-4">
-                    {{ optional($c->assignedTo)->full_name ?? 'لم يتم التعيين بعد' }}
-                     </td>
-                    <td class="p-4 text-center">
-                        <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
-                            عرض
-                        </button>
+
+                <tr class="hover:bg-gray-50 transition duration-200">
+
+                    <!-- رقم الطلب -->
+
+                    <td class="p-5 font-medium">
+                        {{ $c->id }}
                     </td>
+
+                    <!-- عنوان الاستشارة -->
+
+                    <td class="p-5">
+                        {{ $c->title }}
+                    </td>
+
+                    <!-- الحالة -->
+
+                    <td class="p-5">
+
+                        @if($c->status == 'مكتملة')
+
+                        <span
+                            class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                            مكتملة
+
+                        </span>
+
+                        @elseif($c->status == 'تم الرد')
+
+                        <span
+                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                            تم الرد
+
+                        </span>
+
+                        @elseif($c->status == 'متأخره')
+
+                        <span
+                            class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                            متأخره
+
+                        </span>
+
+                        @else
+
+                        <span
+                            class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                            {{ $c->status }}
+
+                        </span>
+
+                        @endif
+
+                    </td>
+
+                    <!-- المحامي -->
+
+                    <td class="p-5">
+
+                        {{ optional($c->assignedTo)->full_name ?? 'لم يتم التعيين بعد' }}
+
+                    </td>
+
+                    <!-- الإجراءات -->
+
+                    <td class="p-5 text-center">
+
+                        <a href="
+                        
+                        @if($c->status == 'مكتملة' || $c->status == 'تم الرد')
+                        
+                            {{ route('consultation.response') }}
+                        
+                        @else
+                        
+                            #
+                        
+                        @endif
+                        
+                        ">
+
+                            <button
+                                class="bg-[#243C96] hover:bg-[#1b2f77] text-white px-5 py-2 rounded-xl text-sm transition duration-200 shadow-sm">
+
+                                عرض
+
+                            </button>
+
+                        </a>
+
+                    </td>
+
                 </tr>
+
                 @empty
+
                 <tr>
-                    <td colspan="5" class="p-6 text-center text-gray-500">لا توجد طلبات</td>
+
+                    <td colspan="5"
+                        class="p-10 text-center text-gray-500">
+
+                        لا توجد طلبات حالياً
+
+                    </td>
+
                 </tr>
+
                 @endforelse
+
             </tbody>
+
         </table>
+
     </div>
+
+</div>
     <!-- أرشفة الاستشارات القانونية -->
 <div class="mt-10"> 
 
