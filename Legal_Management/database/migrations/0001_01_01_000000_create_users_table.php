@@ -24,8 +24,8 @@ public function up(): void {
         $table->string('email')->unique();
         $table->string('password_hash');
 
-        // 3. المفتاح الأجنبي (Foreign Key) مع علامة الربط في رسمتك
-        // لاحظي أننا استخدمنا unsignedBigInteger ليتوافق مع المفاتيح الأساسية
+
+      
         $table->foreignId('role_id')->nullable()->constrained('roles', 'role_id');
 
         // 4. بقية الحقول (Department & Boolean)

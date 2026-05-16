@@ -123,6 +123,30 @@
         </div>
     </div>
     </main> 
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const select = document.getElementById('dashboardSelect');
+    const frame = document.getElementById('powerBIFrame');
+
+    const dashboards = {
+        cases: "https://app.powerbi.com/view?r=eyJrIjoiZjI3NmZjM2YtNjUwYS00MDQ3LWI0MGUtNTk4ZWFlZjEwMzc3IiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9",
+        
+        contracts: "https://app.powerbi.com/view?r=eyJrIjoiMjZlZTY1Y2ItZGE1MS00NzNiLTk1YWItNTY1NzNkZTlmOWFlIiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9",
+
+        consultations: "https://app.powerbi.com/view?r=eyJrIjoiZjA4ODY2M2QtM2Y4Mi00OTlhLTk1OTYtOTE0YzBmNWRhN2IxIiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9"
+    };
+
+    //  تحميل القضايا تلقائياً
+    frame.src = dashboards["cases"];
+
+    // تغيير الداشبورد
+    select.addEventListener('change', function () {
+        frame.src = dashboards[this.value];
+    });
+
+});
+</script>
     
 
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
@@ -164,30 +188,6 @@
         </div>
     </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const select = document.getElementById('dashboardSelect');
-    const frame = document.getElementById('powerBIFrame');
-
-    const dashboards = {
-        cases: "https://app.powerbi.com/view?r=eyJrIjoiZjI3NmZjM2YtNjUwYS00MDQ3LWI0MGUtNTk4ZWFlZjEwMzc3IiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9",
-        
-        contracts: "https://app.powerbi.com/view?r=eyJrIjoiMjZlZTY1Y2ItZGE1MS00NzNiLTk1YWItNTY1NzNkZTlmOWFlIiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9",
-
-        consultations: "https://app.powerbi.com/view?r=eyJrIjoiZjA4ODY2M2QtM2Y4Mi00OTlhLTk1OTYtOTE0YzBmNWRhN2IxIiwidCI6Ijc5YTA1N2ZiLWIwZDUtNDRkZC04ZjkwLTBiZjcxNTFmNWMzZiIsImMiOjl9"
-    };
-
-    //  تحميل القضايا تلقائياً
-    frame.src = dashboards["cases"];
-
-    // تغيير الداشبورد
-    select.addEventListener('change', function () {
-        frame.src = dashboards[this.value];
-    });
-
-});
-</script>
 
 </body>
 </html>

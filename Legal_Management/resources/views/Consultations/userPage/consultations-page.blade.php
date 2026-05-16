@@ -48,7 +48,7 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <i class="fas fa-user-circle text-2xl"></i>
+          <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
             <i class="fas fa-bell text-xl"></i>
             <i class="fas fa-cog text-xl"></i>
         </div>
@@ -245,7 +245,7 @@
                         @elseif($c->status == 'تم الرد')
 
                         <span
-                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+                            class="bg-green-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
 
                             تم الرد
 
@@ -341,79 +341,98 @@
         أرشفة الاستشارات القانونية
     </h2>
 
-    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+    <!-- الكارد -->
+    <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
 
-        <table class="w-full text-right text-sm border-collapse">
+        <table class="w-full text-sm text-center">
 
-            <thead class="bg-gray-100 text-gray-600">
+            <!-- الهيدر -->
+            <thead class="bg-gray-100 text-gray-700">
 
                 <tr>
 
-                    <th class="p-4">رقم الأرشيف</th>
+                    <th class="p-5 font-bold">
+                        رقم الأرشيف
+                    </th>
 
-                    <th class="p-4">عنوان الاستشارة</th>
+                    <th class="p-5 font-bold">
+                        عنوان الاستشارة
+                    </th>
 
-                    <th class="p-4">الحالة</th>
+                    <th class="p-5 font-bold">
+                        الحالة
+                    </th>
 
-                    <th class="p-4">تاريخ الأرشفة</th>
+                    <th class="p-5 font-bold">
+                        تاريخ الأرشفة
+                    </th>
 
-                    <th class="p-4 text-center">الإجراءات</th>
+                    <th class="p-5 font-bold">
+                        الإجراءات
+                    </th>
 
                 </tr>
 
             </thead>
 
-
-
+           
             <tbody class="divide-y divide-gray-100">
 
-                @forelse($archivedConsultations ?? [] as $archive)
-                <!-- لوب يعرض الاستشارات المؤرشفة -->
+                @forelse($archivedConsultations ?? [] as $c)
 
                 <tr class="hover:bg-gray-50 transition">
 
-                    <td class="p-4">
-                        AR-{{ $archive->id }}
-                    </td>
                     <!-- رقم الأرشيف -->
-
-
-                    <td class="p-4">
-                        {{ $archive->title }}
+                    <td class="p-5">
+                        AR-
                     </td>
+
                     <!-- عنوان الاستشارة -->
-
-
-                    <td class="p-4 text-green-600 font-semibold">
-                   مكتملة✔ 
+                    <td class="p-5">
+                        {{ $c->title }}
                     </td>
-                    <!-- حالة الاستشارة -->
 
+                    <!-- الحالة -->
+                    <td class="p-5">
 
-                    <td class="p-4">
-                        {{ $archive->updated_at ? $archive->updated_at->diffForHumans() : '-' }}
+                        <span
+                            class="bg-green-100 text-green-700 px-4 py-1 rounded-full text-xs font-semibold">
+
+                            مكتملة
+
+                        </span>
+
                     </td>
-                    <!-- تاريخ الأرشفة -->
 
+                    <!-- التاريخ -->
+                    <td class="p-5">
+                        -
+                    </td>
 
-                    <td class="p-4 text-center">
+                    <!-- الإجراءات -->
+                    <td class="p-5">
 
-                        <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                        <a href="{{ route('consultation.response') }}">
 
-                            عرض
+                            <button
+                                class="bg-[#243C96] hover:bg-[#1b2f77] text-white px-5 py-2 rounded-lg text-sm transition">
 
-                        </button>
+                                عرض
+
+                            </button>
+
+                        </a>
 
                     </td>
 
                 </tr>
 
                 @empty
-                <!-- إذا ما فيه استشارات مؤرشفة -->
 
                 <tr>
 
-                    <td colspan="5" class="p-6 text-center text-gray-500">
+                    <td colspan="5"
+                        class="p-8 text-center text-gray-500">
 
                         لا توجد استشارات مؤرشفة
 
@@ -429,7 +448,6 @@
 
     </div>
 
-</div>
 </div>
 
 </main>
