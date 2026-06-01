@@ -164,6 +164,29 @@ class ConsultationController extends Controller
         ]);
     }
 
+    public function showApproval($id)
+    {
+        $consultation = Consultation::with('assignedTo')->findOrFail($id);
+
+        return view('Consultations.legalManager.showApproval', compact('consultation'));
+    }
+
+    public function approve($id) 
+    {
+        $consultation = Consultation::findOrFail($id);
+        $consultation->update(['status' => 'معتمدة']);
+
+        return redirect()->route('legal.manager')->with('success', 'تم اعتماد الاستشارة بنجاح');
+    }
+
+    public function reject($id) 
+    {
+        $consultation = Consultation::findOrFail($id);
+        $consultation->update(['status' => 'مرفوضة']);
+
+        return redirect()->route('legal.manager')->with('fail', 'تم رفض اعتماد الاستشارة');
+    }
+
     /**
      * صفحة الموظف القانوني
      */
