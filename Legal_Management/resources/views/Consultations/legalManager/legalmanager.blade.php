@@ -136,9 +136,9 @@
                         <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $item->assignedTo->full_name ?? 'غير معروف' }}</td>
                         <td class="px-4 py-4 text-center"><span class="font-bold text-wadimakkah-dark">{{ $item->status }}</span></td>
                         <td class="px-4 py-4 text-center">
-                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
-                            عرض
-                            </button>
+                            <a href="{{ route('consultations.showApproval', $item->consultation_id) }}" class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm inline-block text-center">
+                                عرض
+                            </a>
                         </td>
                     </tr>
                     @empty
