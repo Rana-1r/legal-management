@@ -129,7 +129,7 @@ tailwind.config = {
                     </td>
 
                     <td>
-                        {{ $consultation->consulation_type }}
+                        {{ $consultation->consultation_type }}
                     </td>
 
                     <td>

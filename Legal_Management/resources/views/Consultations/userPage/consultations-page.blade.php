@@ -220,7 +220,7 @@
                     <!-- رقم الطلب -->
 
                     <td class="p-5 font-medium">
-                        {{ $c->id }}
+                        {{ $c->consultation_id  }}
                     </td>
 
                     <!-- عنوان الاستشارة -->
@@ -282,36 +282,30 @@
                     </td>
 
                     <!-- الإجراءات -->
+                  
+<td class="p-4 text-center">
 
-                    <td class="p-5 text-center">
+@if($c->status == 'مكتملة' || $c->status == 'تم الرد')
 
-                        <a href="
-                        
-                        @if($c->status == 'مكتملة' || $c->status == 'تم الرد')
-                        
-                            {{ route('consultation.response') }}
-                        
-                        @else
-                        
-                            #
-                        
-                        @endif
-                        
-                        ">
+    <a href="{{ route('consultation.response') }}"
+       class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
 
-                            <button
-                                class="bg-[#243C96] hover:bg-[#1b2f77] text-white px-5 py-2 rounded-xl text-sm transition duration-200 shadow-sm">
+        عرض
 
-                                عرض
+    </a>
 
-                            </button>
+@elseif(in_array($c->status, ['متأخرة', 'قيد المراجعة', 'قيد الاعتماد']))
 
-                        </a>
+    <a href="{{ route('consultation.details', $c->consultation_id) }}"
+   class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
 
-                    </td>
+    عرض
 
-                </tr>
+</a>
 
+@endif
+
+</td>
                 @empty
 
                 <tr>
@@ -384,7 +378,7 @@
 
                     <!-- رقم الأرشيف -->
                     <td class="p-5">
-                        AR-
+                        {{ $c->consultation_id }}
                     </td>
 
                     <!-- عنوان الاستشارة -->
@@ -406,7 +400,8 @@
 
                     <!-- التاريخ -->
                     <td class="p-5">
-                        -
+                         {{$c->response_date }}
+                        
                     </td>
 
                     <!-- الإجراءات -->
@@ -453,7 +448,6 @@
 </main>
 
 <!-- FOOTER -->
-<!-- ================= FOOTER ================= -->
 <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
     <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
 

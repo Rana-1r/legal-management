@@ -54,14 +54,12 @@ class ConsultationController extends Controller
             'consultations' => $consultations
         ]);
     }
-     public function my()
-    {
-        // جلب استشارات المستخدم الحالي
-        $consultations = Consultation::where('request_by', auth()->id())->get();
+   public function my()
+{
+    $consultations = Consultation::all();
 
-       
-        return view('Consultations.userPage.my-consultation', compact('consultations'));
-    }
+    return view('Consultations.userPage.my-consultation', compact('consultations'));
+}
  public function showResponse()
 {
     $consultation = (object) [
@@ -81,7 +79,15 @@ class ConsultationController extends Controller
         'Consultations.userPage.show',
         compact('consultation')
     );
+    
 }
+public function details($id)
+{
+    $consultation = Consultation::findOrFail($id);
+
+    return view('Consultations.userPage.details', compact('consultation'));
+}
+
 
     /**
      * صفحة المدير
@@ -268,10 +274,9 @@ class ConsultationController extends Controller
 
     return view('Consultations.legalEmployeePage.consultations-table', compact('consultations', 'employees'));
 
-    //return view('Consultations.legalEmployeePage.consultations-table', compact('consultations'));
+ 
 
 }
-
 
 
 }

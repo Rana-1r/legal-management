@@ -80,3 +80,5 @@ Route::get(
     [ConsultationController::class, 'showResponse']
 )->name('consultation.response');
 });
+Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
+    ->name('consultation.details');
