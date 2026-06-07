@@ -53,13 +53,22 @@
        <p class="text-gray-500 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
     </div>
 
-    <h2 class="text-xl font-bold text-gray-700 mb-6">اعتماد أو رفض الاستشارة</h2>
+    <h2 class="text-xl font-bold text-gray-700 mb-8 mt-12">اعتماد أو رفض الاستشارة</h2>
     <div class="space-y-6 text-right" dir="rtl">
             <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">رقم الطلب :</span> <span class="text-gray-600">{{ $consultation->consultation_id }}</span></div>
             <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">نوع الإستشارة :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">{{ $consultation->consulation_type }}</span></div>
-            <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">الجهة :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">{{ $consultation->organization ?? 'اسم الجهة' }}</span></div>
-            <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">تاريخ الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">{{ $consultation->created_at ? $consultation->created_at->format('Y-m-d') : '-' }}</span></div>
-            <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">الأولوية :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">{{ $consultation->priority ?? 'عادية' }}</span></div>
+            <div class="flex gap-2 text-sm"><span class="font-bold text-gray-700">تاريخ الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">{{ $consultation->created_at->format('d/m/Y') }}</span></div>
+            <div class="flex gap-2 text-sm">
+                <span class="font-bold text-gray-700">الأولوية :</span>
+                @if(isset($consultation->priority) && $consultation->priority)
+                <span class="bg-gray-100 px-4 py-1 rounded-md text-gray-600">
+                    <i class="fas fa-circle text-[8px] {{ $consultation->priority == 'عالي' ? 'text-red-500' : 'text-blue-400' }}"></i>
+                    {{ $consultation->priority }}
+                </span>
+                @else
+                   <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
+                @endif   
+            </div>
             <div>
                 <label class="block font-bold text-gray-700 mb-2 text-sm">نص الإستشارة</label>
                 <div class="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm text-gray-600 min-h-[80px]">
@@ -69,14 +78,14 @@
             <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
                 <h4 class="font-bold text-gray-800 mb-3 text-sm">معلومات المحامي المسؤول</h4>
                 <div class="space-y-2 text-sm">
-                    <div><span class="font-semibold text-gray-600">رقم المحامي :</span> {{ $consultation->assignedTo->user_id ?? '1030' }}</div>
-                    <div><span class="font-semibold text-gray-600">اسم المحامي :</span> {{ $consultation->assignedTo->full_name ?? 'الاسم' }}</div>
+                    <div><span class="font-semibold text-gray-600">رقم المحامي :</span> {{ $consultation->assignedTo->user_id }}</div>
+                    <div><span class="font-semibold text-gray-600">اسم المحامي :</span> {{ $consultation->assignedTo->full_name }}</div>
                 </div>
             </div>
             <div>
                 <label class="block font-bold text-gray-700 mb-2 text-sm">الرد القانوني</label>
                 <div class="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm text-gray-600 min-h-[80px]">
-                    {{ $consultation->legal_reply ?? 'هنا يظهر نص الرد القانوني المكتوب بواسطة المحامي والمطلوب اعتماده...' }}
+                    هنا يظهر نص الرد القانوني المكتوب بواسطة المحامي والمطلوب اعتماده...
                 </div>
             </div>
             <div class="flex gap-4 pt-6">
@@ -88,11 +97,6 @@
                 <form action="{{ route('consultations.reject', $consultation->consultation_id) }}" method="POST">
                     @csrf
                     <button type="submit" class="bg-blue-400 hover:bg-blue-500 text-white px-8 py-2 rounded-md font-semibold text-sm transition shadow-sm">رفض</button>
-                </form>
-
-                <form action="{{ route('consultations.review', $consultation->consultation_id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-md font-semibold text-sm transition shadow-sm">إعادة للمراجعة</button>
                 </form>
             </div>
         </div>
@@ -135,6 +139,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
