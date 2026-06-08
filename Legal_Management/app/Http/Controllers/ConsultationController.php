@@ -196,6 +196,13 @@ public function details($id)
         return redirect()->route('legal.manager')->with('fail', 'تم رفض اعتماد الاستشارة');
     }
 
+    public function viewReply($id)
+    {
+        $consultation = Consultation::with('assignedTo')->findOrFail($id);
+
+        return view('Consultations.legalManager.viewReply', compact('consultation'));
+    }
+
     /**
      * صفحة الموظف القانوني
      */
