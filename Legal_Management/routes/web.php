@@ -95,3 +95,6 @@ Route::post('/consultations/{id}/approve', [ConsultationController::class, 'appr
 
 Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
     ->name('consultations.reject');
+
+Route::get('/consultation/view-reply', [ConsultationController::class, 'viewReply'])
+    ->name('view-reply');
