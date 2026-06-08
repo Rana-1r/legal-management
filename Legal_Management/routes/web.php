@@ -81,10 +81,17 @@ Route::get(
     '/consultation-response',
     [ConsultationController::class, 'showResponse']
 )->name('consultation.response');
+<<<<<<< HEAD
 
 });
 Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
     ->name('consultation.details');
+=======
+});
+Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
+    ->name('consultation.details');
+
+>>>>>>> 11877176051d4ae165370d73c873fc458e974054
 //اعتماد الاستشارة
 Route::get('/consultations/{id}/approval', [ConsultationController::class, 'showApproval'])
     ->name('consultations.showApproval');
@@ -96,3 +103,8 @@ Route::post('/consultations/{id}/approve', [ConsultationController::class, 'appr
 Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
     ->name('consultations.reject');
 
+<<<<<<< HEAD
+=======
+Route::get('/consultation/{id}/view-reply', [ConsultationController::class, 'viewReply'])
+    ->name('view-reply');
+>>>>>>> 11877176051d4ae165370d73c873fc458e974054

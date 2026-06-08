@@ -169,9 +169,10 @@
                         <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->assignedTo->full_name ?? 'غير معروف' }}</td>
                         <td class="px-4 py-4 font-bold text-wadimakkah-dark text-center">{{ $archive->status }}</td>
                         <td class="px-4 py-4 text-center">
-                            <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+                            <a href="{{ route('view-reply', $archive->consultation_id) }}" 
+                                class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm inline-block text-center">
                                 عرض الرد
-                            </button>
+                            </a>
                         </td>
                     </tr>
                     @empty

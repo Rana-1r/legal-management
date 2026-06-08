@@ -220,9 +220,19 @@ public function details($id)
     public function reject($id) 
     {
         $consultation = Consultation::findOrFail($id);
-        $consultation->update(['status' => 'مرفوضة']);
+        $consultation->update([
+            'status' => 'مرفوضة',
+            'is_closed' => true
+        ]);
 
         return redirect()->route('legal.manager')->with('fail', 'تم رفض اعتماد الاستشارة');
+    }
+
+    public function viewReply($id)
+    {
+        $consultation = Consultation::with('assignedTo')->findOrFail($id);
+
+        return view('Consultations.legalManager.viewReply', compact('consultation'));
     }
 
     /**

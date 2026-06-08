@@ -14,7 +14,8 @@ class Consultation extends Model
         'priority',
         'request_date', 
         'response_date',
-        'status', 
+        'status',
+        'is_closed', 
         'request_by',
         'assigned_to', 
         'reviewed_by'
