@@ -294,14 +294,19 @@
 
     </a>
 
-@elseif(in_array($c->status, ['متأخرة', 'قيد المراجعة', 'قيد الاعتماد']))
+@elseif(in_array($c->status, [
+    'متأخرة',
+    'قيد المراجعة',
+    'قيد الاعتماد'
+]))
 
     <a href="{{ route('consultation.details', $c->consultation_id) }}"
-   class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
+       class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
 
-    عرض
+        عرض
 
-</a>
+    </a>
+
 
 @endif
 

@@ -81,12 +81,10 @@ Route::get(
     '/consultation-response',
     [ConsultationController::class, 'showResponse']
 )->name('consultation.response');
-<<<<<<< HEAD
+
 });
 Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
     ->name('consultation.details');
-=======
-
 //اعتماد الاستشارة
 Route::get('/consultations/{id}/approval', [ConsultationController::class, 'showApproval'])
     ->name('consultations.showApproval');
@@ -97,5 +95,4 @@ Route::post('/consultations/{id}/approve', [ConsultationController::class, 'appr
 
 Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
     ->name('consultations.reject');
-});
->>>>>>> f90db255b26d9600c3743a1e4908e7a0abc00033
+

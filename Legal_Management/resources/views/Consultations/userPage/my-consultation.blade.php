@@ -129,7 +129,7 @@ tailwind.config = {
                     </td>
 
                     <td>
-                        {{ $consultation->consultation_type }}
+                        {{ $consultation->consulation_type }}
                     </td>
 
                     <td>
@@ -156,12 +156,29 @@ tailwind.config = {
           {{ optional($consultation->assignedTo)->full_name ?? 'لم يتم التعيين بعد' }}
 </td>
 
-                     </td>
-                    <td class="p-4 text-center">
-                        <button class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
-                            عرض
-                        </button>
-                    </td>
+                 <td class="p-4 text-center">
+
+    @if($consultation->status == 'مكتملة' || $consultation->status == 'تم الرد')
+
+        <a href="{{ route('consultation.response', $consultation->consultation_id) }}"
+           class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+
+            عرض
+
+        </a>
+
+    @elseif(in_array($consultation->status, ['متأخرة', 'قيد المراجعة', 'قيد الاعتماد']))
+
+        <a href="{{ route('consultation.details', $consultation->consultation_id) }}"
+           class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
+
+            عرض
+
+        </a>
+
+    @endif
+
+</td>
                 </tr>
 
                 @empty
