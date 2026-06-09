@@ -122,11 +122,11 @@
                             <tr class="border-b hover:bg-gray-50">
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->id }}
+                                    {{ $consultation->consultation_id }}
                                 </td>
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->consultation_type }}
+                                    {{ $consultation->consulation_type }}
                                 </td>
 
                                 <td class="py-3 px-4 font-semibold">
