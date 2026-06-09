@@ -46,14 +46,42 @@ class ConsultationController extends Controller
     /**
      * صفحة حالة الاستشارات (اليوزر)
      */
-    public function status()
-    {
-        $consultations = Consultation::latest()->get();
+       public function status()
+{
+    $query = Consultation::query();
 
-        return view('Consultations.userPage.consultation-status', [
-            'consultations' => $consultations
-        ]);
+    // فلتر رقم الاستشارة
+    if (request('consultation_id')) {
+        $query->where(
+            'consultation_id',
+            request('consultation_id')
+        );
     }
+
+    // فلتر نوع الاستشارة
+    if (request('consultation_type')) {
+        $query->where(
+            'consultation_type',
+            request('consultation_type')
+        );
+    }
+
+    // فلتر الحالة
+    if (request('status')) {
+        $query->where(
+            'status',
+            request('status')
+        );
+    }
+
+    $consultations = $query->latest()->get();
+
+    return view(
+        'Consultations.userPage.consultation-status',
+        compact('consultations')
+    );
+}
+    
    public function my()
 {
     $consultations = Consultation::all();
@@ -81,11 +109,46 @@ class ConsultationController extends Controller
     );
     
 }
+
+  
 public function details($id)
 {
     $consultation = Consultation::findOrFail($id);
 
-    return view('Consultations.userPage.details', compact('consultation'));
+    return view(
+        'Consultations.userPage.details',
+        compact('consultation')
+    );
+}
+public function store(Request $request)
+{
+    $consultation = new Consultation();
+
+    $consultation->title = $request->title;
+
+    $consultation->consulation_type = 'عقود';
+
+    $consultation->request_by =
+        auth()->id();
+
+    $consultation->status =
+        'قيد الاعتماد';
+
+    $consultation->request_date =
+        now();
+
+    $consultation->is_closed = 0;
+
+    $consultation->is_archived = 0;
+
+    $consultation->save();
+
+    return redirect()
+    ->route('consultations.create')
+    ->with(
+        'success',
+        'تم إرسال الاستشارة وهي الآن قيد الاعتماد'
+    );
 }
 
 

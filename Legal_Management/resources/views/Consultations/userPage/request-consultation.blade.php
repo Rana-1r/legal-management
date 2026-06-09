@@ -58,6 +58,13 @@
         إدارة الاستشارات القانونية
     </h2>
 </div>
+@if(session('success'))
+<div class="max-w-2xl mx-auto mt-6">
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+        {{ session('success') }}
+    </div>
+</div>
+@endif
 
 <!-- ================= FORM ================= -->
 <div class="flex justify-center mt-12 px-4">
@@ -113,7 +120,30 @@
     <!-- input مخفي -->
     <input type="file" id="fileInput" class="hidden">
 
-    <!-- الزر -->
+    
+
+</div>
+       <form method="POST"
+      action="{{ route('consultations.store') }}"
+      enctype="multipart/form-data"
+      class="space-y-4">
+
+
+@csrf
+
+<!-- نوع الاستشارة -->
+<input type="hidden"
+       name="consulation_type"
+       x-model="selected">
+
+<!-- رفع ملف -->
+<div class="mb-5 text-left">
+
+    <input type="file"
+           id="fileInput"
+           name="attachment"
+           class="hidden">
+
     <button type="button"
         onclick="document.getElementById('fileInput').click()"
         class="text-xs bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200 transition">
@@ -121,35 +151,42 @@
     </button>
 
 </div>
-        <!-- الفورم -->
-        <form method="POST" action="{{ route('consultations.store') }}" class="space-y-4">
-            @csrf
 
-            <input type="text" name="beneficiary"
-                placeholder="اسم المستفيد"
-                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
+<!-- اسم المستفيد -->
+<input type="text"
+       name="beneficiary"
+       placeholder="اسم المستفيد"
+       class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
 
-            <input type="text" name="title"
-                placeholder="عنوان الاستشارة"
-                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
+<!-- عنوان الاستشارة -->
+<input type="text"
+       name="title"
+       placeholder="عنوان الاستشارة"
+       class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]">
 
-            <textarea name="description" rows="4"
-                placeholder="وصف الاستشارة"
-                class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]"></textarea>
+<!-- وصف الاستشارة -->
+<textarea name="description"
+          rows="4"
+          placeholder="وصف الاستشارة"
+          class="w-full bg-gray-100 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#2f4597]"></textarea>
 
-            <!-- زر -->
-            <div class="flex justify-end pt-3">
-                <button
-                    class="bg-[#2f4597] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#243b82] transition shadow-sm">
-                    إرسال الطلب
-                </button>
-            </div>
-
-        </form>
-
-    </div>
-    
+<!-- زر الإرسال -->
+<div class="flex justify-end pt-3">
+    <button type="submit"
+        class="bg-[#2f4597] text-white px-6 py-2 rounded-lg text-sm hover:bg-[#243b82] transition shadow-sm">
+        إرسال الطلب
+    </button>
 </div>
+
+
+</form>
+
+    </div> 
+
+</div>
+
+    
+
 
 <!-- ================= FOOTER ================= -->
 <!-- Tailwind  -->

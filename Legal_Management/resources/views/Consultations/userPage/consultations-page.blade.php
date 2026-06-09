@@ -251,7 +251,7 @@
 
                         </span>
 
-                        @elseif($c->status == 'متأخره')
+                        @elseif($c->status == 'متأخرة')
 
                         <span
                             class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
@@ -259,6 +259,14 @@
                             متأخره
 
                         </span>
+                         @elseif($c->status =='قيد الاعتماد')
+
+                        <span
+                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                                قيد الاعتماد
+                        </span>
+
 
                         @else
 
@@ -294,14 +302,19 @@
 
     </a>
 
-@elseif(in_array($c->status, ['متأخرة', 'قيد المراجعة', 'قيد الاعتماد']))
+@elseif(in_array($c->status, [
+    'متأخرة',
+    'قيد المراجعة',
+    'قيد الاعتماد'
+]))
 
     <a href="{{ route('consultation.details', $c->consultation_id) }}"
-   class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
+       class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
 
-    عرض
+        عرض
 
-</a>
+    </a>
+
 
 @endif
 

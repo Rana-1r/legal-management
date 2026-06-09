@@ -65,45 +65,90 @@
 
            
             <!-- FILTER BAR -->
+<form method="GET" action="{{ url('/consultations/status') }}">
+
 <div class="mb-8 flex justify-center">
 
     <div class="w-[760px] bg-gray-100 rounded-lg shadow-sm px-4 py-2 flex items-center justify-between gap-3">
 
-        
-    <input type="text" name="search"
-        placeholder="اكتب رقم الاستشارة..."
-        class="bg-white px-3 py-1 rounded text-xs border outline-none">
+        <input
+            type="text"
+            name="consultation_id"
+            value="{{ request('consultation_id') }}"
+            placeholder="اكتب رقم الاستشارة..."
+            class="bg-white px-3 py-1 rounded text-xs border outline-none"
+        >
 
-  
+        <select
+            name="status"
+            class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none"
+        >
+            <option value="">حالة الإستشارة</option>
 
+            <option value="قيد المراجعة"
+                {{ request('status')=='قيد المراجعة' ? 'selected' : '' }}>
+                قيد المراجعة
+            </option>
 
-        <select class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none">
-            <option>المستشار المسؤول</option>
+            <option value="قيد الاعتماد"
+                {{ request('status')=='قيد الاعتماد' ? 'selected' : '' }}>
+                قيد الاعتماد
+            </option>
+
+            <option value="تم الرد"
+                {{ request('status')=='تم الرد' ? 'selected' : '' }}>
+                تم الرد
+            </option>
+
+            <option value="مكتملة"
+                {{ request('status')=='مكتملة' ? 'selected' : '' }}>
+                مكتملة
+            </option>
+
+            <option value="متأخرة"
+                {{ request('status')=='متأخرة' ? 'selected' : '' }}>
+                متأخرة
+            </option>
         </select>
 
-        <select class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none">
-            <option>التاريخ</option>
+        <select
+            name="consultation_type"
+            class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none"
+        >
+            <option value="">نوع الإستشارة</option>
+
+            <option value="عمالي"
+                {{ request('consultation_type')=='عمالي' ? 'selected' : '' }}>
+                عمالي
+            </option>
+
+            <option value="عقود"
+                {{ request('consultation_type')=='عقود' ? 'selected' : '' }}>
+                عقود
+            </option>
+
+            <option value="شركات"
+                {{ request('consultation_type')=='شركات' ? 'selected' : '' }}>
+                شركات
+            </option>
         </select>
 
-        <select class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none">
-            <option>حالة الإستشارة</option>
-            <option>قيد المراجعة</option>
-            <option>قيد الاعتماد</option>
-            <option>تم الرد</option>
-        </select>
-
-        <select class="bg-gray-200 px-4 py-1 rounded text-xs text-gray-700 outline-none">
-            <option>نوع الإستشارة</option>
-            <option>عمالي</option>
-            <option>عقود</option>
-            <option>شركات</option>
-        </select>
+        <button
+            type="submit"
+            class="bg-[#344C93] text-white px-4 py-1 rounded text-xs"
+        >
+            بحث
+        </button>
 
     </div>
 
 </div>
 
-            <div class="bg-white border rounded-xl shadow-sm overflow-hidden">
+</form>
+</div>
+<div class="flex justify-center">
+
+    <div class="w-[1000px] bg-white border rounded-xl shadow-sm overflow-hidden">
 
                 <table class="w-full text-sm text-center">
                     <thead class="bg-gray-200 text-gray-700">
@@ -129,22 +174,27 @@
                                     {{ $consultation->consulation_type }}
                                 </td>
 
-                                <td class="py-3 px-4 font-semibold">
-                                    @if($consultation->status == 'قيد المراجعة')
-                                        <span class="text-yellow-500">●</span>
-                                    @elseif($consultation->status == 'قيد الاعتماد')
-                                        <span class="text-red-500">●</span>
-                                    @elseif($consultation->status == 'تم الرد')
-                                        <span class="text-green-500">●</span>
-                                    @else
-                                        <span class="text-blue-500">●</span>
-                                    @endif
+                              <td class="py-3 px-4 font-semibold">
 
-                                    {{ $consultation->status }}
-                                </td>
+                      @if(in_array($consultation->status, ['تم الرد', 'مكتملة']))
+           <span class="text-green-500 text-lg">●</span>
+
+                       @elseif($consultation->status == 'متأخرة')
+          <span class="text-red-500 text-lg">●</span>
+
+                     @elseif(in_array($consultation->status, ['قيد المراجعة', 'قيد الاعتماد']))
+         <span class="text-yellow-500 text-lg">●</span>
+
+                      @else
+               <span class="text-gray-500 text-lg">●</span>
+          @endif
+
+                {{ $consultation->status }}
+
+</td>
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->responsible_consultant ?? 'لم يتم التعيين بعد' }}
+                                   {{ $consultation->assignedTo->full_name ?? 'لم يتم التعيين بعد' }}
                                 </td>
 
                                 <td class="py-3 px-4">
