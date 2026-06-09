@@ -98,7 +98,7 @@
                 <tbody class="divide-y divide-gray-100">
                     @foreach($myConsultations as $consultation)
                     <tr class="hover:bg-blue-50 transition">
-                        <td class="p-4 font-bold text-wadimakkah-dark">#{{ $consultation->id }}</td>
+                        <td class="p-4 font-bold text-wadimakkah-dark">#{{ $consultation->consultation_id }}</td>
                         <td class="p-4 font-semibold text-gray-800">{{ $consultation->title }}</td>
                         <td class="p-4 text-gray-600">{{ $consultation->created_at->format('d/m/Y') }}</td>
                         <td class="p-4">
