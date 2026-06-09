@@ -251,7 +251,7 @@
 
                         </span>
 
-                        @elseif($c->status == 'متأخره')
+                        @elseif($c->status == 'متأخرة')
 
                         <span
                             class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
@@ -259,6 +259,14 @@
                             متأخره
 
                         </span>
+                         @elseif($c->status =='قيد الاعتماد')
+
+                        <span
+                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+
+                                قيد الاعتماد
+                        </span>
+
 
                         @else
 

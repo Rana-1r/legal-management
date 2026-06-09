@@ -46,6 +46,12 @@ Route::get('/my-consultations', [ConsultationController::class, 'my'])
 // حالة الاستشارات
 Route::get('/consultations/status', [ConsultationController::class, 'status'])
     ->name('consultations.status');
+    
+    Route::post(
+'/consultations/store',
+[ConsultationController::class, 'store']
+)->name('consultations.store');
+
 
 // صفحة المدير القانوني
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
@@ -81,17 +87,16 @@ Route::get(
     '/consultation-response',
     [ConsultationController::class, 'showResponse']
 )->name('consultation.response');
-<<<<<<< HEAD
+
 
 });
 Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
     ->name('consultation.details');
-=======
-});
+
 Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
     ->name('consultation.details');
 
->>>>>>> 11877176051d4ae165370d73c873fc458e974054
+
 //اعتماد الاستشارة
 Route::get('/consultations/{id}/approval', [ConsultationController::class, 'showApproval'])
     ->name('consultations.showApproval');
@@ -103,8 +108,10 @@ Route::post('/consultations/{id}/approve', [ConsultationController::class, 'appr
 Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
     ->name('consultations.reject');
 
-<<<<<<< HEAD
-=======
+
 Route::get('/consultation/{id}/view-reply', [ConsultationController::class, 'viewReply'])
     ->name('view-reply');
->>>>>>> 11877176051d4ae165370d73c873fc458e974054
+
+Route::get('/consultations/{id}/view-reply', [ConsultationController::class, 'viewReply'])
+    ->name('view-reply');
+

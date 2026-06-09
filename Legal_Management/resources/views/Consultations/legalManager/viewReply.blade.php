@@ -53,42 +53,33 @@
        <p class="text-gray-500 mt-2 mb-8">المنصة الموحدة للإدارة القانونية بشركة وادي مكة</p>
     </div>
 
-    <h2 class="text-xl font-bold text-wadimakkah-dark mb-8 mt-12">عرض الرد</h2>
+    <h2 class="text-xl font-bold mb-8 mt-12">عرض الرد</h2>
     <div class="bg-[#ececec] rounded-3xl border border-gray-300 shadow-sm p-10">
-        n
-        <div class="flex gap-2 text-sm mb-4"><span class="font-bold text-wadimakkah-dark">رقم الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->consultation_id }}</span></div>
-        <div class="flex gap-2 text-sm mb-4"><span class="font-bold text-wadimakkah-dark">نوع الإستشارة :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->consulation_type }}</span></div>
-        <div class="flex gap-2 text-sm mb-4"><span class="font-bold text-wadimakkah-dark">تاريخ الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->created_at->format('d/m/Y') }}</span></div>
+        <div class="flex gap-2 text-sm mb-4"><span class="font-bold">رقم الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->consultation_id }}</span></div>
+        <div class="flex gap-2 text-sm mb-4"><span class="font-bold">نوع الاستشارة :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->consulation_type }}</span></div>
+        <div class="flex gap-2 text-sm mb-4"><span class="font-bold">تاريخ الطلب :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->created_at->format('d/m/Y') }}</span></div>
         <div class="flex gap-2 text-sm mb-4">
-            <span class="font-bold text-wadimakkah-dark">الأولوية :</span>
+            <span class="font-bold">الأولوية :</span>
             @if(isset($consultation->priority) && $consultation->priority)
             <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">
                 <i class="fas fa-circle text-[8px] {{ $consultation->priority == 'عالي' ? 'text-red-500' : 'text-blue-400' }}"></i>
                 {{ $consultation->priority }}
             </span>
             @else
-                <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
-            @endif   
+            <span class="text-gray-400 italic text-xs">لم تحدد بعد</span>
+            @endif
         </div>
+        <div class="flex gap-2 text-sm mb-4"><span class="font-bold">اسم المحامي :</span> <span class="bg-gray-100 px-4 py-1 rounded-md text-wadimakkah-dark">{{ $consultation->assignedTo->full_name }}</span></div>
         <div>
-            <label class="block font-bold text-wadimakkah-dark mb-2 text-sm">نص الإستشارة</label>
+            <label class="block font-bold mb-2 text-sm">نص الاستشارة</label>
             <div class="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm text-wadimakkah-dark min-h-[80px] mb-4">
-                 هنا يظهر نص الاستشارة المقدمة...
+                هنا يظهر نص الاستشارة المقدمة...
             </div>
         </div>
         <div>
-            <label class="block font-bold text-wadimakkah-dark mb-2 text-sm">معلومات المحامي المسؤول</label>
-            <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm mb-4">
-                <div class="space-y-2 text-sm">
-                    <div><span class="font-semibold text-wadimakkah-dark mb-2">رقم المحامي :</span> <span class="text-wadimakkah-dark">{{ $consultation->assignedTo->user_id }}</span></div>
-                    <div><span class="font-semibold text-wadimakkah-dark">اسم المحامي :</span> <span class="text-wadimakkah-dark">{{ $consultation->assignedTo->full_name }}</span></div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <label class="block font-bold text-wadimakkah-dark mb-2 text-sm">الرد القانوني</label>
+            <label class="block font-bold mb-2 text-sm">الرد القانوني</label>
             <div class="w-full bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm text-wadimakkah-dark min-h-[80px]">
-                 هنا يظهر نص الرد القانوني المكتوب بواسطة المحامي والمطلوب اعتماده...
+                هنا يظهر نص الرد القانوني المكتوب بواسطة المحامي والمطلوب اعتماده...
             </div>
         </div>
         <div class="flex gap-4 pt-6">
