@@ -16,36 +16,25 @@ class ConsultationController extends Controller
      */
     public function userPage()
     {
-        $consultations = Consultation::latest()->take(5)->get();
-        $archivedConsultations = Consultation::where('is_archived', 1)
-    ->latest()
-    ->get();
+        $userId = auth()->id();
 
-    $notifications = Notification::where(
-    'user_id',
-    auth()->id()
-)
-->latest()
-->get();
+        $consultations = Consultation::where('request_by', $userId)
+        ->where('is_archived', 0)
+        ->latest()
+        ->get();
 
-        return view('Consultations.userPage.consultations-page', [
-            
-            'archivedConsultations' => $archivedConsultations,
+        $archivedConsultations = Consultation::where('request_by', $userId)
+        ->where('is_archived', 1)
+        ->latest()
+        ->get();
 
-            'consultations' => $consultations,
+        $notifications = Notification::where('user_id', auth()->id())
+        ->latest()
+        ->get();
 
-            // الإحصائيات
-            'total' => Consultation::count(),
-
-            'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
-
-            'replied' => Consultation::whereIn('status', ['تم الرد', 'مكتملة'])->count(),
-           'notifications' => $notifications,
-        
-            
-            
-        ]);
+        return view('Consultations.userPage.consultations-page', compact('consultations'));
     }
+
     public function assignedTo()
 {
     return $this->belongsTo(User_wm::class, 'assigned_to', 'user_id');
@@ -292,12 +281,12 @@ public function store(Request $request)
     $userId = auth()->id();
 
     $myTasks = Task::where('assigned_to', $userId)->get();
-    $myConsultations = Consultation::where('assigned_to', $userId)->get();
+    $myConsultations = Consultation::where('assigned_to', $userId)->latest()->get();
 
     $stats = [
-            'under_review'   => Consultation::where('status', 'قيد المراجعة')->count(),
-            'needs_approval' => Consultation::where('status', 'بحاجة إلى اعتماد')->count(),
-            'closed'         => Consultation::where('is_closed', true)->count(),
+            'under_review'   => Consultation::where('assigned_to', auth()->id())->where('status', 'قيد المراجعة')->count(),
+            'needs_approval' => Consultation::where('assigned_to', auth()->id())->where('status', 'بحاجة إلى اعتماد')->count(),
+            'closed'         => Consultation::where('assigned_to', auth()->id())->where('is_closed', true)->count(),
         ];
 
     return view('Interfaces.Employee-interface', compact('myTasks', 'myConsultations', 'stats'));

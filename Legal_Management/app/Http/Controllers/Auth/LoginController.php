@@ -43,7 +43,18 @@ class LoginController extends Controller
         Auth::guard('web')->login($user);
         $request->session()->regenerate();
 
-       
-        return redirect()->route('user-interface');
+        if ($user->role_id == 2) {
+
+            return redirect()->route('manager.interface');
+
+        } elseif ($user->role_id == 1) {
+
+            return redirect()->route('employee.interface');
+
+        } elseif ($user->role_id == 3) {
+
+            return redirect()->route('user-interface');
+
+        }
     }
 }
