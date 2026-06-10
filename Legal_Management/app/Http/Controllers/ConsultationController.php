@@ -16,25 +16,38 @@ class ConsultationController extends Controller
      */
     public function userPage()
     {
-        $userId = auth()->id();
+        $consultations = Consultation::latest()->take(5)->get();
+        $archivedConsultations = Consultation::where('is_archived', 1)
+    ->latest()
+    ->get();
 
-        $consultations = Consultation::where('request_by', $userId)
-        ->where('is_archived', 0)
-        ->latest()
-        ->get();
+    $notifications = Notification::where(
+    'user_id',
+    auth()->id()
+)
+->latest()
+->get();
 
-        $archivedConsultations = Consultation::where('request_by', $userId)
-        ->where('is_archived', 1)
-        ->latest()
-        ->get();
+        return view('Consultations.userPage.consultations-page', [
+            
+            'archivedConsultations' => $archivedConsultations,
 
-        $notifications = Notification::where('user_id', auth()->id())
-        ->latest()
-        ->get();
+            'consultations' => $consultations,
 
-        return view('Consultations.userPage.consultations-page', compact('consultations'));
+            'notifications' => $notifications,
+
+            // الإحصائيات
+            'total' => Consultation::count(),
+
+            'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
+
+            'replied' => Consultation::whereIn('status', ['تم الرد', 'مكتملة'])->count(),
+
+        
+            
+            
+        ]);
     }
-
     public function assignedTo()
 {
     return $this->belongsTo(User_wm::class, 'assigned_to', 'user_id');
@@ -189,12 +202,12 @@ public function store(Request $request)
 
         $consultation = Consultation::findOrFail($id);
         $consultation->assigned_to = $request->lawyer_id;
-        $consultation->status = 'قيد المراجعة';
+        $consultation->status = 'قيد الاسناد';
         $consultation->save();
              Notification::create([
     'user_id' => $consultation->request_by,
     'title' => 'إسناد الاستشارة',
-
+    'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص.',
 ]);
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
@@ -281,13 +294,13 @@ public function store(Request $request)
     $userId = auth()->id();
 
     $myTasks = Task::where('assigned_to', $userId)->get();
-    $myConsultations = Consultation::where('assigned_to', $userId)->latest()->get();
+    $myConsultations = Consultation::where('assigned_to', $userId)->get();
 
     $stats = [
-            'under_review'   => Consultation::where('assigned_to', auth()->id())->where('status', 'قيد المراجعة')->count(),
-            'needs_approval' => Consultation::where('assigned_to', auth()->id())->where('status', 'بحاجة إلى اعتماد')->count(),
-            'closed'         => Consultation::where('assigned_to', auth()->id())->where('is_closed', true)->count(),
-        ];
+        'total_assigned' => $myConsultations->count(),
+        'in_progress' => $myConsultations->where('status', 'in_progress')->count(),
+        'completed' => $myConsultations->where('status', 'completed')->count(),
+    ];
 
     return view('Interfaces.Employee-interface', compact('myTasks', 'myConsultations', 'stats'));
 }
