@@ -10,6 +10,9 @@
     <!-- Alpine (عشان التفاعل) -->
     <script src="https://unpkg.com/alpinejs" defer></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
@@ -23,32 +26,24 @@
 <body class="bg-[#f5f7fb]">
 
 <!-- ================= NAVBAR ================= -->
-<header class="bg-[#2f4597] text-white shadow-md">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <div class="px-16 py-5 flex items-center justify-between">
-
-        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-16">
-
-        <div class="flex gap-10 text-sm font-medium">
-            <a href="{{ route('user-interface') }}">الرئيسية</a>
-            <a href="#">القضايا</a>
-            <a href="#">العقود</a>
-            <a href="{{ route('consultations.page') }}" class="font-semibold">الاستشارات</a>
-            <a href="#">المستندات والتقارير</a>
-             <a href="#" class="hover:text-wadimakkah-light transition">
-                    اللغة العربية
-                    <i class="fas fa-globe text-wadimakkah-light"></i>
-                </a>
+<header class="bg-wadimakkah-dark text-white shadow-lg">
+    <div class="text-white px-16 py-6 flex items-center justify-between">
+        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
+            <a href="{{ route('consultations.page') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">
+                اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
+            </a>
         </div>
-
-        <div class="flex items-center gap-5 text-xl">
-            <i class="fas fa-user-circle"></i>
-            <i class="fas fa-bell"></i>
-            <i class="fas fa-cog"></i>
+        <div class="flex items-center gap-6">
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
         </div>
-
     </div>
 </header>
 
@@ -174,44 +169,40 @@ tailwind.config = {
 
  <!--  Footer -->
     <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
-        <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
-            
-            <div>
-                <h5 class="font-bold mb-4">روابط مهمة</h5>
-                <ul class="space-y-2 text-gray-300">
-                    <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
-                    <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h5 class="font-bold mb-4">المساعدة والدعم</h5>
-                <ul class="space-y-2 text-gray-300">
-                    <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
-                    <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
-                <div class="flex gap-4 text-2xl text-gray-300">
-                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center text-center px-6 -mt-4">
-                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
-    
-                <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
-                <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
-            </div>
-
+    <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
+        <div>
+            <h5 class="font-bold mb-4">روابط مهمة</h5>
+            <ul class="space-y-2 text-gray-300">
+                <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+                <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+            </ul>
         </div>
-    </footer>  
 
+        <div>
+            <h5 class="font-bold mb-4">المساعدة والدعم</h5>
+            <ul class="space-y-2 text-gray-300">
+                <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
+                <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
+            <div class="flex gap-4 text-2xl text-gray-300">
+                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center text-center px-6 -mt-4">
+            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+            <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
+            <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
