@@ -205,7 +205,7 @@ public function store(Request $request)
              Notification::create([
     'user_id' => $consultation->request_by,
     'title' => 'إسناد الاستشارة',
-    'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص.',
+
 ]);
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
