@@ -190,15 +190,6 @@ public function store(Request $request)
         $consultation = Consultation::findOrFail($id);
         $consultation->assigned_to = $request->lawyer_id;
         $consultation->status = 'قيد المراجعة';
-<<<<<<< HEAD
-=======
-        $consultation->save();
-             Notification::create([
-    'user_id' => $consultation->request_by,
-    'title' => 'إسناد الاستشارة',
-
-]);
->>>>>>> 2f437c7bc74afe36ce6bc28bb0cf7039110d221b
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
 
