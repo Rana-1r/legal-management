@@ -295,10 +295,10 @@ public function store(Request $request)
     $myConsultations = Consultation::where('assigned_to', $userId)->get();
 
     $stats = [
-        'total_assigned' => $myConsultations->count(),
-        'in_progress' => $myConsultations->where('status', 'in_progress')->count(),
-        'completed' => $myConsultations->where('status', 'completed')->count(),
-    ];
+            'under_review'   => Consultation::where('status', 'قيد المراجعة')->count(),
+            'needs_approval' => Consultation::where('status', 'بحاجة إلى اعتماد')->count(),
+            'closed'         => Consultation::where('is_closed', true)->count(),
+        ];
 
     return view('Interfaces.Employee-interface', compact('myTasks', 'myConsultations', 'stats'));
 }
