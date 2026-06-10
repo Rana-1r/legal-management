@@ -10,6 +10,9 @@
     <!-- Alpine (عشان التفاعل) -->
     <script src="https://unpkg.com/alpinejs" defer></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
@@ -23,32 +26,24 @@
 <body class="bg-[#f5f7fb]">
 
 <!-- ================= NAVBAR ================= -->
-<header class="bg-[#2f4597] text-white shadow-md">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <div class="px-16 py-5 flex items-center justify-between">
-
-        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-16">
-
-        <div class="flex gap-10 text-sm font-medium">
-            <a href="{{ route('user-interface') }}">الرئيسية</a>
-            <a href="#">القضايا</a>
-            <a href="#">العقود</a>
-            <a href="{{ route('consultations.page') }}">الاستشارات</a>
-            <a href="#">المستندات والتقارير</a>
-             <a href="#" class="hover:text-wadimakkah-light transition">
-                    اللغة العربية
-                    <i class="fas fa-globe text-wadimakkah-light"></i>
-                </a>
+<header class="bg-wadimakkah-dark text-white shadow-lg">
+    <div class="text-white px-16 py-6 flex items-center justify-between">
+        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="{{ route('user-interface') }}" class="hover:text-wadimakkah-light transition">الرئيسية</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
+            <a href="{{ route('consultations.page') }}" class="hover:text-wadimakkah-light transition">الاستشارات</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
+            <a href="#" class="hover:text-wadimakkah-light transition">
+                اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
+            </a>
         </div>
-
-        <div class="flex items-center gap-5 text-xl">
-            <i class="fas fa-user-circle"></i>
-            <i class="fas fa-bell"></i>
-            <i class="fas fa-cog"></i>
+        <div class="flex items-center gap-6">
+            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
+            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
         </div>
-
     </div>
 </header>
 
