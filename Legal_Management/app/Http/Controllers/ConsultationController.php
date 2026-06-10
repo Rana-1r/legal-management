@@ -281,12 +281,12 @@ public function store(Request $request)
     $userId = auth()->id();
 
     $myTasks = Task::where('assigned_to', $userId)->get();
-    $myConsultations = Consultation::where('assigned_to', $userId)->get();
+    $myConsultations = Consultation::where('assigned_to', $userId)->latest()->get();
 
     $stats = [
-            'under_review'   => Consultation::where('status', 'قيد المراجعة')->count(),
-            'needs_approval' => Consultation::where('status', 'بحاجة إلى اعتماد')->count(),
-            'closed'         => Consultation::where('is_closed', true)->count(),
+            'under_review'   => Consultation::where('assigned_to', auth()->id())->where('status', 'قيد المراجعة')->count(),
+            'needs_approval' => Consultation::where('assigned_to', auth()->id())->where('status', 'بحاجة إلى اعتماد')->count(),
+            'closed'         => Consultation::where('assigned_to', auth()->id())->where('is_closed', true)->count(),
         ];
 
     return view('Interfaces.Employee-interface', compact('myTasks', 'myConsultations', 'stats'));

@@ -58,6 +58,10 @@ Route::get(
     [ConsultationController::class, 'showResponse']
 )->name('consultation.response');
 
+// صفحة طلب استشارة
+Route::get('/consultations/request', [ConsultationController::class, 'create'])
+    ->name('consultations.create');
+
 });
 
 Route::middleware(['auth', 'role:2'])->group(function () {
@@ -108,9 +112,6 @@ Route::get('/employee/interface', [ConsultationController::class, 'employeeInter
 Route::get('/consultations/table', [ConsultationController::class, 'consultationsTable'])
     ->name('consultations.table');
 
-    // صفحة طلب استشارة
-Route::get('/consultations/request', [ConsultationController::class, 'create'])
-    ->name('consultations.create');
 });
 
 });
