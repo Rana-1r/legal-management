@@ -122,35 +122,38 @@ public function details($id)
 }
 public function store(Request $request)
 {
+    $request->validate([
+        'consulation_type' => 'required',
+        'beneficiary' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+    ]);
+
     $consultation = new Consultation();
 
     $consultation->title = $request->title;
 
-    $consultation->consulation_type = 'عقود';
+    $consultation->consulation_type = $request->consulation_type;
 
-    $consultation->request_by =
-        auth()->id();
+    $consultation->request_by = auth()->id();
 
-    $consultation->status =
-        'قيد الاعتماد';
+    $consultation->status = 'قيد المراجعة';
 
-    $consultation->request_date =
-        now();
+    $consultation->request_date = now();
 
     $consultation->is_closed = 0;
 
     $consultation->is_archived = 0;
 
     $consultation->save();
-
-    return redirect()
+    
+  return redirect()
     ->route('consultations.create')
     ->with(
         'success',
-        'تم إرسال الاستشارة وهي الآن قيد الاعتماد'
+        'تم إرسال الاستشارة وهي الآن قيد المراجعة'
     );
 }
-
 
     /**
      * صفحة المدير
