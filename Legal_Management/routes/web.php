@@ -18,22 +18,19 @@ Route::post('/', [LoginController::class, 'login']);
 // كل صفحات المنصة محمية
 Route::middleware('auth')->group(function () {
 
-    // صفحة اليوزر الرئيسية
-Route::get('/user-interface', [DashboardController::class, 'index'])
-        ->name('user-interface');
 
 // البروفايل
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::post('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
 Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
 
+Route::middleware(['auth', 'role:3'])->group(function () {
+
+Route::get('/user-interface', [DashboardController::class, 'index'])
+        ->name('user-interface');
 // صفحة خدمات الاستشارات عند اليوزر
 Route::get('/consultations-page', [ConsultationController::class, 'userPage'])
     ->name('consultations.page');
-
-// صفحة طلب استشارة
-Route::get('/consultations/request', [ConsultationController::class, 'create'])
-    ->name('consultations.create');
 
  // حفظ طلب الاستشارة
 Route::post('/consultations/request', [ConsultationController::class, 'store'])
@@ -52,8 +49,19 @@ Route::get('/consultations/status', [ConsultationController::class, 'status'])
 [ConsultationController::class, 'store']
 )->name('consultations.store');
 
+Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
+    ->name('consultation.details');
 
-// صفحة المدير القانوني
+    //صفحه عرض الرد القانوني
+Route::get(
+    '/consultation-response',
+    [ConsultationController::class, 'showResponse']
+)->name('consultation.response');
+
+});
+
+Route::middleware(['auth', 'role:2'])->group(function () {
+    // صفحة المدير القانوني
 Route::get('/legal-manager', [ConsultationController::class, 'managerPage'])
     ->name('legal.manager');
 
@@ -64,10 +72,28 @@ Route::get('/manager-interface', [ConsultationController::class, 'managerIndex']
 Route::post('/consultations/{id}/assign', [ConsultationController::class, 'assignLawyer'])
     ->name('consultations.assign');
 
-// المهام
+    // المهام
 Route::post('/assign-task', [ConsultationController::class, 'storeTask'])
     ->name('tasks.assign');
 
+    //اعتماد الاستشارة
+Route::get('/consultations/{id}/approval', [ConsultationController::class, 'showApproval'])
+    ->name('consultations.showApproval');
+
+//قبول, رفض اعتماد الاستشارة
+Route::post('/consultations/{id}/approve', [ConsultationController::class, 'approve'])
+    ->name('consultations.approve');
+
+Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
+    ->name('consultations.reject');
+
+
+Route::get('/consultation/{id}/view-reply', [ConsultationController::class, 'viewReply'])
+    ->name('view-reply');
+});
+
+
+Route::middleware(['auth', 'role:1'])->group(function () {
 Route::post('/tasks/{id}/complete', [ConsultationController::class, 'completeTask'])
     ->name('tasks.complete');
 
@@ -82,36 +108,9 @@ Route::get('/employee/interface', [ConsultationController::class, 'employeeInter
 Route::get('/consultations/table', [ConsultationController::class, 'consultationsTable'])
     ->name('consultations.table');
 
-//صفحه عرض الرد القانوني
-Route::get(
-    '/consultation-response',
-    [ConsultationController::class, 'showResponse']
-)->name('consultation.response');
-
+    // صفحة طلب استشارة
+Route::get('/consultations/request', [ConsultationController::class, 'create'])
+    ->name('consultations.create');
+});
 
 });
-Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
-    ->name('consultation.details');
-
-Route::get('/consultation/details/{id}', [ConsultationController::class, 'details'])
-    ->name('consultation.details');
-
-
-//اعتماد الاستشارة
-Route::get('/consultations/{id}/approval', [ConsultationController::class, 'showApproval'])
-    ->name('consultations.showApproval');
-
-//قبول, رفض اعتماد الاستشارة
-Route::post('/consultations/{id}/approve', [ConsultationController::class, 'approve'])
-    ->name('consultations.approve');
-
-Route::post('/consultations/{id}/reject', [ConsultationController::class, 'reject'])
-    ->name('consultations.reject');
-
-
-Route::get('/consultation/{id}/view-reply', [ConsultationController::class, 'viewReply'])
-    ->name('view-reply');
-
-Route::get('/consultations/{id}/view-reply', [ConsultationController::class, 'viewReply'])
-    ->name('view-reply');
-
