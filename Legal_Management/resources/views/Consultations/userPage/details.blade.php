@@ -23,7 +23,19 @@
     </style>
 
 </head>
-
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'wadimakkah-dark': '#1e3a8a',
+                'wadimakkah-light': '#60a5fa',
+                'wadimakkah-bg': '#f9fafb',
+            }
+        }
+    }
+}
+</script>
 <body class="min-h-screen flex flex-col bg-white">
 
     <!-- NAVBAR -->
@@ -146,6 +158,9 @@
                                 bg-yellow-100 text-yellow-700 border-yellow-200
 
                             @elseif($consultation->status == 'قيد الاعتماد')
+                                bg-blue-100 text-purple-700 border-blue-200
+                                
+                            @elseif($consultation->status == 'قيد الاسناد')
                                 bg-blue-100 text-blue-700 border-blue-200
 
                             @elseif($consultation->status == 'متأخرة')

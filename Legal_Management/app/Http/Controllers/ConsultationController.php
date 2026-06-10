@@ -147,7 +147,7 @@ public function store(Request $request)
 
     $consultation->request_by = auth()->id();
 
-    $consultation->status = 'بحاجة إلى إسناد';
+    $consultation->status = 'قيد الاسناد';
 
     $consultation->request_date = now();
 
@@ -202,17 +202,16 @@ public function store(Request $request)
 
         $consultation = Consultation::findOrFail($id);
         $consultation->assigned_to = $request->lawyer_id;
-<<<<<<< HEAD
-        $consultation->status = 'قيد الاسناد';
+
+        $consultation->status = 'قيد المراجعة';
         $consultation->save();
              Notification::create([
     'user_id' => $consultation->request_by,
     'title' => 'إسناد الاستشارة',
     'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص.',
 ]);
-=======
         $consultation->status = 'قيد المراجعة';
->>>>>>> ccd277096101f7a744e25aa0e7c027e3c6fa85fd
+
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
 

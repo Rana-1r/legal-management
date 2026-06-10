@@ -95,15 +95,19 @@
                 قيد الاعتماد
             </option>
 
+            
+            <option value="قيد الاسناد"
+                {{ request('status')=='قيد الاسناد' ? 'selected' : '' }}>
+                قيد الاسناد
+            </option>
+            
+
             <option value="تم الرد"
                 {{ request('status')=='تم الرد' ? 'selected' : '' }}>
                 تم الرد
             </option>
 
-            <option value="مكتملة"
-                {{ request('status')=='مكتملة' ? 'selected' : '' }}>
-                مكتملة
-            </option>
+            
 
             <option value="متأخرة"
                 {{ request('status')=='متأخرة' ? 'selected' : '' }}>
@@ -158,10 +162,9 @@
                             <th class="py-3 px-4">حالة الاستشارة</th>
                             <th class="py-3 px-4">المستشار المسؤول</th>
                             <th class="py-3 px-4">آخر تحديث</th>
-                            <th class="py-3 px-4">المدة</th>
                         </tr>
                     </thead>
-
+    
                     <tbody>
                         @forelse($consultations as $consultation)
                             <tr class="border-b hover:bg-gray-50">
@@ -171,19 +174,31 @@
                                 </td>
 
                                 <td class="py-3 px-4">
-                                    {{ $consultation->consulation_type }}
+                                  @if($consultation->consulation_type == 'companies')
+                                  شركات
+                                 @elseif($consultation->consulation_type == 'contracts')
+                                  عقود
+                                  @elseif($consultation->consulation_type == 'labor')
+                                  عمالية
+                                  @endif
                                 </td>
 
                               <td class="py-3 px-4 font-semibold">
 
-                      @if(in_array($consultation->status, ['تم الرد', 'مكتملة']))
+                      @if(in_array($consultation->status, ['تم الرد']))
            <span class="text-green-500 text-lg">●</span>
 
                        @elseif($consultation->status == 'متأخرة')
           <span class="text-red-500 text-lg">●</span>
 
-                     @elseif(in_array($consultation->status, ['قيد المراجعة', 'قيد الاعتماد']))
+                     @elseif(in_array($consultation->status, ['قيد المراجعة']))
          <span class="text-yellow-500 text-lg">●</span>
+
+                         @elseif(in_array($consultation->status, ['قيد الاعتماد']))
+         <span class="text-purple-500 text-lg">●</span>
+
+          @elseif(in_array($consultation->status, ['قيد الاسناد']))
+         <span class="text-blue-500 text-lg">●</span>
 
                       @else
                <span class="text-gray-500 text-lg">●</span>
@@ -201,9 +216,6 @@
                                  {{ $consultation->updated_at ? $consultation->updated_at->diffForHumans() : '-' }}
                                 </td>
 
-                                <td class="py-3 px-4">
-                                    {{ $consultation->created_at ? $consultation->created_at->diffForHumans() : '-' }}
-                                </td>
 
                             </tr>
                         @empty

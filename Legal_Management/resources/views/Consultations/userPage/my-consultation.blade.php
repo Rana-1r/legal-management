@@ -129,7 +129,13 @@ tailwind.config = {
                     </td>
 
                     <td>
-                        {{ $consultation->consulation_type }}
+                        @if($consultation->consulation_type == 'companies')
+                       شركات
+                       @elseif($consultation->consulation_type == 'contracts')
+                         عقود
+                        @elseif($consultation->consulation_type == 'labor')
+                       عمالية
+                       @endif
                     </td>
 
                     <td>
@@ -140,6 +146,10 @@ tailwind.config = {
                                 bg-yellow-100 text-yellow-700
                             @elseif($consultation->status == 'تم الرد')
                                 bg-green-100 text-green-700
+                                 @elseif($consultation->status == 'قيد الاسناد')
+                                bg-blue-100 text-blue-700
+                                 @elseif($consultation->status == 'قيد الاعتماد')
+                                bg-purple-100 text-purple-700
                             @else
                                 bg-gray-100 text-gray-600
                             @endif
@@ -167,7 +177,7 @@ tailwind.config = {
 
         </a>
 
-    @elseif(in_array($consultation->status, ['متأخرة', 'قيد المراجعة', 'قيد الاعتماد']))
+    @elseif(in_array($consultation->status, ['متأخرة', 'قيد المراجعة','قيد الاسناد', 'قيد الاعتماد']))
 
         <a href="{{ route('consultation.details', $consultation->consultation_id) }}"
            class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">

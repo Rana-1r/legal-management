@@ -233,16 +233,7 @@
 
                     <td class="p-5">
 
-                        @if($c->status == 'مكتملة')
-
-                        <span
-                            class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
-
-                            مكتملة
-
-                        </span>
-
-                        @elseif($c->status == 'تم الرد')
+                        @if($c->status == 'تم الرد')
 
                         <span
                             class="bg-green-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
@@ -257,17 +248,23 @@
                             class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
 
                             متأخره
-
+                        
                         </span>
                          @elseif($c->status =='قيد الاعتماد')
 
                         <span
-                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+                            class="bg-blue-100 text-purpl-700 px-3 py-1 rounded-full text-xs font-semibold">
 
                                 قيد الاعتماد
                         </span>
+                          @elseif($c->status =='قيد الاسناد')
 
+                        <span
+                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
 
+                           قيد الاسناد
+                        </span>
+ 
                         @else
 
                         <span
@@ -293,7 +290,7 @@
                   
 <td class="p-4 text-center">
 
-@if($c->status == 'مكتملة' || $c->status == 'تم الرد')
+@if( $c->status == 'تم الرد')
 
     <a href="{{ route('consultation.response') }}"
        class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition">
@@ -305,7 +302,8 @@
 @elseif(in_array($c->status, [
     'متأخرة',
     'قيد المراجعة',
-    'قيد الاعتماد'
+    'قيد الاعتماد',
+    'قيد الاسناد'
 ]))
 
     <a href="{{ route('consultation.details', $c->consultation_id) }}"
