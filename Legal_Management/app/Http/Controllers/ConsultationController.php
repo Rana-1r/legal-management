@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Consultation;
 use App\Models\User_wm;
 use App\Models\Task;
+use App\Models\Notification;
+
 
 class ConsultationController extends Controller
 {
@@ -19,6 +21,13 @@ class ConsultationController extends Controller
     ->latest()
     ->get();
 
+    $notifications = Notification::where(
+    'user_id',
+    auth()->id()
+)
+->latest()
+->get();
+
         return view('Consultations.userPage.consultations-page', [
             
             'archivedConsultations' => $archivedConsultations,
@@ -31,9 +40,8 @@ class ConsultationController extends Controller
             'under_review' => Consultation::where('status', 'قيد المراجعة')->count(),
 
             'replied' => Consultation::whereIn('status', ['تم الرد', 'مكتملة'])->count(),
-
-            // إشعارات
-            'notifications' => []
+           'notifications' => $notifications,
+        
             
             
         ]);
@@ -151,7 +159,7 @@ public function store(Request $request)
     ->route('consultations.create')
     ->with(
         'success',
-        'تم إرسال الاستشارة وهي الآن قيد المراجعة'
+        'تم إرسال الاستشارة وهي الآن قيد الاسناد'
     );
 }
 
@@ -194,8 +202,15 @@ public function store(Request $request)
         $consultation->assigned_to = $request->lawyer_id;
         $consultation->status = 'قيد المراجعة';
         $consultation->save();
+             Notification::create([
+    'user_id' => $consultation->request_by,
+    'title' => 'إسناد الاستشارة',
+    'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص.',
+]);
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
+
+   
 
     }
 

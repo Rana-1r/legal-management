@@ -131,37 +131,37 @@
 
     <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
         <table class="w-full text-right text-sm border-collapse">
+  <thead class="bg-gray-100 text-gray-600">
+        <tr>
+            <th class="p-4">الإشعار</th>
+            <th class="p-4">الحالة</th>
+            <th class="p-4">الوقت</th>
+        </tr>
+    </thead>
 
-            <thead class="bg-gray-100 text-gray-600">
-                <tr>
-                    <th class="p-4">الإشعار</th>
-                    <th class="p-4">الحالة</th>
-                    <th class="p-4 text-center">الوقت</th>
-                </tr>
-            </thead>
+    <tbody class="divide-y divide-gray-100">
 
-            <tbody class="divide-y divide-gray-100">
+    @foreach($notifications as $notification)
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-4">تم الرد على الاستشارة رقم 3021</td>
-                    <td class="p-4 text-green-600 font-bold">✔ مكتمل</td>
-                    <td class="p-4 text-center text-gray-400">الآن</td>
-                </tr>
+        <tr class="hover:bg-gray-50 transition">
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-4">تم تحديث الاستشارة رقم 3028</td>
-                    <td class="p-4 text-blue-600 font-bold">🔄 تحديث</td>
-                    <td class="p-4 text-center text-gray-400">قبل 5 دقائق</td>
-                </tr>
+            <td class="p-4">
+                {{ $notification->message }}
+            </td>
 
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="p-4">استشارة جديدة قيد المراجعة</td>
-                    <td class="p-4 text-yellow-600 font-bold">⏳ قيد المعالجة</td>
-                    <td class="p-4 text-center text-gray-400">قبل ساعة</td>
-                </tr>
+            <td class="p-4 text-green-600 font-bold">
+                ✓ مسندة
+            </td>
 
-            </tbody>
+            <td class="p-4 text-center text-gray-400">
+                {{ $notification->created_at->diffForHumans() }}
+            </td>
 
+        </tr>
+
+    @endforeach
+
+    </tbody>
         </table>
     </div>
 </div>
