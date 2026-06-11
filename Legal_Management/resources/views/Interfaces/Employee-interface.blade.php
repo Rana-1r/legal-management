@@ -2,15 +2,17 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>لوحة تحكم الموظف | منصة الإدارة القانونية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | منصة الإدارة القانونية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f9fafb; }
+        body { font-family: 'Cairo', sans-serif; }
     </style>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -21,155 +23,253 @@
                 }
             }
         }
+
+        // الحماية الفورية للـ LocalStorage لمنع الوميض الأبيض أثناء تحميل الصفحة
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     </script>
 </head>
 
-<body class="min-h-screen flex flex-col">
+<body class="bg-wadimakkah-bg dark:bg-gray-900 min-h-screen flex flex-col transition-colors duration-200">
 
-<header class="bg-wadimakkah-dark text-white shadow-lg">
-    <div class="text-white px-16 py-6 flex items-center justify-between">
-        <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
-        <div class="flex gap-8 text-sm font-medium">
-            <a href="#" class="hover:text-wadimakkah-light transition">الرئيسية</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">القضايا</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">العقود</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">الاستشارات</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">المستندات والتقارير</a>
-            <a href="#" class="hover:text-wadimakkah-light transition">
-                اللغة العربية <i class="fas fa-globe text-wadimakkah-light"></i>
-            </a>
-        </div>
-        <div class="flex items-center gap-6">
-            <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition"><i class="fas fa-user-circle text-2xl"></i></a>
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-bell text-xl"></i></a>
-            <a href="#" class="hover:text-blue-300 transition"><i class="fas fa-cog text-xl"></i></a>
-        </div>
-    </div>
-</header>
-
-<main class="container mx-auto px-6 py-10 flex-grow">
-    <div class="mt-10 text-center">
-        <h1 class="text-3xl font-bold text-gray-800">لوحة تحكم الموظف القانوني</h1>
-        <p class="text-sm text-gray-500 mt-2">متابعة المهام والإنجازات الخاصة بك</p>
-    </div>
-
-    <div class="flex justify-center mt-6 px-10 mb-12">
-        <div class="flex items-center bg-white shadow-md rounded-lg w-full max-w-3xl px-4 py-3 border border-gray-200">
-            <i class="fas fa-search text-gray-400 ml-2"></i>
-            <input type="text" placeholder="ابحث عن قضية، عقد، مستند..." class="flex-1 outline-none text-sm bg-transparent">
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div class="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl shadow-sm text-center">
-            <p class="text-gray-600 font-bold mb-2">قيد المراجعة</p>
-            <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['under_review'] ?? 0 }}</span>
-        </div>
-        <div class="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl shadow-sm text-center">
-            <p class="text-gray-600 font-bold mb-2">بحاجة إلى اعتماد</p>
-            <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['needs_approval'] ?? 0 }}</span>
-        </div>
-        <div class="bg-blue-50 border-2 border-blue-200 p-6 rounded-2xl shadow-sm text-center">
-            <p class="text-gray-600 font-bold mb-2">مغلقة</p>
-            <span class="text-5xl font-black text-[#1e3a8a]">{{ $stats['closed'] ?? 0 }}</span>
-        </div>
-    </div>
-
-    <div class="container mx-auto mb-12">
-        <h2 class="text-xl font-bold text-gray-700 mb-6">الإدارات</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-                <h3 class="font-bold text-lg mb-2">القضايا</h3>
-                <p class="text-gray-500 text-sm mb-6">استعرض القضايا المسندة لك، تابع حالتها، وحدث بياناتها.</p>
-                <a href="#" class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">الانتقال إلى الصفحة</a>
+    {{-- الهيدر الموحد --}}
+    <header class="bg-wadimakkah-dark text-white shadow-lg">
+        <div class="px-16 py-6 flex items-center justify-between flex-wrap gap-4">
+            
+            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" class="h-20">
+            
+            {{-- قائمة التنقل الموحدة الألوان متضمنة العناصر الستة المطلوبة بالملي --}}
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="{{ route('employee.interface') }}" class="hover:text-wadimakkah-light transition text-white">الرئيسية</a>
+                <a href="#" class="hover:text-wadimakkah-light transition text-white">القضايا</a>
+                <a href="#" class="hover:text-wadimakkah-light transition text-white">العقود</a>
+                <a href="{{ Route::has('legal.consultations.index') ? route('legal.consultations.index') : '#' }}" class="hover:text-wadimakkah-light transition text-white">الاستشارات</a>
+                <a href="{{ Route::has('employee.tasks') ? route('employee.tasks') : '#' }}" class="hover:text-wadimakkah-light transition text-white">المهام</a>
+                <a href="{{ Route::has('legal.employee.record') ? route('legal.employee.record') : '#' }}" class="hover:text-wadimakkah-light transition text-white">السجل</a>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-                <h3 class="font-bold text-lg mb-2">العقود</h3>
-                <p class="text-gray-500 text-sm mb-6">راجع العقود، عدل البنود، وتابع حالات الاعتماد.</p>
-                <a href="#" class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">الانتقال إلى الصفحة</a>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-                <h3 class="font-bold text-lg mb-2">الإستشارات القانونية</h3>
-                <p class="text-gray-500 text-sm mb-6">اطلع على الاستشارات، قدم الردود، وأرسلها للاعتماد.</p>
-                <a href="{{ route('employee.legal') }}" class="block bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200">الانتقال إلى الصفحة</a>
-            </div>
-        </div>
-    </div>
 
-    <div class="mt-12">
-        <h2 class="text-xl font-bold text-gray-700 mb-6">المهام المسندة لي</h2>
-        <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-right border-collapse text-sm">
-                    <thead class="bg-gray-100 text-gray-600">
-                        <tr>
-                            <th class="p-4">اسم المهمة</th>
-                            <th class="p-4">الحالة</th>
-                            <th class="p-4 text-center">الإجراء</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        @forelse($myTasks as $task)
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="p-4 font-bold text-wadimakkah-dark">{{ $task->title }}</td>
-                            <td class="p-4 font-bold text-wadimakkah-dark">{{ $task->status }}</td>
-                            <td class="p-4 text-center">
-                                <form action="{{ route('tasks.complete', $task->task_id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="bg-[#1e3a8a] hover:bg-blue-800 text-white text-xs px-4 py-1.5 rounded-md transition shadow-sm">
-                                        إتمام المهمة
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="3" class="p-6 text-center text-gray-500">لا توجد مهام مسندة إليك حالياً.</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+            <div class="flex items-center gap-6 relative">
+                {{-- الملف الشخصي: يظهر الصورة الشخصية المرفوعة أو الرمز الافتراضي --}}
+                <a href="{{ route('profile.show') }}" class="hover:text-blue-300 transition flex items-center gap-2 group">
+                    @if(Auth::check() && Auth::user()->photo)
+                        <img src="{{ asset('storage/' . Auth::user()->photo) }}" class="w-8 h-8 rounded-full object-cover border border-white/40 group-hover:border-blue-300 transition shadow-sm">
+                    @else
+                        <i class="fas fa-user-circle text-2xl"></i>
+                    @endif
+                </a>
+                
+                {{-- الإشعارات --}}
+                <div class="relative">
+                    <button onclick="toggleNotificationDropdown()" id="noti-btn" class="relative hover:text-wadimakkah-light transition text-xl p-1 focus:outline-none">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div id="noti-dropdown" class="hidden absolute left-0 mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-xl z-50 p-4 text-right text-gray-800 dark:text-gray-200">
+                        <p class="text-xs text-gray-400 text-center">لا توجد إشعارات جديدة حالياً.</p>
+                    </div>
+                </div>
+
+                {{-- نافذة الإعدادات المنسدلة الصغيرة المتناسقة تماماً مع ستايل المنصة المطور --}}
+                <div class="relative">
+                    <button onclick="toggleSettingsDropdown()" id="settings-btn" class="hover:text-blue-300 transition text-xl p-1 focus:outline-none flex items-center justify-center">
+                        <i class="fas fa-cog"></i>
+                    </button>
+
+                    <div id="settings-dropdown" class="hidden absolute left-0 mt-3 w-60 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-xl z-50 overflow-hidden text-right text-gray-800 dark:text-gray-200">
+                        <div class="p-3 bg-wadimakkah-dark text-white border-b border-gray-100 dark:border-gray-700">
+                            <span class="font-bold text-xs flex items-center gap-1.5">
+                                <i class="fas fa-sliders-h text-wadimakkah-light text-[11px]"></i> إعدادات المنصة
+                            </span>
+                        </div>
+                        <div class="p-2 flex flex-col gap-1 text-xs font-semibold">
+                            <button onclick="toggleTheme()" class="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-50/60 dark:hover:bg-gray-700/50 text-gray-600 dark:text-gray-300 transition duration-150">
+                                <div class="flex items-center gap-2">
+                                    <i id="theme-icon" class="fas fa-moon text-gray-400 text-sm w-4 text-center"></i>
+                                    <span id="theme-text">المظهر الداكن</span>
+                                </div>
+                                <span id="theme-badge" class="bg-gray-100 dark:bg-gray-700 text-[10px] px-2 py-0.5 rounded-md text-gray-500 dark:text-gray-400">مغلق</span>
+                            </button>
+
+                            <hr class="my-1 border-gray-100 dark:border-gray-700">
+                            
+                            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="w-full flex items-center gap-2 p-2.5 rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition duration-150 text-right cursor-pointer">
+                                    <i class="fas fa-sign-out-alt text-sm w-4 text-center"></i> تسجيل الخروج
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</main>
+    </header>
 
-<footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
-    <div class="container mx-auto px-6 grid grid-cols-4 gap-10 text-sm">
-        <div>
-            <h5 class="font-bold mb-4">روابط مهمة</h5>
-            <ul class="space-y-2 text-gray-300">
-                <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
-                <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
-            </ul>
+    {{-- محتوى الصفحة الفرعية مدمج مباشرة --}}
+    <main class="container mx-auto px-6 py-10 flex-grow">
+        
+        <div class="mt-10 text-center">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100">لوحة تحكم الموظف القانوني</h1>
+            <p class="text-gray-500 dark:text-gray-400 mt-2 mb-8 text-sm">متابعة وإدارة المهام المسندة إليك في منصة شركة وادي مكة القانونية</p>
         </div>
 
-        <div>
-            <h5 class="font-bold mb-4">المساعدة والدعم</h5>
-            <ul class="space-y-2 text-gray-300">
-                <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
-                <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
-            <div class="flex gap-4 text-2xl text-gray-300">
-                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
+        <div class="flex justify-center mt-4 px-4 mb-12">
+            <div class="flex items-center bg-white dark:bg-gray-800 shadow-md rounded-xl w-full max-w-3xl px-4 py-3 border border-gray-200 dark:border-gray-700">
+                <i class="fas fa-search text-gray-400 ml-2"></i>
+                <input type="text" placeholder="ابحث عن قضية مسندة، عقد مخصص، استشارة معلقة، رقم مرجعي..." class="flex-1 outline-none text-sm bg-transparent text-gray-700 dark:text-gray-200 placeholder-gray-400">
             </div>
         </div>
 
-        <div class="flex flex-col items-center text-center px-6 -mt-4">
-            <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
-            <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
-            <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
+        {{-- كروت الإحصائيات المسندة للمستشار القانوني الحالي --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {{-- كارت القضايا المسندة إلي --}}
+            <div class="bg-blue-50 dark:bg-gray-800 border-2 border-blue-200 dark:border-gray-700 p-6 rounded-2xl shadow-sm text-center">
+                <p class="text-gray-600 dark:text-gray-400 font-bold mb-2">القضايا المسندة</p>
+                <span class="text-5xl font-black text-wadimakkah-dark dark:text-wadimakkah-light font-mono">{{ $stats['total_cases'] ?? 0 }}</span>
+            </div>
+            {{-- كارت العقود المسندة إلي --}}
+            <div class="bg-blue-50 dark:bg-gray-800 border-2 border-blue-200 dark:border-gray-700 p-6 rounded-2xl shadow-sm text-center">
+                <p class="text-gray-600 dark:text-gray-400 font-bold mb-2">العقود الموكلة</p>
+                <span class="text-5xl font-black text-wadimakkah-dark dark:text-wadimakkah-light font-mono">{{ $stats['total_contracts'] ?? 0 }}</span>
+            </div>
+            {{-- كارت الاستشارات قيد مراجعتي --}}
+            <div class="bg-blue-50 dark:bg-gray-800 border-2 border-blue-200 dark:border-gray-700 p-6 rounded-2xl shadow-sm text-center">
+                <p class="text-gray-600 dark:text-gray-400 font-bold mb-2">الاستشارات الواردة</p>
+                <span class="text-5xl font-black text-wadimakkah-dark dark:text-wadimakkah-light font-mono">{{ $stats['total_consultations'] ?? 0 }}</span>
+            </div>
         </div>
-    </div>
-</footer>
 
+        <div class="mb-12">
+            <h2 class="text-xl font-bold text-gray-700 dark:text-gray-300 mb-6">الإدارات القانونية المتوفرة</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-100 dark:border-gray-600">
+                        <i class="fas fa-gavel text-wadimakkah-dark dark:text-wadimakkah-light text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">القضايا</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">استعرض القضايا المسندة لك وتابع تحديثات وجلسات المحاكمة حالتها.</p>
+                    <a href="#" class="block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition">الانتقال إلى الصفحة</a>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-100 dark:border-gray-600">
+                        <i class="fas fa-file-contract text-wadimakkah-dark dark:text-wadimakkah-light text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">العقود</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">راجع العقود القانونية الموكلة إليك، صياغتها، وتابع حالات الاعتماد.</p>
+                    <a href="#" class="block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition">الانتقال إلى الصفحة</a>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 text-center hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-100 dark:border-gray-600">
+                        <i class="fas fa-balance-scale text-wadimakkah-dark dark:text-wadimakkah-light text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">الاستشارات القانونية</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">اطلع على طلبات الاستشارات الواردة، قدم الردود المناسبة وأرسلها للاعتماد.</p>
+                    <a href="{{ Route::has('legal.consultations.index') ? route('legal.consultations.index') : '#' }}" class="block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition">الانتقال إلى الصفحة</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    {{-- الفوتر الموحد --}}
+    <footer class="bg-wadimakkah-dark text-white py-12 mt-16 border-t border-gray-700">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
+            <div>
+                <h5 class="font-bold mb-4">روابط مهمة</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الشروط والأحكام</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold mb-4">المساعدة والدعم</h5>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">الدعم الفني</a></li>
+                    <li><a href="#" class="hover:text-wadimakkah-light transition">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold mb-4">وسائل التواصل الاجتماعي</h5>
+                <div class="flex gap-4 text-2xl text-gray-300">
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-wadimakkah-light"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center text-center px-6 -mt-4">
+                <img src="{{ asset('images/Wadi Makkah Logo.png') }}" alt="Wadi Makkah Logo" class="h-20 mb-4 opacity-80">
+                <p class="text-xs text-gray-400">شركة وادي مكة للتقنية</p>
+                <p class="text-xs text-gray-400">جميع الحقوق محفوظة @ 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNotificationDropdown() {
+            document.getElementById('settings-dropdown').classList.add('hidden');
+            document.getElementById('noti-dropdown').classList.toggle('hidden');
+        }
+
+        function toggleSettingsDropdown() {
+            document.getElementById('noti-dropdown').classList.add('hidden');
+            document.getElementById('settings-dropdown').classList.toggle('hidden');
+            updateThemeDropdownUI();
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeDropdownUI();
+        }
+
+        function updateThemeDropdownUI() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            const badge = document.getElementById('theme-badge');
+
+            if (isDark) {
+                icon.className = "fas fa-sun text-yellow-500 text-sm w-4 text-center";
+                text.innerText = "المظهر الفاتح";
+                badge.innerText = "مفعّل";
+                badge.className = "bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400 text-[10px] px-2 py-0.5 rounded-md";
+            } else {
+                icon.className = "fas fa-moon text-gray-400 text-sm w-4 text-center";
+                text.innerText = "المظهر الداكن";
+                badge.innerText = "مغلق";
+                badge.className = "bg-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded-md";
+            }
+        }
+
+        window.onclick = function(event) {
+            const notiDropdown = document.getElementById('noti-dropdown');
+            const notiBtn = document.getElementById('noti-btn');
+            const settingsDropdown = document.getElementById('settings-dropdown');
+            const settingsBtn = document.getElementById('settings-btn');
+
+            if (notiDropdown && !notiDropdown.classList.contains('hidden') && !notiBtn.contains(event.target) && !notiDropdown.contains(event.target)) {
+                notiDropdown.classList.add('hidden');
+            }
+            if (settingsDropdown && !settingsDropdown.classList.contains('hidden') && !settingsBtn.contains(event.target) && !settingsDropdown.contains(event.target)) {
+                settingsDropdown.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
