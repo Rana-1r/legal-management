@@ -70,98 +70,6 @@ class ConsultationController extends Controller
         return view('Consultations.userPage.my-consultation', compact('consultations'));
     }
 
-<<<<<<< Updated upstream
-    // فلتر الحالة
-    if (request('status')) {
-        $query->where(
-            'status',
-            request('status')
-        );
-    }
-
-    $consultations = $query->latest()->get();
-
-    return view(
-        'Consultations.userPage.consultation-status',
-        compact('consultations')
-    );
-}
-    
-   public function my()
-{
-    $consultations = Consultation::all();
-
-    return view('Consultations.userPage.my-consultation', compact('consultations'));
-}
- public function showResponse()
-{
-    $consultation = (object) [
-
-        'id' => 3052,
-
-        'status' => 'تم الرد',
-
-        'lawyer' => 'أحمد السلمي',
-
-        'response' =>
-        'بعد مراجعة الطلب والمستندات المرفقة، تبين أن الحالة تستوجب اتخاذ الإجراءات القانونية اللازمة وفقًا للأنظمة المعمول بها داخل المملكة العربية السعودية.'
-
-    ];
-
-    return view(
-        'Consultations.userPage.show',
-        compact('consultation')
-    );
-    
-}
-
-  
-public function details($id)
-{
-    $consultation = Consultation::findOrFail($id);
-
-    return view(
-        'Consultations.userPage.details',
-        compact('consultation')
-    );
-}
-public function store(Request $request)
-{
-    $request->validate([
-        'consulation_type' => 'required',
-        'beneficiary' => 'required|string|max:255',
-        'title' => 'required|string|max:255',
-        'description' => 'required|string',
-    ]);
-
-    $consultation = new Consultation();
-
-    $consultation->title = $request->title;
-
-    $consultation->consulation_type = $request->consulation_type;
-
-    $consultation->request_by = auth()->id();
-
-    $consultation->status = 'قيد الاسناد';
-
-    $consultation->request_date = now();
-
-    $consultation->is_closed = 0;
-
-    $consultation->is_archived = 0;
-
-    $consultation->save();
-    
-  return redirect()
-    ->route('consultations.create')
-    ->with(
-        'success',
-        'تم إرسال الاستشارة وهي الآن قيد الاسناد'
-    );
-}
-
-=======
->>>>>>> Stashed changes
     /**
      * عرض الرد القانوني التجريبي
      */
@@ -251,18 +159,6 @@ public function store(Request $request)
 
         $consultation = Consultation::findOrFail($id);
         $consultation->assigned_to = $request->lawyer_id;
-<<<<<<< Updated upstream
-
-        $consultation->status = 'قيد المراجعة';
-        $consultation->save();
-             Notification::create([
-    'user_id' => $consultation->request_by,
-    'title' => 'إسناد الاستشارة',
-    'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص.',
-]);
-        $consultation->status = 'قيد المراجعة';
-
-=======
         $consultation->status = 'قيد المراجعة'; // تم اعتماد الحالة الأنسب وتصفية تعارض جيت
         $consultation->save();
         
@@ -272,7 +168,6 @@ public function store(Request $request)
             'title'   => 'إسناد الاستشارة',
             'message' => 'تم إسناد الاستشارة رقم #' . $consultation->id . ' إلى محامٍ مختص للبدء بمراجعتها.',
         ]);
->>>>>>> Stashed changes
 
         return redirect()->back()->with('success', 'تم إسناد المحامي بنجاح');
     }

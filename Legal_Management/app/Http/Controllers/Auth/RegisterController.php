@@ -28,12 +28,15 @@ class RegisterController extends Controller
                 'regex:/^[a-zA-Z0-9._%+-]+@wadimakkah\.sa$/',
         ],
             
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8|max:10|confirmed',
             'role_id' => 'required|exists:roles,role_id',
         ], [
             'email.regex' => 'الإيميل يجب أن ينتهي ب@wadimakkah.sa',
             'email.unique' => 'هذا الإيميل مستخدم مسبقاً',
-            'password.confirmed' => 'كلمة المرور غير مطابقة',
+            'password.min' => 'كلمة المرور يجب أن تكون 8 أحرف على الأقل',
+             'password.max' => 'كلمة المرور يجب ألا تزيد عن 10 أحرف',
+             'password.confirmed' => 'كلمة المرور غير مطابقة',
+            
         ]);
 
         \App\Models\User_wm::create([

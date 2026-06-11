@@ -26,6 +26,7 @@ class LoginController extends Controller
             ],
             'password' => 'required',
         ], [
+            'password' => 'required|min:8|max:10',
             'email.required' => 'البريد الإلكتروني مطلوب',
             'email.email' => 'صيغة البريد الإلكتروني غير صحيحة',
             'email.regex' => 'الإيميل لازم ينتهي بـ @wadimakkah.sa',

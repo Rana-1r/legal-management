@@ -170,7 +170,7 @@
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">الاستشارات القانونية</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">اطلع على طلبات الاستشارات الواردة، قدم الردود المناسبة وأرسلها للاعتماد.</p>
-                    <a href="{{ Route::has('legal.consultations.index') ? route('legal.consultations.index') : '#' }}" class="block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition">الانتقال إلى الصفحة</a>
+                    <a href="{{ Route::has('legal.employee.consultations') ? route('legal.employee.consultations') : '#' }}" class="block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-2 rounded-lg text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition">الانتقال إلى الصفحة</a>
                 </div>
 
             </div>
